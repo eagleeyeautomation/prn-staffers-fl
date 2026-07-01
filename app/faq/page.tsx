@@ -10,7 +10,7 @@ import {
 export const metadata: Metadata = {
   title: "FAQ",
   description:
-    "Answers to common questions about non-medical home care, respite care, veterans support, service areas, and caregiver jobs with PRN Staffers Florida."
+    "Answers to common questions about non-medical home care, respite care, veterans support, service areas, and caregiver jobs with PRN Staffers Alabama."
 };
 
 export default function FAQPage() {

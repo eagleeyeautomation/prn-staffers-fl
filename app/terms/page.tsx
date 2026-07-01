@@ -4,7 +4,7 @@ import { SiteFooter, SiteHeader } from "../site-content";
 export const metadata: Metadata = {
   title: "Terms",
   description:
-    "Terms information for PRN Staffers Florida website visitors and prospective clients."
+    "Terms information for PRN Staffers Alabama website visitors and prospective clients."
 };
 
 export default function TermsPage() {
@@ -16,7 +16,7 @@ export default function TermsPage() {
         <h1>Website information for families and caregivers.</h1>
         <p>
           This website provides general information about non-medical home care
-          services and caregiver opportunities with PRN Staffers Florida.
+          services and caregiver opportunities with PRN Staffers Alabama.
         </p>
       </section>
       <section className="section">

@@ -11,7 +11,7 @@ import {
 export const metadata: Metadata = {
   title: "Service Areas",
   description:
-    "PRN Staffers Florida serves Florida communities with compassionate non-medical home care."
+    "PRN Staffers Alabama partners with SARCOA to serve Barbour, Coffee, Covington, Dale, Geneva, Henry, and Houston counties with non-medical home care."
 };
 
 export default function ServiceAreasPage() {
@@ -22,10 +22,11 @@ export default function ServiceAreasPage() {
       <SiteHeader />
       <section className="page-hero">
         <p className="eyebrow">Service areas</p>
-        <h1>Home care across Florida.</h1>
+        <h1>Home care across southeast Alabama.</h1>
         <p>
-          PRN Staffers Florida supports seniors, veterans, adult children, and
-          family caregivers across Florida communities.
+          PRN Staffers Alabama partners with SARCOA to support seniors,
+          veterans, adult children, and family caregivers across seven Alabama
+          counties.
         </p>
       </section>
 
@@ -37,7 +38,7 @@ export default function ServiceAreasPage() {
         <div className="image-panel location-image">
           <img
             src={brandImages.bridge}
-            alt="Compassionate home care support for Florida families"
+            alt="Compassionate home care support for Alabama families"
           />
         </div>
         <div className="area-grid large">

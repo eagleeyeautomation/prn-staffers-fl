@@ -6,7 +6,7 @@ Eagle Eye Automation is organized as a small set of focused repositories that se
 
 ### `agency-website`
 
-The public PRN Staffers Florida website. It presents non-medical home care services, caregiver careers, veterans support, service areas, and family consultation paths.
+The public PRN Staffers Carolina website. It presents non-medical home care services, caregiver careers, veterans support, service areas, and family consultation paths.
 
 Deployment target: Vercel production site for `prnstafferscarolina.com`.
 

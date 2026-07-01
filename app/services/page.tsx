@@ -11,7 +11,7 @@ import {
 export const metadata: Metadata = {
   title: "Home Care Services",
   description:
-    "Non-medical home care services in Florida communities, including personal care, companionship, respite care, errands, transportation, and medication reminders."
+    "Non-medical home care services in Barbour, Coffee, Covington, Dale, Geneva, Henry, and Houston counties, including personal care, companionship, respite care, errands, transportation, and medication reminders."
 };
 
 export default function ServicesPage() {
@@ -24,8 +24,9 @@ export default function ServicesPage() {
         <p className="eyebrow">Services</p>
         <h1>Non-medical home care services for safer, calmer days at home.</h1>
         <p>
-          Flexible care for seniors, veterans, and families across Florida
-          through responsive planning and dependable caregiver support.
+          Flexible care for seniors, veterans, and families in Barbour, Coffee,
+          Covington, Dale, Geneva, Henry, and Houston counties through our
+          partnership with SARCOA.
         </p>
       </section>
 
@@ -46,7 +47,7 @@ export default function ServicesPage() {
           <p className="eyebrow">Care plans</p>
           <h2>Support can be built around daily routines and family priorities.</h2>
           <p>
-            PRN Staffers Florida focuses on non-medical care that helps with
+            PRN Staffers Alabama focuses on non-medical care that helps with
             comfort, safety, companionship, and household routines.
           </p>
           <ul className="check-list">

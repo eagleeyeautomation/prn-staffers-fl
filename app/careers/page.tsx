@@ -12,7 +12,7 @@ import {
 export const metadata: Metadata = {
   title: "Caregiver Careers",
   description:
-    "Apply for caregiver, homemaker, companion, respite caregiver, and CNA opportunities with PRN Staffers Florida in Florida."
+    "Apply for caregiver, homemaker, companion, respite caregiver, and CNA opportunities with PRN Staffers Alabama in Alabama."
 };
 
 export default function CareersPage() {
@@ -23,9 +23,9 @@ export default function CareersPage() {
       <SiteHeader />
       <section className="page-hero">
         <p className="eyebrow">Careers</p>
-        <h1>Meaningful caregiver jobs across Florida.</h1>
+        <h1>Meaningful caregiver jobs across Alabama.</h1>
         <p>
-          PRN Staffers Florida welcomes caregivers, homemakers, companions, and
+          PRN Staffers Alabama welcomes caregivers, homemakers, companions, and
           CNAs who want to help families feel supported at home.
         </p>
       </section>
