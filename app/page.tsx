@@ -162,8 +162,8 @@ export default function HomePage() {
         </div>
         <div className="image-panel portrait-image">
           <img
-            src={brandImages.heart}
-            alt="Heart shape representing compassionate care"
+            src={brandImages.family}
+            alt="Care team and family representing compassionate Alabama home care"
           />
         </div>
       </section>

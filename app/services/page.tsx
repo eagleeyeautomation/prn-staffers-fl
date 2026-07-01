@@ -68,7 +68,7 @@ export default function ServicesPage() {
           </a>
         </div>
         <div className="image-panel">
-          <img src={brandImages.caregiver} alt="Gentle personal care support" />
+          <img src={brandImages.personalCare} alt="Caregiver helping with meal preparation at home" />
         </div>
       </section>
       <SiteFooter />

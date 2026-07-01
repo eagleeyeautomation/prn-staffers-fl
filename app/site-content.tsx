@@ -25,13 +25,13 @@ export const serviceArea =
 
 export const brandImages = {
   logo: "/images/prn/prn-staffers-logo-cropped.png",
-  bridge: "/images/prn/heart-compassion.jpg",
-  heart: "/images/prn/heart-compassion.jpg",
-  team: "/images/prn/team-hands.jpg",
-  caregiver: "/images/prn/team-hands.jpg",
-  companionship: "/images/prn/heart-compassion.jpg",
-  family: "/images/prn/team-hands.jpg",
-  personalCare: "/images/prn/heart-compassion.jpg"
+  bridge: "/images/prn/alabama-care-plan.png",
+  heart: "/images/prn/alabama-caregiver-hero.png",
+  team: "/images/prn/alabama-care-team.png",
+  caregiver: "/images/prn/alabama-caregiver-hero.png",
+  companionship: "/images/prn/alabama-care-plan.png",
+  family: "/images/prn/alabama-care-team.png",
+  personalCare: "/images/prn/alabama-meal-prep.png"
 };
 
 export const navLinks = [

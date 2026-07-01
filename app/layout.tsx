@@ -34,7 +34,7 @@ export const metadata: Metadata = {
     siteName: "PRN Staffers Alabama",
     images: [
       {
-        url: "/images/prn/heart-compassion.jpg",
+        url: "/images/prn/alabama-caregiver-hero.png",
         width: 1200,
         height: 800,
         alt: "Compassionate home care support"
@@ -49,7 +49,7 @@ export const metadata: Metadata = {
     description:
       "Trusted non-medical home care in Birmingham, Montgomery, Huntsville, Mobile, Tuscaloosa, and surrounding Alabama communities.",
     images: [
-      "/images/prn/heart-compassion.jpg"
+      "/images/prn/alabama-caregiver-hero.png"
     ]
   }
 };
