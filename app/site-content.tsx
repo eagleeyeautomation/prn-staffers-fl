@@ -39,8 +39,7 @@ export const navLinks = [
   { label: "Services", href: "/services" },
   { label: "Veterans", href: "/veterans" },
   { label: "Careers", href: "/careers" },
-  { label: "FAQ", href: "/faq" },
-  { label: "Contact", href: "/contact" }
+  { label: "FAQ", href: "/faq" }
 ];
 
 export const trustItems = [
@@ -220,7 +219,7 @@ export function getContactDetails() {
   const contactPhone =
     process.env.NEXT_PUBLIC_CONTACT_PHONE ?? "(205) 555-0198";
   const contactEmail =
-    process.env.NEXT_PUBLIC_CONTACT_EMAIL ?? "care@prnstaffersfl.com";
+    process.env.NEXT_PUBLIC_CONTACT_EMAIL ?? "care@prnstaffersal.com";
   const consultationUrl = process.env.NEXT_PUBLIC_CONSULTATION_URL;
   const careersUrl = process.env.NEXT_PUBLIC_CAREERS_URL;
 
