@@ -1,35 +1,43 @@
 import type { Metadata } from "next";
 import Script from "next/script";
+import { getSiteUrl } from "./site-url";
 import "./globals.css";
 
-const siteUrl =
-  process.env.NEXT_PUBLIC_SITE_URL ?? "https://www.eagleeyeautomation.com/";
-const canonicalSiteUrl = siteUrl.replace(/\/$/, "");
+const canonicalSiteUrl = getSiteUrl();
 
 export const metadata: Metadata = {
   metadataBase: new URL(`${canonicalSiteUrl}/`),
   title: {
-    default: "Eagle Eye Automation | AI, CRM, Websites, and Dashboards",
-    template: "%s | Eagle Eye Automation"
+    default: "PRN Staffers Alabama | Home Care Across Alabama",
+    template: "%s | PRN Staffers Alabama"
+  },
+  alternates: {
+    canonical: `${canonicalSiteUrl}/`
   },
   description:
-    "Eagle Eye Automation builds AI receptionists, workflow automations, GoHighLevel CRM systems, business websites, dashboards, and custom software.",
-  icons: {
-    icon: "/images/eagle-eye-automation-icon.png",
-    apple: "/images/eagle-eye-automation-icon.png"
-  },
+    "PRN Staffers Alabama provides trusted non-medical home care in Birmingham, Montgomery, Huntsville, Mobile, Tuscaloosa, and surrounding Alabama communities, including personal care, companionship, respite care, errands, transportation, and veterans support.",
+  keywords: [
+    "home care Alabama",
+    "home care Birmingham AL",
+    "home care Montgomery AL",
+    "home care Huntsville AL",
+    "senior care Alabama",
+    "non-medical home care Alabama",
+    "respite care Alabama",
+    "caregiver jobs Alabama"
+  ],
   openGraph: {
-    title: "Eagle Eye Automation",
+    title: "PRN Staffers Alabama",
     description:
-      "AI, automation, CRM, web, dashboard, and custom software systems for businesses that want sharper operations.",
+      "Care You Can Trust. Non-medical home care for seniors, veterans, and families across Alabama.",
     url: `${canonicalSiteUrl}/`,
-    siteName: "Eagle Eye Automation",
+    siteName: "PRN Staffers Alabama",
     images: [
       {
-        url: "/images/eagle-eye-automation-logo.png",
-        width: 1748,
-        height: 899,
-        alt: "Eagle Eye Automation logo"
+        url: "/images/prn/heart-compassion.jpg",
+        width: 1200,
+        height: 800,
+        alt: "Compassionate home care support"
       }
     ],
     locale: "en_US",
@@ -37,11 +45,45 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Eagle Eye Automation",
+    title: "PRN Staffers Alabama",
     description:
-      "AI receptionists, workflow automation, GoHighLevel CRM, websites, dashboards, and custom business software.",
-    images: ["/images/eagle-eye-automation-logo.png"]
+      "Trusted non-medical home care in Birmingham, Montgomery, Huntsville, Mobile, Tuscaloosa, and surrounding Alabama communities.",
+    images: [
+      "/images/prn/heart-compassion.jpg"
+    ]
   }
+};
+
+const localBusinessSchema = {
+  "@context": "https://schema.org",
+  "@type": "HomeHealthCareService",
+  name: "PRN Staffers Alabama",
+  url: canonicalSiteUrl,
+  slogan: "Care You Can Trust",
+  areaServed: [
+    "Birmingham AL",
+    "Montgomery AL",
+    "Huntsville AL",
+    "Mobile AL",
+    "Tuscaloosa AL",
+    "Hoover AL",
+    "Auburn AL",
+    "Alabama"
+  ],
+  description:
+    "Non-medical home care provider serving seniors, veterans, and families across Alabama.",
+  serviceType: [
+    "Personal care",
+    "Companionship",
+    "Respite care",
+    "Meal preparation",
+    "Light housekeeping",
+    "Medication reminders",
+    "Transportation and errands",
+    "Veterans support",
+    "Family support",
+    "Non-medical home care"
+  ]
 };
 
 export default function RootLayout({
@@ -52,6 +94,12 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(localBusinessSchema)
+          }}
+        />
         {children}
         <Script
           src="https://widgets.leadconnectorhq.com/loader.js"

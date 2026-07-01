@@ -6,9 +6,9 @@ Eagle Eye Automation is organized as a small set of focused repositories that se
 
 ### `agency-website`
 
-The public Eagle Eye Automation website. It explains the agency offer, presents automation services, and routes prospects into the contact or booking flow.
+The public PRN Staffers Carolina website. It presents non-medical home care services, caregiver careers, veterans support, service areas, and family consultation paths.
 
-Deployment target: Vercel production site for `eagleeyeautomation.com`.
+Deployment target: Vercel production site for `prnstafferscarolina.com`.
 
 ### `prn-command-center`
 

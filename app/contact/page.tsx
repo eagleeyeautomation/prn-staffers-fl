@@ -1,71 +1,60 @@
 import type { Metadata } from "next";
-import { MailCheck, PhoneCall } from "lucide-react";
+import { Mail, Phone } from "lucide-react";
 import {
   ContactForm,
   SiteFooter,
   SiteHeader,
-  contactOptions,
-  getContactDetails
+  getContactDetails,
+  serviceAreas
 } from "../site-content";
 
 export const metadata: Metadata = {
   title: "Contact",
   description:
-    "Book a discovery call with Eagle Eye Automation for AI automation, CRM, websites, dashboards, or custom business software."
+    "Contact PRN Staffers Alabama to request non-medical home care in Birmingham, Montgomery, Huntsville, Mobile, Tuscaloosa, and surrounding Alabama communities."
 };
 
 export default function ContactPage() {
-  const { bookingHref, contactEmail, contactPhone, contactPhoneHref } =
-    getContactDetails();
+  const { contactEmail, contactPhone, contactPhoneHref } = getContactDetails();
 
   return (
     <main>
       <SiteHeader />
-
       <section className="page-hero">
         <p className="eyebrow">Contact</p>
-        <h1>Start with a discovery call.</h1>
+        <h1>Request home care support for your family.</h1>
         <p>
-          Bring the process, system, or bottleneck that is slowing the business
-          down. Eagle Eye Automation will help map the opportunity and recommend
-          the right build path.
+          Tell us what kind of support is needed and where care is needed. PRN
+          Staffers Alabama serves Birmingham, Montgomery, Huntsville, Mobile, Tuscaloosa, and nearby Alabama communities.
         </p>
       </section>
 
       <section className="contact-section contact-page-section">
-        <div className="contact-copy">
+        <div>
           <p className="eyebrow">Get in touch</p>
-          <h2>Tell us what needs to work better.</h2>
+          <h2>Start with a compassionate conversation.</h2>
           <p>
-            Use the form, send an email, or book directly through the calendar
-            link. If a phone number is added to the site settings, it appears
-            here automatically.
+            Reach out for care questions, family support, veterans support, or
+            caregiver job opportunities.
           </p>
           <div className="contact-options">
-            {contactOptions.map((option) => (
-              <span key={option}>{option}</span>
-            ))}
-          </div>
-          <div className="cta-actions">
-            <a className="button primary light" href={bookingHref}>
-              <PhoneCall size={18} aria-hidden="true" />
-              Book discovery call
+            <a href={contactPhoneHref}>
+              <Phone size={18} aria-hidden="true" />
+              {contactPhone}
             </a>
-            <a className="button secondary light" href={`mailto:${contactEmail}`}>
-              <MailCheck size={18} aria-hidden="true" />
+            <a href={`mailto:${contactEmail}`}>
+              <Mail size={18} aria-hidden="true" />
               {contactEmail}
             </a>
-            {contactPhone && contactPhoneHref ? (
-              <a className="button secondary light" href={contactPhoneHref}>
-                <PhoneCall size={18} aria-hidden="true" />
-                {contactPhone}
-              </a>
-            ) : null}
+          </div>
+          <div className="area-pills compact">
+            {serviceAreas.slice(0, 8).map((area) => (
+              <span key={area}>{area}</span>
+            ))}
           </div>
         </div>
         <ContactForm />
       </section>
-
       <SiteFooter />
     </main>
   );

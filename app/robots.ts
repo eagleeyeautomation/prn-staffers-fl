@@ -1,8 +1,7 @@
 import type { MetadataRoute } from "next";
+import { getSiteUrl } from "./site-url";
 
-const siteUrl =
-  process.env.NEXT_PUBLIC_SITE_URL ?? "https://www.eagleeyeautomation.com/";
-const canonicalSiteUrl = siteUrl.replace(/\/$/, "");
+const canonicalSiteUrl = getSiteUrl();
 
 export default function robots(): MetadataRoute.Robots {
   return {

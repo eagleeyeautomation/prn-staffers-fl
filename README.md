@@ -1,6 +1,6 @@
-# Agency Website
+# PRN Staffers Alabama Website
 
-Official website and marketing platform for Eagle Eye Automation.
+Modern Next.js website for PRN Staffers Alabama, a non-medical home care provider serving Birmingham, Montgomery, Huntsville, Mobile, Tuscaloosa, and surrounding Alabama communities.
 
 ## Local Development
 
@@ -31,20 +31,35 @@ This app is ready for Vercel or any Node host that supports Next.js.
 Set these environment variables in the deployment target:
 
 ```bash
-NEXT_PUBLIC_SITE_URL=https://www.eagleeyeautomation.com/
-NEXT_PUBLIC_CONTACT_EMAIL=hello@eagleeyeautomation.com
+NEXT_PUBLIC_SITE_URL=https://prnstaffersal.com
+NEXT_PUBLIC_CONTACT_EMAIL=care@prnstaffersal.com
 NEXT_PUBLIC_CONTACT_PHONE=
-NEXT_PUBLIC_BOOKING_URL=
+NEXT_PUBLIC_CONSULTATION_URL=
+NEXT_PUBLIC_CAREERS_URL=
 ```
 
-Leave `NEXT_PUBLIC_BOOKING_URL` blank to use an email-based scheduling link. Add `NEXT_PUBLIC_CONTACT_PHONE` when you want a phone number shown in the contact and footer areas.
+Production URL generation always resolves to `https://prnstaffersal.com`.
+Local development falls back to `http://localhost:3000` only when running the
+development server.
 
-The homepage content lives in `app/page.tsx`, global styling in `app/globals.css`, and project imagery in `public/images`.
+Leave `NEXT_PUBLIC_CONSULTATION_URL` and `NEXT_PUBLIC_CAREERS_URL` blank to route requests through email. Add `NEXT_PUBLIC_CONTACT_PHONE` when the public phone number is ready to display.
 
-See `DEPLOYMENT.md` for the full Vercel deployment checklist.
+## Content
 
-## Related Repositories
+- Homepage: `app/page.tsx`
+- Shared content and navigation: `app/site-content.tsx`
+- Global styles: `app/globals.css`
+- SEO metadata: `app/layout.tsx`
+- Sitemap: `app/sitemap.ts`
 
-- `eagleeyeautomation/prn-command-center`: internal PRN operations dashboard
-- `eagleeyeautomation/ghl-workflows`: GoHighLevel workflow documentation and deployment registry
-- `eagleeyeautomation/automation-library`: reusable automation patterns and templates
+The site is intentionally focused on non-medical home care and does not claim skilled nursing services.
+
+## Production Domain
+
+Primary domain: `https://prnstaffersal.com`
+
+The `www` host should redirect permanently to the apex domain:
+
+```text
+https://www.prnstaffersal.com/* -> https://prnstaffersal.com/*
+```
