@@ -4,7 +4,7 @@ import {
   SiteFooter,
   SiteHeader,
   faqs,
-  getContactDetails
+  getInquiryDetails
 } from "../site-content";
 
 export const metadata: Metadata = {
@@ -14,7 +14,7 @@ export const metadata: Metadata = {
 };
 
 export default function FAQPage() {
-  const { consultationHref } = getContactDetails();
+  const { consultationHref } = getInquiryDetails();
 
   return (
     <main>

@@ -32,8 +32,8 @@ Set these environment variables in the deployment target:
 
 ```bash
 NEXT_PUBLIC_SITE_URL=https://prnstaffersal.com
-NEXT_PUBLIC_CONTACT_EMAIL=care@prnstaffersal.com
-NEXT_PUBLIC_CONTACT_PHONE=
+NEXT_PUBLIC_EMAIL=care@prnstaffersal.com
+NEXT_PUBLIC_PHONE=
 NEXT_PUBLIC_CONSULTATION_URL=
 NEXT_PUBLIC_CAREERS_URL=
 ```
@@ -42,7 +42,7 @@ Production URL generation always resolves to `https://prnstaffersal.com`.
 Local development falls back to `http://localhost:3000` only when running the
 development server.
 
-Leave `NEXT_PUBLIC_CONSULTATION_URL` and `NEXT_PUBLIC_CAREERS_URL` blank to route requests through email. Add `NEXT_PUBLIC_CONTACT_PHONE` when the public phone number is ready to display.
+Leave `NEXT_PUBLIC_CONSULTATION_URL` and `NEXT_PUBLIC_CAREERS_URL` blank to route requests through email. Add `NEXT_PUBLIC_PHONE` when the public phone number is ready to display.
 
 ## Content
 

@@ -4,7 +4,7 @@ import {
   SiteFooter,
   SiteHeader,
   brandImages,
-  getContactDetails,
+  getInquiryDetails,
   serviceAreas
 } from "../site-content";
 
@@ -15,7 +15,7 @@ export const metadata: Metadata = {
 };
 
 export default function ServiceAreasPage() {
-  const { consultationHref } = getContactDetails();
+  const { consultationHref } = getInquiryDetails();
 
   return (
     <main>

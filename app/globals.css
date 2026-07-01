@@ -221,8 +221,7 @@ h3 {
 .split-section p,
 .careers-band p,
 .veterans-highlight p,
-.final-cta p,
-.contact-section p {
+.final-cta p {
   color: var(--muted);
   font-size: 18px;
   line-height: 1.7;
@@ -243,8 +242,7 @@ h3 {
   font-weight: 900;
 }
 
-.hero-actions,
-.contact-options {
+.hero-actions {
   display: flex;
   flex-wrap: wrap;
   gap: 12px;
@@ -381,7 +379,6 @@ h3 {
 .service-card,
 .step-card,
 .testimonial-card,
-.contact-form,
 .faq-list details {
   border: 1px solid var(--line);
   border-radius: 18px;
@@ -568,67 +565,6 @@ h3 {
   padding: 0 24px 24px;
 }
 
-.contact-section {
-  display: grid;
-  grid-template-columns: minmax(0, 0.85fr) minmax(340px, 0.75fr);
-  gap: 44px;
-  align-items: start;
-  padding: 96px clamp(20px, 5vw, 72px);
-  background: var(--blue-soft);
-}
-
-.contact-page-section {
-  background: #ffffff;
-}
-
-.contact-options a {
-  display: inline-flex;
-  min-height: 48px;
-  align-items: center;
-  gap: 10px;
-  border: 1px solid rgba(0, 59, 115, 0.18);
-  border-radius: 999px;
-  background: #ffffff;
-  padding: 10px 14px;
-  color: var(--ink);
-  font-weight: 900;
-}
-
-.contact-form {
-  display: grid;
-  gap: 16px;
-  padding: 24px;
-}
-
-.contact-form label {
-  display: grid;
-  gap: 8px;
-  color: var(--ink);
-  font-size: 14px;
-  font-weight: 900;
-}
-
-.contact-form input,
-.contact-form select,
-.contact-form textarea {
-  width: 100%;
-  border: 1px solid var(--line);
-  border-radius: 14px;
-  background: #ffffff;
-  color: var(--ink);
-  font: inherit;
-  padding: 13px 14px;
-}
-
-.contact-form textarea {
-  resize: vertical;
-}
-
-.contact-form button {
-  border: 0;
-  cursor: pointer;
-}
-
 footer {
   display: grid;
   grid-template-columns: minmax(260px, 0.85fr) minmax(360px, 1.15fr);
@@ -681,7 +617,6 @@ footer {
   .hero,
   .intro-section,
   .split-section,
-  .contact-section,
   footer {
     grid-template-columns: 1fr;
   }
@@ -746,8 +681,7 @@ footer {
 
   .hero-copy,
   .section,
-  .page-hero,
-  .contact-section {
+  .page-hero {
     padding-left: 20px;
     padding-right: 20px;
   }

@@ -23,7 +23,7 @@ export default function PrivacyPage() {
         <div className="section-heading">
           <h2>How information is used</h2>
           <p>
-            Contact details and care-request information are used for follow-up,
+            Submitted details and care-request information are used for follow-up,
             consultation, hiring, and service communication. We do not sell
             visitor information.
           </p>

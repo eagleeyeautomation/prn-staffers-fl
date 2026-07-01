@@ -1,13 +1,10 @@
 import {
-  ArrowRight,
   Bath,
-  BriefcaseBusiness,
   CalendarCheck,
   Car,
   Check,
   Clock3,
   HeartHandshake,
-  Home,
   MapPin,
   Phone,
   Pill,
@@ -194,7 +191,7 @@ export const faqs = [
   {
     question: "How do caregivers apply?",
     answer:
-      "Caregivers, homemakers, and CNAs can apply through the careers page or contact PRN Staffers Alabama to learn about current opportunities."
+      "Caregivers, homemakers, and CNAs can apply through the careers page to learn about current opportunities."
   }
 ];
 
@@ -216,11 +213,9 @@ export const socialLinks = [
   { label: "TikTok", href: "https://www.tiktok.com" }
 ];
 
-export function getContactDetails() {
-  const contactPhone =
-    process.env.NEXT_PUBLIC_CONTACT_PHONE ?? "(205) 555-0198";
-  const contactEmail =
-    process.env.NEXT_PUBLIC_CONTACT_EMAIL ?? "care@prnstaffersal.com";
+export function getInquiryDetails() {
+  const phone = process.env.NEXT_PUBLIC_PHONE ?? "(205) 555-0198";
+  const email = process.env.NEXT_PUBLIC_EMAIL ?? "care@prnstaffersal.com";
   const consultationUrl = process.env.NEXT_PUBLIC_CONSULTATION_URL;
   const careersUrl = process.env.NEXT_PUBLIC_CAREERS_URL;
 
@@ -228,15 +223,14 @@ export function getContactDetails() {
     careersHref:
       careersUrl && careersUrl.length > 0
         ? careersUrl
-        : `mailto:${contactEmail}?subject=Caregiver%20Application`,
+        : `mailto:${email}?subject=Caregiver%20Application`,
     consultationHref:
       consultationUrl && consultationUrl.length > 0
         ? consultationUrl
-        : `mailto:${contactEmail}?subject=Free%20Home%20Care%20Consultation`,
-    contactEmail,
-    contactPhone,
-    contactPhoneHref: `tel:${contactPhone.replace(/\D/g, "")}`,
-    formAction: `mailto:${contactEmail}`
+        : `mailto:${email}?subject=Free%20Home%20Care%20Consultation`,
+    email,
+    phone,
+    phoneHref: `tel:${phone.replace(/\D/g, "")}`
   };
 }
 
@@ -249,7 +243,7 @@ export function LogoMark() {
 }
 
 export function SiteHeader() {
-  const { consultationHref, contactPhoneHref } = getContactDetails();
+  const { consultationHref, phoneHref } = getInquiryDetails();
 
   return (
     <header className="site-header" aria-label="Primary navigation">
@@ -268,7 +262,7 @@ export function SiteHeader() {
           Request Care Today
         </a>
       </nav>
-      <a className="mobile-call" href={contactPhoneHref}>
+      <a className="mobile-call" href={phoneHref}>
         <Phone size={18} aria-hidden="true" />
         Call Now
       </a>
@@ -277,9 +271,6 @@ export function SiteHeader() {
 }
 
 export function SiteFooter() {
-  const { consultationHref, contactEmail, contactPhone, contactPhoneHref } =
-    getContactDetails();
-
   return (
     <footer>
       <div className="footer-brand">
@@ -305,12 +296,6 @@ export function SiteFooter() {
           <a href="/faq">FAQ</a>
         </div>
         <div>
-          <h3>Contact</h3>
-          <a href={contactPhoneHref}>{contactPhone}</a>
-          <a href={`mailto:${contactEmail}`}>{contactEmail}</a>
-          <a href={consultationHref}>Request Care Today</a>
-        </div>
-        <div>
           <h3>Follow</h3>
           {socialLinks.map((link) => (
             <a href={link.href} key={link.label}>
@@ -324,53 +309,5 @@ export function SiteFooter() {
         families in Alabama.
       </p>
     </footer>
-  );
-}
-
-export function ContactForm({ context = "care" }: { context?: "care" | "career" }) {
-  const { formAction } = getContactDetails();
-
-  return (
-    <form className="contact-form" action={formAction} method="post">
-      <label>
-        Name
-        <input name="name" type="text" autoComplete="name" required />
-      </label>
-      <label>
-        Email
-        <input name="email" type="email" autoComplete="email" required />
-      </label>
-      <label>
-        Phone
-        <input name="phone" type="tel" autoComplete="tel" />
-      </label>
-      <label>
-        I am interested in
-        <select name="interest" defaultValue={context === "career" ? "Caregiver job" : "Home care"}>
-          <option>Home care</option>
-          <option>Caregiver job</option>
-          <option>Veterans support</option>
-          <option>Respite care</option>
-          <option>General question</option>
-        </select>
-      </label>
-      <label>
-        Message
-        <textarea
-          name="message"
-          rows={5}
-          placeholder={
-            context === "career"
-              ? "Tell us about your caregiving experience and availability."
-              : "Tell us what kind of support your family needs."
-          }
-          required
-        />
-      </label>
-      <button className="button primary" type="submit">
-        {context === "career" ? "Apply as a Caregiver" : "Request Care Today"}
-        <ArrowRight size={18} aria-hidden="true" />
-      </button>
-    </form>
   );
 }

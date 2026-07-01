@@ -1,12 +1,11 @@
 import { ArrowRight, Check, HeartHandshake, MapPin, Phone } from "lucide-react";
 import {
-  ContactForm,
   SiteFooter,
   SiteHeader,
   brandImages,
   careSteps,
   faqs,
-  getContactDetails,
+  getInquiryDetails,
   reasons,
   serviceAreas,
   services,
@@ -16,8 +15,8 @@ import {
 } from "./site-content";
 
 export default function HomePage() {
-  const { careersHref, consultationHref, contactPhone, contactPhoneHref } =
-    getContactDetails();
+  const { careersHref, consultationHref, phone, phoneHref } =
+    getInquiryDetails();
 
   return (
     <main>
@@ -41,13 +40,13 @@ export default function HomePage() {
               Request Care Today
               <ArrowRight size={18} aria-hidden="true" />
             </a>
-            <a className="button secondary" href={contactPhoneHref}>
+            <a className="button secondary" href={phoneHref}>
               Call PRN Staffers Alabama
             </a>
           </div>
-          <a className="phone-link" href={contactPhoneHref}>
+          <a className="phone-link" href={phoneHref}>
             <Phone size={18} aria-hidden="true" />
-            {contactPhone}
+            {phone}
           </a>
         </div>
       </section>
@@ -241,18 +240,6 @@ export default function HomePage() {
           Request a Free Consultation
           <ArrowRight size={18} aria-hidden="true" />
         </a>
-      </section>
-
-      <section className="contact-section">
-        <div>
-          <p className="eyebrow">Request care</p>
-          <h2>Tell us how we can support your family.</h2>
-          <p>
-            Share a little about the care needed, the location, and the best way
-            to reach you. A care team member can follow up with next steps.
-          </p>
-        </div>
-        <ContactForm />
       </section>
 
       <SiteFooter />

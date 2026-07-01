@@ -4,7 +4,7 @@ import {
   SiteFooter,
   SiteHeader,
   brandImages,
-  getContactDetails,
+  getInquiryDetails,
   reasons,
   tagline
 } from "../site-content";
@@ -16,7 +16,7 @@ export const metadata: Metadata = {
 };
 
 export default function AboutPage() {
-  const { consultationHref } = getContactDetails();
+  const { consultationHref } = getInquiryDetails();
 
   return (
     <main>

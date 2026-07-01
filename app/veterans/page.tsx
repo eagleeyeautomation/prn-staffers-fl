@@ -3,7 +3,7 @@ import { ArrowRight, Check, ShieldCheck } from "lucide-react";
 import {
   SiteFooter,
   SiteHeader,
-  getContactDetails,
+  getInquiryDetails,
   services
 } from "../site-content";
 
@@ -14,7 +14,7 @@ export const metadata: Metadata = {
 };
 
 export default function VeteransPage() {
-  const { consultationHref } = getContactDetails();
+  const { consultationHref } = getInquiryDetails();
 
   return (
     <main>

@@ -1,12 +1,11 @@
 import type { Metadata } from "next";
 import { ArrowRight, Check } from "lucide-react";
 import {
-  ContactForm,
   SiteFooter,
   SiteHeader,
   brandImages,
   careerRoles,
-  getContactDetails
+  getInquiryDetails
 } from "../site-content";
 
 export const metadata: Metadata = {
@@ -16,7 +15,7 @@ export const metadata: Metadata = {
 };
 
 export default function CareersPage() {
-  const { careersHref } = getContactDetails();
+  const { careersHref } = getInquiryDetails();
 
   return (
     <main>
@@ -59,17 +58,6 @@ export default function CareersPage() {
         </div>
       </section>
 
-      <section className="contact-section">
-        <div>
-          <p className="eyebrow">Apply today</p>
-          <h2>Tell us about your caregiving experience.</h2>
-          <p>
-            Share your availability, experience, and the communities where you
-            are able to work.
-          </p>
-        </div>
-        <ContactForm context="career" />
-      </section>
       <SiteFooter />
     </main>
   );
