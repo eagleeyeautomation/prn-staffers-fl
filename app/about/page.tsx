@@ -12,7 +12,7 @@ import {
 export const metadata: Metadata = {
   title: "About",
   description:
-    "Learn about PRN Staffers Alabama, a compassionate non-medical home care provider serving Birmingham, Montgomery, Huntsville, Mobile, Tuscaloosa, and surrounding Alabama communities."
+    "Learn about PRN Staffers Alabama, a compassionate non-medical home care provider partnering with SARCOA to serve Barbour, Coffee, Covington, Dale, Geneva, Henry, and Houston counties."
 };
 
 export default function AboutPage() {
@@ -26,7 +26,7 @@ export default function AboutPage() {
         <h1>Local home care built on trust, dignity, and family support.</h1>
         <p>
           PRN Staffers Alabama helps seniors, veterans, and families feel
-          supported at home through dependable non-medical care across Alabama.
+          supported at home through dependable non-medical care across southeast Alabama.
         </p>
       </section>
 
@@ -43,7 +43,8 @@ export default function AboutPage() {
           <p>
             Families deserve a care partner who listens first. PRN Staffers
             Alabama builds support around each person’s routine, preferences,
-            family needs, and home environment.
+            family needs, and home environment while partnering with SARCOA to
+            serve local communities.
           </p>
           <ul className="check-list">
             {reasons.slice(0, 4).map((reason) => (

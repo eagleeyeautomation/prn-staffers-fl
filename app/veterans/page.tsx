@@ -10,7 +10,7 @@ import {
 export const metadata: Metadata = {
   title: "Veterans Support",
   description:
-    "Veterans support and non-medical home care guidance for families in Birmingham, Montgomery, Huntsville, Mobile, Tuscaloosa, and surrounding Alabama communities."
+    "Veterans support and non-medical home care guidance for families in Barbour, Coffee, Covington, Dale, Geneva, Henry, and Houston counties."
 };
 
 export default function VeteransPage() {

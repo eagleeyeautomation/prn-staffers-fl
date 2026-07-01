@@ -1,6 +1,6 @@
 # PRN Staffers Alabama Website
 
-Modern Next.js website for PRN Staffers Alabama, a non-medical home care provider serving Birmingham, Montgomery, Huntsville, Mobile, Tuscaloosa, and surrounding Alabama communities.
+Modern Next.js website for PRN Staffers Alabama, a non-medical home care provider partnering with SARCOA to serve Barbour, Coffee, Covington, Dale, Geneva, Henry, and Houston counties in Alabama.
 
 ## Local Development
 

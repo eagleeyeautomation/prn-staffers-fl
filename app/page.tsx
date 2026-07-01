@@ -65,10 +65,10 @@ export default function HomePage() {
       <section className="section intro-section">
         <div>
           <p className="eyebrow">Local home care</p>
-          <h2>Warm support for seniors, veterans, and families across Alabama.</h2>
+          <h2>Warm support for seniors, veterans, and families across southeast Alabama.</h2>
         </div>
         <p>
-          Families often reach out when daily routines become harder, when a
+          Through our partnership with SARCOA, families often reach out when daily routines become harder, when a
           loved one needs companionship, or when family caregivers need relief.
           PRN Staffers Alabama helps create a safer, calmer home environment
           through compassionate non-medical support.
@@ -186,7 +186,7 @@ export default function HomePage() {
       <section className="section service-area-section">
         <div className="section-heading">
           <p className="eyebrow">Service areas</p>
-          <h2>Serving Birmingham, Montgomery, Huntsville, Mobile, Tuscaloosa, and surrounding Alabama communities.</h2>
+          <h2>Partnering with SARCOA to serve seven southeast Alabama counties.</h2>
         </div>
         <div className="area-grid">
           {serviceAreas.map((area) => (
@@ -234,7 +234,7 @@ export default function HomePage() {
           <h2>Let Our Family Help Care for Yours</h2>
           <p>
             Start with a compassionate conversation about your loved one’s care
-            needs in Birmingham, Montgomery, Huntsville, Mobile, Tuscaloosa, or surrounding Alabama communities.
+            needs in Barbour, Coffee, Covington, Dale, Geneva, Henry, or Houston County.
           </p>
         </div>
         <a className="button primary" href={consultationHref}>

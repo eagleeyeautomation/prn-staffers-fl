@@ -15,21 +15,22 @@ export const metadata: Metadata = {
     canonical: `${canonicalSiteUrl}/`
   },
   description:
-    "PRN Staffers Alabama provides trusted non-medical home care in Birmingham, Montgomery, Huntsville, Mobile, Tuscaloosa, and surrounding Alabama communities, including personal care, companionship, respite care, errands, transportation, and veterans support.",
+    "PRN Staffers Alabama partners with SARCOA to provide trusted non-medical home care in Barbour, Coffee, Covington, Dale, Geneva, Henry, and Houston counties in Alabama.",
   keywords: [
     "home care Alabama",
-    "home care Birmingham AL",
-    "home care Montgomery AL",
-    "home care Huntsville AL",
+    "home care southeast Alabama",
+    "home care Dothan AL",
+    "SARCOA home care",
+    "Houston County AL home care",
+    "Coffee County AL home care",
     "senior care Alabama",
     "non-medical home care Alabama",
-    "respite care Alabama",
-    "caregiver jobs Alabama"
+    "respite care Alabama"
   ],
   openGraph: {
     title: "PRN Staffers Alabama",
     description:
-      "Care You Can Trust. Non-medical home care for seniors, veterans, and families across Alabama.",
+      "Care You Can Trust. Non-medical home care for seniors, veterans, and families in southeast Alabama through a SARCOA partnership.",
     url: `${canonicalSiteUrl}/`,
     siteName: "PRN Staffers Alabama",
     images: [
@@ -47,7 +48,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "PRN Staffers Alabama",
     description:
-      "Trusted non-medical home care in Birmingham, Montgomery, Huntsville, Mobile, Tuscaloosa, and surrounding Alabama communities.",
+      "Trusted non-medical home care in Barbour, Coffee, Covington, Dale, Geneva, Henry, and Houston counties.",
     images: [
       "/images/prn/alabama-caregiver-hero.png"
     ]
@@ -61,17 +62,16 @@ const localBusinessSchema = {
   url: canonicalSiteUrl,
   slogan: "Care You Can Trust",
   areaServed: [
-    "Birmingham AL",
-    "Montgomery AL",
-    "Huntsville AL",
-    "Mobile AL",
-    "Tuscaloosa AL",
-    "Hoover AL",
-    "Auburn AL",
-    "Alabama"
+    "Barbour County AL",
+    "Coffee County AL",
+    "Covington County AL",
+    "Dale County AL",
+    "Geneva County AL",
+    "Henry County AL",
+    "Houston County AL"
   ],
   description:
-    "Non-medical home care provider serving seniors, veterans, and families across Alabama.",
+    "Non-medical home care provider partnering with SARCOA to serve seniors, veterans, and families in southeast Alabama.",
   serviceType: [
     "Personal care",
     "Companionship",

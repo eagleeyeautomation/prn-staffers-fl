@@ -11,7 +11,7 @@ import {
 export const metadata: Metadata = {
   title: "Home Care Services",
   description:
-    "Non-medical home care services in Alabama, including personal care, companionship, respite care, meal preparation, errands, transportation, and medication reminders."
+    "Non-medical home care services in Barbour, Coffee, Covington, Dale, Geneva, Henry, and Houston counties, including personal care, companionship, respite care, errands, transportation, and medication reminders."
 };
 
 export default function ServicesPage() {
@@ -24,8 +24,9 @@ export default function ServicesPage() {
         <p className="eyebrow">Services</p>
         <h1>Non-medical home care services for safer, calmer days at home.</h1>
         <p>
-          Flexible care for seniors, veterans, and families in Birmingham,
-          Montgomery, Huntsville, Mobile, Tuscaloosa, and surrounding Alabama communities.
+          Flexible care for seniors, veterans, and families in Barbour, Coffee,
+          Covington, Dale, Geneva, Henry, and Houston counties through our
+          partnership with SARCOA.
         </p>
       </section>
 

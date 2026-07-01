@@ -21,7 +21,7 @@ import {
 export const siteName = "PRN Staffers Alabama";
 export const tagline = "Care You Can Trust";
 export const serviceArea =
-  "Serving Birmingham, Montgomery, Huntsville, Mobile, Tuscaloosa, and surrounding Alabama communities.";
+  "Partnering with SARCOA to serve Barbour, Coffee, Covington, Dale, Geneva, Henry, and Houston counties in Alabama.";
 
 export const brandImages = {
   logo: "/images/prn/prn-staffers-logo-cropped.png",
@@ -60,8 +60,8 @@ export const trustItems = [
     icon: CalendarCheck
   },
   {
-    title: "Local Alabama care",
-    text: "Serving Birmingham, Montgomery, Huntsville, Mobile, Tuscaloosa, and surrounding communities.",
+    title: "SARCOA partner",
+    text: "Partnering with SARCOA to support families across southeast Alabama.",
     icon: MapPin
   }
 ];
@@ -118,7 +118,7 @@ export const reasons = [
   "Dignity-first care that respects personal routines and preferences.",
   "Dependable caregivers focused on safety, comfort, and communication.",
   "Flexible non-medical support for short visits, ongoing care, or respite needs.",
-  "Local knowledge of Alabama communities and family care needs.",
+  "Local knowledge of Barbour, Coffee, Covington, Dale, Geneva, Henry, and Houston counties.",
   "A family-focused approach for seniors, veterans, and adult children coordinating care.",
   "Clean, professional care planning from first conversation through ongoing support."
 ];
@@ -139,33 +139,25 @@ export const careSteps = [
 ];
 
 export const serviceAreas = [
-  "Birmingham",
-  "Montgomery",
-  "Huntsville",
-  "Mobile",
-  "Tuscaloosa",
-  "Hoover",
-  "Auburn",
-  "Decatur",
-  "Dothan",
-  "Madison",
-  "Florence",
-  "Gadsden",
-  "Prattville",
-  "Alabaster",
-  "Vestavia Hills"
+  "Barbour County",
+  "Coffee County",
+  "Covington County",
+  "Dale County",
+  "Geneva County",
+  "Henry County",
+  "Houston County"
 ];
 
 export const testimonials = [
   {
     quote:
       "PRN Staffers Alabama helped our family feel calm during a stressful transition. The care was kind, dependable, and respectful.",
-    name: "Family member in Birmingham"
+    name: "Family member in Houston County"
   },
   {
     quote:
       "We needed help for my father at home, and the team made the process feel clear and compassionate from the first call.",
-    name: "Adult child in Montgomery"
+    name: "Adult child in Coffee County"
   },
   {
     quote:
@@ -183,7 +175,7 @@ export const faqs = [
   {
     question: "Do you serve families in Alabama?",
     answer:
-      "Yes. PRN Staffers Alabama serves Birmingham, Montgomery, Huntsville, Mobile, Tuscaloosa, and surrounding Alabama communities."
+      "Yes. PRN Staffers Alabama partners with SARCOA and serves Barbour, Coffee, Covington, Dale, Geneva, Henry, and Houston counties in Alabama."
   },
   {
     question: "Is this skilled nursing care?",
@@ -297,7 +289,7 @@ export function SiteFooter() {
         </div>
         <p>
           Trusted non-medical home care for seniors, veterans, and families in
-          Birmingham, Montgomery, Huntsville, Mobile, Tuscaloosa, and surrounding Alabama communities.
+          Barbour, Coffee, Covington, Dale, Geneva, Henry, and Houston counties in Alabama.
         </p>
       </div>
       <div className="footer-links" aria-label="Footer navigation">
