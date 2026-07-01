@@ -15,12 +15,13 @@ This repository is ready for Vercel deployment as the public Eagle Eye Automatio
 Copy `.env.example` into the Vercel project settings.
 
 ```bash
-NEXT_PUBLIC_SITE_URL=https://eagleeyeautomation.com
+NEXT_PUBLIC_SITE_URL=https://www.eagleeyeautomation.com/
 NEXT_PUBLIC_CONTACT_EMAIL=hello@eagleeyeautomation.com
+NEXT_PUBLIC_CONTACT_PHONE=
 NEXT_PUBLIC_BOOKING_URL=
 ```
 
-Leave `NEXT_PUBLIC_BOOKING_URL` blank to route scheduling requests through email.
+Leave `NEXT_PUBLIC_BOOKING_URL` blank to route scheduling requests through email. Add `NEXT_PUBLIC_CONTACT_PHONE` when the public phone number is ready to display.
 
 ## Vercel Setup
 

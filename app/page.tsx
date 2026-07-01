@@ -1,99 +1,27 @@
 import Image from "next/image";
+import { ArrowRight, Check, PhoneCall, Sparkles } from "lucide-react";
 import {
-  ArrowRight,
-  Check,
-  ClipboardCheck,
-  Clock3,
-  MailCheck,
-  Network,
-  PhoneCall,
-  ShieldCheck,
-  Sparkles,
-  Target,
-  Workflow
-} from "lucide-react";
-
-const services = [
-  {
-    icon: MailCheck,
-    title: "Lead response systems",
-    text: "Route new inquiries, enrich contact details, trigger fast follow-up, and keep every opportunity visible."
-  },
-  {
-    icon: ClipboardCheck,
-    title: "Client onboarding",
-    text: "Turn signed deals into clean intake, task creation, document collection, reminders, and handoff flows."
-  },
-  {
-    icon: Workflow,
-    title: "Operations automation",
-    text: "Connect the tools your team already uses so repeatable work moves without manual copying and chasing."
-  },
-  {
-    icon: Target,
-    title: "Reporting workflows",
-    text: "Pull the numbers that matter into dependable views for pipeline, delivery, follow-up, and team capacity."
-  }
-];
-
-const outcomes = [
-  "Respond to new leads within minutes",
-  "Reduce manual admin across core workflows",
-  "Create cleaner handoffs between sales and delivery",
-  "Spot stalled work before it becomes a client issue"
-];
-
-const steps = [
-  {
-    eyebrow: "01",
-    title: "Map the workflow",
-    text: "We inspect the exact steps your team repeats every week and identify where automation will create the clearest lift."
-  },
-  {
-    eyebrow: "02",
-    title: "Build the system",
-    text: "We connect your forms, CRM, inbox, calendars, spreadsheets, documents, and project tools into one dependable flow."
-  },
-  {
-    eyebrow: "03",
-    title: "Launch and refine",
-    text: "We test edge cases, document the process, watch early usage, and tune the system around real operational behavior."
-  }
-];
-
-const toolGroups = [
-  "CRM",
-  "Forms",
-  "Email",
-  "Calendars",
-  "Sheets",
-  "Documents",
-  "Tasks",
-  "Dashboards"
-];
+  ContactForm,
+  SiteFooter,
+  SiteHeader,
+  contactOptions,
+  founderExperience,
+  getContactDetails,
+  industries,
+  outcomes,
+  portfolioProjects,
+  pricingPackages,
+  serviceGroups,
+  tagline
+} from "./site-content";
 
 export default function Home() {
-  const contactEmail =
-    process.env.NEXT_PUBLIC_CONTACT_EMAIL ?? "hello@eagleeyeautomation.com";
-  const bookingUrl = process.env.NEXT_PUBLIC_BOOKING_URL;
-  const bookingHref =
-    bookingUrl && bookingUrl.length > 0
-      ? bookingUrl
-      : `mailto:${contactEmail}?subject=Workflow%20audit%20request`;
+  const { bookingHref, contactEmail, contactPhone, contactPhoneHref } =
+    getContactDetails();
 
   return (
     <main>
-      <header className="site-header" aria-label="Primary navigation">
-        <a className="brand" href="#top" aria-label="Eagle Eye Automation home">
-          <span className="brand-mark">E</span>
-          <span>Eagle Eye Automation</span>
-        </a>
-        <nav>
-          <a href="#services">Services</a>
-          <a href="#process">Process</a>
-          <a href="#contact">Contact</a>
-        </nav>
-      </header>
+      <SiteHeader />
 
       <section id="top" className="hero">
         <Image
@@ -108,21 +36,21 @@ export default function Home() {
         <div className="hero-content">
           <p className="eyebrow">
             <Sparkles size={16} aria-hidden="true" />
-            Automation for service businesses
+            {tagline}
           </p>
-          <h1>Make every lead, handoff, and follow-up easier to see.</h1>
+          <h1>AI, automation, CRM, and software for sharper operations.</h1>
           <p className="hero-copy">
-            Eagle Eye Automation builds practical systems that remove manual
-            admin, tighten client operations, and help growing teams act faster
-            without adding more software chaos.
+            Eagle Eye Automation helps service businesses streamline operations
+            through AI receptionists, workflow automation, GoHighLevel systems,
+            dashboards, and custom software.
           </p>
           <div className="hero-actions">
-            <a className="button primary" href="#contact">
-              Book a workflow audit
+            <a className="button primary" href="/contact">
+              Book a discovery call
               <ArrowRight size={18} aria-hidden="true" />
             </a>
-            <a className="button secondary" href="#services">
-              See what we automate
+            <a className="button secondary" href="/services">
+              Explore services
             </a>
           </div>
         </div>
@@ -137,112 +65,189 @@ export default function Home() {
         ))}
       </section>
 
-      <section id="services" className="section services-section">
+      <section id="about" className="section about-section">
         <div className="section-heading">
-          <p className="eyebrow">What we build</p>
-          <h2>Automation that matches how your business actually works.</h2>
+          <p className="eyebrow">Who we are</p>
+          <h2>Built from real business operations, not theory.</h2>
           <p>
-            The goal is not more tools. It is fewer missed details, less
-            repetitive work, and a clearer path from inquiry to delivery.
+            Eagle Eye Automation helps businesses streamline operations through
+            AI, automation, CRM integrations, and custom software solutions. The
+            work is practical: answer faster, follow up cleaner, see the numbers,
+            and give teams systems they can actually use.
           </p>
         </div>
-        <div className="service-grid">
-          {services.map(({ icon: Icon, title, text }) => (
+        <div className="about-grid">
+          <article className="story-panel">
+            <p className="eyebrow">Our story</p>
+            <h3>Systems for business owners who need clarity.</h3>
+            <p>
+              Eagle Eye Automation was created to help operators replace
+              scattered tools and manual admin with connected systems. We focus
+              on the places where growth usually gets messy: leads, client
+              intake, handoffs, follow-up, reporting, and custom internal tools.
+            </p>
+          </article>
+          <article className="founder-panel">
+            <div className="founder-avatar" aria-hidden="true">
+              GB
+            </div>
+            <div>
+              <p className="eyebrow">Meet the founder</p>
+              <h3>George &quot;Eagle&quot; Brown</h3>
+              <p>
+                George brings operator experience across home care, real estate,
+                AI automation, and business consulting. That mix shapes Eagle
+                Eye Automation&apos;s approach: understand the business first,
+                then build technology that removes friction.
+              </p>
+            </div>
+            <div className="experience-list">
+              {founderExperience.map((item) => (
+                <span key={item}>{item}</span>
+              ))}
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section id="services" className="section services-section">
+        <div className="section-heading">
+          <p className="eyebrow">Services</p>
+          <h2>Professional systems for the next stage of growth.</h2>
+          <p>
+            From AI front-office coverage to custom reporting, each service is
+            designed to reduce manual work and give your team a cleaner path
+            from lead to delivery.
+          </p>
+        </div>
+        <div className="service-grid service-grid-wide">
+          {serviceGroups.map(({ icon: Icon, title, items }) => (
             <article className="service-card" key={title}>
               <div className="icon-box">
                 <Icon size={24} aria-hidden="true" />
               </div>
               <h3>{title}</h3>
-              <p>{text}</p>
+              <ul className="clean-list">
+                {items.map((item) => (
+                  <li key={item}>
+                    <Check size={16} aria-hidden="true" />
+                    <span>{item}</span>
+                  </li>
+                ))}
+              </ul>
             </article>
           ))}
         </div>
       </section>
 
-      <section className="section split-section">
-        <div>
-          <p className="eyebrow">Built for operators</p>
-          <h2>Connect the work happening between your tools.</h2>
-        </div>
-        <div className="system-panel">
-          <div className="system-panel-header">
-            <Network size={22} aria-hidden="true" />
-            <span>Common workflow stack</span>
-          </div>
-          <div className="tool-grid">
-            {toolGroups.map((tool) => (
-              <span key={tool}>{tool}</span>
-            ))}
-          </div>
-          <div className="metric-row">
-            <div>
-              <strong>24/7</strong>
-              <span>event-driven routing</span>
-            </div>
-            <div>
-              <strong>0</strong>
-              <span>duplicate data entry</span>
-            </div>
-            <div>
-              <strong>1</strong>
-              <span>source of truth</span>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section id="process" className="section process-section">
+      <section id="portfolio" className="section portfolio-section">
         <div className="section-heading">
-          <p className="eyebrow">How it works</p>
-          <h2>Ship useful automation without disrupting the business.</h2>
-        </div>
-        <div className="process-grid">
-          {steps.map((step) => (
-            <article className="process-card" key={step.title}>
-              <span>{step.eyebrow}</span>
-              <h3>{step.title}</h3>
-              <p>{step.text}</p>
-            </article>
-          ))}
-        </div>
-      </section>
-
-      <section id="contact" className="cta-section">
-        <div>
-          <p className="eyebrow">Ready for a clearer workflow?</p>
-          <h2>Start with a workflow audit.</h2>
+          <p className="eyebrow">Portfolio</p>
+          <h2>Projects that show the range of the work.</h2>
           <p>
-            Bring the process that is slowing your team down. We will map it,
-            find the automation opportunities, and recommend the fastest useful
-            build.
+            Examples across operations, AI, CRM, web, and reporting show how the
+            brand moves from strategy to useful business systems.
           </p>
         </div>
-        <div className="cta-actions">
-          <a className="button primary light" href={`mailto:${contactEmail}`}>
-            <MailCheck size={18} aria-hidden="true" />
-            {contactEmail}
-          </a>
-          <a className="button secondary light" href={bookingHref}>
-            <PhoneCall size={18} aria-hidden="true" />
-            Schedule a call
-          </a>
+        <div className="portfolio-grid">
+          {portfolioProjects.map((project) => (
+            <article className="portfolio-card" key={project.title}>
+              <span>{project.type}</span>
+              <h3>{project.title}</h3>
+              <p>{project.text}</p>
+            </article>
+          ))}
         </div>
       </section>
 
-      <footer>
-        <div className="brand footer-brand">
-          <span className="brand-mark">E</span>
-          <span>Eagle Eye Automation</span>
+      <section id="industries" className="section split-section">
+        <div>
+          <p className="eyebrow">Industries</p>
+          <h2>Focused on industries where operations matter every day.</h2>
+          <p>
+            Eagle Eye Automation works especially well for businesses with
+            high-volume communication, follow-up, scheduling, reporting, and
+            repeatable client workflows.
+          </p>
         </div>
-        <div className="footer-note">
-          <Clock3 size={16} aria-hidden="true" />
-          <span>Practical automation for teams that want sharper operations.</span>
+        <div className="industry-grid">
+          {industries.map((industry) => (
+            <article className="industry-card" key={industry.title}>
+              <h3>{industry.title}</h3>
+              <p>{industry.text}</p>
+            </article>
+          ))}
         </div>
-        <div className="footer-note">
-          <ShieldCheck size={16} aria-hidden="true" />
-          <span>Built with privacy-aware, maintainable workflows.</span>
+      </section>
+
+      <section id="pricing" className="section pricing-section">
+        <div className="section-heading">
+          <p className="eyebrow">Pricing</p>
+          <h2>Packages that match your stage of growth.</h2>
+          <p>
+            Start with the foundation, add automation as the business grows, or
+            build a custom operating system around advanced reporting and
+            integrations.
+          </p>
         </div>
-      </footer>
+        <div className="pricing-grid">
+          {pricingPackages.map((tier) => (
+            <article
+              className={`pricing-card${tier.featured ? " featured" : ""}`}
+              key={tier.title}
+            >
+              {tier.featured ? <span className="package-badge">Popular</span> : null}
+              <h3>{tier.title}</h3>
+              <p>{tier.text}</p>
+              <ul className="clean-list">
+                {tier.items.map((item) => (
+                  <li key={item}>
+                    <Check size={16} aria-hidden="true" />
+                    <span>{item}</span>
+                  </li>
+                ))}
+              </ul>
+              <a className="button package-button" href="/contact">
+                Discuss fit
+              </a>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <section id="contact" className="contact-section">
+        <div className="contact-copy">
+          <p className="eyebrow">Contact</p>
+          <h2>Start with a discovery call.</h2>
+          <p>
+            Tell us what is slowing the business down. We will review your
+            current process, identify the fastest automation opportunities, and
+            recommend the right package or custom build path.
+          </p>
+          <div className="contact-options">
+            {contactOptions.map((option) => (
+              <span key={option}>{option}</span>
+            ))}
+          </div>
+          <div className="cta-actions">
+            <a className="button primary light" href={bookingHref}>
+              <PhoneCall size={18} aria-hidden="true" />
+              Book discovery call
+            </a>
+            <a className="button secondary light" href={`mailto:${contactEmail}`}>
+              {contactEmail}
+            </a>
+            {contactPhone && contactPhoneHref ? (
+              <a className="button secondary light" href={contactPhoneHref}>
+                {contactPhone}
+              </a>
+            ) : null}
+          </div>
+        </div>
+        <ContactForm />
+      </section>
+
+      <SiteFooter />
     </main>
   );
 }

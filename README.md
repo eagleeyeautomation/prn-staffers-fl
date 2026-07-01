@@ -31,12 +31,13 @@ This app is ready for Vercel or any Node host that supports Next.js.
 Set these environment variables in the deployment target:
 
 ```bash
-NEXT_PUBLIC_SITE_URL=https://eagleeyeautomation.com
+NEXT_PUBLIC_SITE_URL=https://www.eagleeyeautomation.com/
 NEXT_PUBLIC_CONTACT_EMAIL=hello@eagleeyeautomation.com
+NEXT_PUBLIC_CONTACT_PHONE=
 NEXT_PUBLIC_BOOKING_URL=
 ```
 
-Leave `NEXT_PUBLIC_BOOKING_URL` blank to use an email-based scheduling link.
+Leave `NEXT_PUBLIC_BOOKING_URL` blank to use an email-based scheduling link. Add `NEXT_PUBLIC_CONTACT_PHONE` when you want a phone number shown in the contact and footer areas.
 
 The homepage content lives in `app/page.tsx`, global styling in `app/globals.css`, and project imagery in `public/images`.
 

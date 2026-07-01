@@ -1,36 +1,34 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
 import "./globals.css";
 
 const siteUrl =
-  process.env.NEXT_PUBLIC_SITE_URL ?? "https://eagleeyeautomation.com";
-
-const inter = Inter({
-  subsets: ["latin"],
-  display: "swap",
-  variable: "--font-inter"
-});
+  process.env.NEXT_PUBLIC_SITE_URL ?? "https://www.eagleeyeautomation.com/";
+const canonicalSiteUrl = siteUrl.replace(/\/$/, "");
 
 export const metadata: Metadata = {
-  metadataBase: new URL(siteUrl),
+  metadataBase: new URL(`${canonicalSiteUrl}/`),
   title: {
-    default: "Eagle Eye Automation | Business Automation Agency",
+    default: "Eagle Eye Automation | AI, CRM, Websites, and Dashboards",
     template: "%s | Eagle Eye Automation"
   },
   description:
-    "Eagle Eye Automation designs practical automations for lead follow-up, client onboarding, operations, reporting, and revenue workflows.",
+    "Eagle Eye Automation builds AI receptionists, workflow automations, GoHighLevel CRM systems, business websites, dashboards, and custom software.",
+  icons: {
+    icon: "/images/eagle-eye-automation-icon.png",
+    apple: "/images/eagle-eye-automation-icon.png"
+  },
   openGraph: {
     title: "Eagle Eye Automation",
     description:
-      "Automation systems that help service businesses respond faster, reduce manual work, and operate with more clarity.",
-    url: "https://eagleeyeautomation.com",
+      "AI, automation, CRM, web, dashboard, and custom software systems for businesses that want sharper operations.",
+    url: `${canonicalSiteUrl}/`,
     siteName: "Eagle Eye Automation",
     images: [
       {
-        url: "/images/automation-command-center.png",
-        width: 1536,
-        height: 1024,
-        alt: "A modern automation command center with workflow dashboards"
+        url: "/images/eagle-eye-automation-logo.png",
+        width: 1748,
+        height: 899,
+        alt: "Eagle Eye Automation logo"
       }
     ],
     locale: "en_US",
@@ -40,8 +38,8 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Eagle Eye Automation",
     description:
-      "Production-ready automation systems for service businesses that want fewer manual handoffs and faster follow-up.",
-    images: ["/images/automation-command-center.png"]
+      "AI receptionists, workflow automation, GoHighLevel CRM, websites, dashboards, and custom business software.",
+    images: ["/images/eagle-eye-automation-logo.png"]
   }
 };
 
@@ -52,7 +50,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={inter.variable}>{children}</body>
+      <body>{children}</body>
     </html>
   );
 }
