@@ -29,11 +29,11 @@ export default function HomePage() {
         </div>
         <div className="hero-copy">
           <p className="eyebrow">Care You Can Trust</p>
-          <h1>Compassionate Home Care in Alabama</h1>
+          <h1>Compassionate Home Care in Florida</h1>
           <p>
-            PRN Staffers Alabama provides trusted non-medical home care,
+            PRN Staffers Florida provides trusted non-medical home care,
             personal care, companion care, respite care, and support for
-            families across Alabama.
+            families across Florida.
           </p>
           <p className="location-line">{serviceArea}</p>
           <div className="hero-actions">
@@ -42,7 +42,7 @@ export default function HomePage() {
               <ArrowRight size={18} aria-hidden="true" />
             </a>
             <a className="button secondary" href={contactPhoneHref}>
-              Call PRN Staffers Alabama
+              Call PRN Staffers Florida
             </a>
           </div>
           <a className="phone-link" href={contactPhoneHref}>
@@ -52,7 +52,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="trust-strip" aria-label="Why families trust PRN Staffers Alabama">
+      <section className="trust-strip" aria-label="Why families trust PRN Staffers Florida">
         {trustItems.map(({ icon: Icon, title, text }) => (
           <article key={title}>
             <Icon size={22} aria-hidden="true" />
@@ -65,12 +65,12 @@ export default function HomePage() {
       <section className="section intro-section">
         <div>
           <p className="eyebrow">Local home care</p>
-          <h2>Warm support for seniors, veterans, and families across southeast Alabama.</h2>
+          <h2>Warm support for seniors, veterans, and families across Florida.</h2>
         </div>
         <p>
-          Through our partnership with SARCOA, families often reach out when daily routines become harder, when a
+          Through responsive care planning, families often reach out when daily routines become harder, when a
           loved one needs companionship, or when family caregivers need relief.
-          PRN Staffers Alabama helps create a safer, calmer home environment
+          PRN Staffers Florida helps create a safer, calmer home environment
           through compassionate non-medical support.
         </p>
       </section>
@@ -99,7 +99,7 @@ export default function HomePage() {
         <div className="image-panel">
           <img
             src={brandImages.bridge}
-            alt="Compassionate home care support in Alabama"
+            alt="Compassionate home care support in Florida"
           />
         </div>
         <div>
@@ -137,7 +137,7 @@ export default function HomePage() {
           <p className="eyebrow">Veterans support</p>
           <h2>Helping veterans and families explore care options with confidence.</h2>
           <p>
-            PRN Staffers Alabama can support veterans and families as they
+            PRN Staffers Florida can support veterans and families as they
             explore non-medical home care options, available resources, and the
             practical help needed to remain safe and comfortable at home.
           </p>
@@ -152,9 +152,9 @@ export default function HomePage() {
       <section className="section split-section compassion-section">
         <div>
           <p className="eyebrow">Compassionate mission</p>
-          <h2>Care built around heart, dignity, and Alabama family values.</h2>
+          <h2>Care built around heart, dignity, and Florida family values.</h2>
           <p>
-            From across Alabama, our work begins with listening. We help
+            From across Florida, our work begins with listening. We help
             seniors, veterans, and adults receive the non-medical support they
             need while remaining connected to the homes and communities they
             love.
@@ -163,7 +163,7 @@ export default function HomePage() {
         <div className="image-panel portrait-image">
           <img
             src={brandImages.family}
-            alt="Care team and family representing compassionate Alabama home care"
+            alt="Care team and family representing compassionate Florida home care"
           />
         </div>
       </section>
@@ -174,7 +174,7 @@ export default function HomePage() {
           <h2>Caregivers, homemakers, and CNAs are invited to apply.</h2>
           <p>
             If you believe care should be personal, respectful, and dependable,
-            PRN Staffers Alabama would love to hear from you.
+            PRN Staffers Florida would love to hear from you.
           </p>
         </div>
         <a className="button secondary dark" href={careersHref}>
@@ -186,7 +186,7 @@ export default function HomePage() {
       <section className="section service-area-section">
         <div className="section-heading">
           <p className="eyebrow">Service areas</p>
-          <h2>Partnering with SARCOA to serve seven southeast Alabama counties.</h2>
+          <h2>Serving families across Florida communities.</h2>
         </div>
         <div className="area-grid">
           {serviceAreas.map((area) => (
@@ -234,7 +234,7 @@ export default function HomePage() {
           <h2>Let Our Family Help Care for Yours</h2>
           <p>
             Start with a compassionate conversation about your loved one’s care
-            needs in Barbour, Coffee, Covington, Dale, Geneva, Henry, or Houston County.
+            needs in your Florida community.
           </p>
         </div>
         <a className="button primary" href={consultationHref}>

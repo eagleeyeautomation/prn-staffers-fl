@@ -18,20 +18,20 @@ import {
   Users
 } from "lucide-react";
 
-export const siteName = "PRN Staffers Alabama";
+export const siteName = "PRN Staffers Florida";
 export const tagline = "Care You Can Trust";
 export const serviceArea =
-  "Partnering with SARCOA to serve Barbour, Coffee, Covington, Dale, Geneva, Henry, and Houston counties in Alabama.";
+  "Serving seniors, veterans, and families across Florida with compassionate non-medical home care.";
 
 export const brandImages = {
   logo: "/images/prn/prn-staffers-logo-cropped.png",
-  bridge: "/images/prn/alabama-care-plan.png",
-  heart: "/images/prn/alabama-caregiver-hero.png",
-  team: "/images/prn/alabama-care-team.png",
-  caregiver: "/images/prn/alabama-caregiver-hero.png",
-  companionship: "/images/prn/alabama-care-plan.png",
-  family: "/images/prn/alabama-care-team.png",
-  personalCare: "/images/prn/alabama-meal-prep.png"
+  bridge: "/images/prn/florida-care-plan.png",
+  heart: "/images/prn/florida-caregiver-hero.png",
+  team: "/images/prn/florida-care-team.png",
+  caregiver: "/images/prn/florida-caregiver-hero.png",
+  companionship: "/images/prn/florida-care-plan.png",
+  family: "/images/prn/florida-care-team.png",
+  personalCare: "/images/prn/florida-meal-prep.png"
 };
 
 export const navLinks = [
@@ -60,8 +60,8 @@ export const trustItems = [
     icon: CalendarCheck
   },
   {
-    title: "SARCOA partner",
-    text: "Partnering with SARCOA to support families across southeast Alabama.",
+    title: "Florida care team",
+    text: "Supporting families across Florida with responsive home care guidance.",
     icon: MapPin
   }
 ];
@@ -118,7 +118,7 @@ export const reasons = [
   "Dignity-first care that respects personal routines and preferences.",
   "Dependable caregivers focused on safety, comfort, and communication.",
   "Flexible non-medical support for short visits, ongoing care, or respite needs.",
-  "Local knowledge of Barbour, Coffee, Covington, Dale, Geneva, Henry, and Houston counties.",
+  "Local knowledge of Florida communities, family needs, and care routines.",
   "A family-focused approach for seniors, veterans, and adult children coordinating care.",
   "Clean, professional care planning from first conversation through ongoing support."
 ];
@@ -139,25 +139,24 @@ export const careSteps = [
 ];
 
 export const serviceAreas = [
-  "Barbour County",
-  "Coffee County",
-  "Covington County",
-  "Dale County",
-  "Geneva County",
-  "Henry County",
-  "Houston County"
+  "North Florida",
+  "Central Florida",
+  "South Florida",
+  "Florida Gulf Coast",
+  "Atlantic Coast communities",
+  "Veterans and families statewide"
 ];
 
 export const testimonials = [
   {
     quote:
-      "PRN Staffers Alabama helped our family feel calm during a stressful transition. The care was kind, dependable, and respectful.",
-    name: "Family member in Houston County"
+      "PRN Staffers Florida helped our family feel calm during a stressful transition. The care was kind, dependable, and respectful.",
+    name: "Family member in Florida"
   },
   {
     quote:
       "We needed help for my father at home, and the team made the process feel clear and compassionate from the first call.",
-    name: "Adult child in Coffee County"
+    name: "Adult child in Florida"
   },
   {
     quote:
@@ -168,14 +167,14 @@ export const testimonials = [
 
 export const faqs = [
   {
-    question: "What kind of care does PRN Staffers Alabama provide?",
+    question: "What kind of care does PRN Staffers Florida provide?",
     answer:
-      "PRN Staffers Alabama focuses on non-medical home care, including personal care, companionship, respite care, meal preparation, light housekeeping, transportation, errands, medication reminders, veterans support, and family support."
+      "PRN Staffers Florida focuses on non-medical home care, including personal care, companionship, respite care, meal preparation, light housekeeping, transportation, errands, medication reminders, veterans support, and family support."
   },
   {
-    question: "Do you serve families in Alabama?",
+    question: "Do you serve families in Florida?",
     answer:
-      "Yes. PRN Staffers Alabama partners with SARCOA and serves Barbour, Coffee, Covington, Dale, Geneva, Henry, and Houston counties in Alabama."
+      "Yes. PRN Staffers Florida serves seniors, veterans, adult children, and family caregivers across Florida."
   },
   {
     question: "Is this skilled nursing care?",
@@ -190,12 +189,12 @@ export const faqs = [
   {
     question: "Can veterans and families get help exploring care options?",
     answer:
-      "Yes. PRN Staffers Alabama can support veterans and families as they explore care options, available resources, and non-medical home care support."
+      "Yes. PRN Staffers Florida can support veterans and families as they explore care options, available resources, and non-medical home care support."
   },
   {
     question: "How do caregivers apply?",
     answer:
-      "Caregivers, homemakers, and CNAs can apply through the careers page or contact PRN Staffers Alabama to learn about current opportunities."
+      "Caregivers, homemakers, and CNAs can apply through the careers page or contact PRN Staffers Florida to learn about current opportunities."
   }
 ];
 
@@ -208,10 +207,10 @@ export const careerRoles = [
 ];
 
 export const socialLinks = [
-  { label: "Facebook", href: "https://www.facebook.com/prnstaffersal" },
+  { label: "Facebook", href: "https://www.facebook.com/prnstaffersfl" },
   {
     label: "LinkedIn",
-    href: "https://www.linkedin.com/company/prn-staffers-alabama"
+    href: "https://www.linkedin.com/company/prn-staffers-florida"
   },
   { label: "YouTube", href: "https://www.youtube.com" },
   { label: "TikTok", href: "https://www.tiktok.com" }
@@ -221,7 +220,7 @@ export function getContactDetails() {
   const contactPhone =
     process.env.NEXT_PUBLIC_CONTACT_PHONE ?? "(205) 555-0198";
   const contactEmail =
-    process.env.NEXT_PUBLIC_CONTACT_EMAIL ?? "care@prnstaffersal.com";
+    process.env.NEXT_PUBLIC_CONTACT_EMAIL ?? "care@prnstaffersfl.com";
   const consultationUrl = process.env.NEXT_PUBLIC_CONSULTATION_URL;
   const careersUrl = process.env.NEXT_PUBLIC_CAREERS_URL;
 
@@ -254,7 +253,7 @@ export function SiteHeader() {
 
   return (
     <header className="site-header" aria-label="Primary navigation">
-      <a className="brand" href="/" aria-label="PRN Staffers Alabama home">
+      <a className="brand" href="/" aria-label="PRN Staffers Florida home">
         <LogoMark />
       </a>
       <nav aria-label="Primary">
@@ -289,7 +288,7 @@ export function SiteFooter() {
         </div>
         <p>
           Trusted non-medical home care for seniors, veterans, and families in
-          Barbour, Coffee, Covington, Dale, Geneva, Henry, and Houston counties in Alabama.
+          Florida families, seniors, veterans, and family caregivers.
         </p>
       </div>
       <div className="footer-links" aria-label="Footer navigation">
@@ -321,8 +320,8 @@ export function SiteFooter() {
         </div>
       </div>
       <p className="footer-bottom">
-        © 2026 PRN Staffers Alabama. Non-medical home care information for
-        families in Alabama.
+        © 2026 PRN Staffers Florida. Non-medical home care information for
+        families in Florida.
       </p>
     </footer>
   );

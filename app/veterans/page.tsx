@@ -10,7 +10,7 @@ import {
 export const metadata: Metadata = {
   title: "Veterans Support",
   description:
-    "Veterans support and non-medical home care guidance for families in Barbour, Coffee, Covington, Dale, Geneva, Henry, and Houston counties."
+    "Veterans support and non-medical home care guidance for families in Florida communities."
 };
 
 export default function VeteransPage() {
@@ -23,7 +23,7 @@ export default function VeteransPage() {
         <p className="eyebrow">Veterans support</p>
         <h1>Respectful home care support for veterans and their families.</h1>
         <p>
-          PRN Staffers Alabama can help veterans and families explore
+          PRN Staffers Florida can help veterans and families explore
           non-medical home care options, available resources, and practical
           support at home.
         </p>

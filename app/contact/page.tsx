@@ -11,7 +11,7 @@ import {
 export const metadata: Metadata = {
   title: "Contact",
   description:
-    "Contact PRN Staffers Alabama to request non-medical home care in Barbour, Coffee, Covington, Dale, Geneva, Henry, and Houston counties."
+    "Contact PRN Staffers Florida to request non-medical home care in Florida communities."
 };
 
 export default function ContactPage() {
@@ -25,8 +25,8 @@ export default function ContactPage() {
         <h1>Request home care support for your family.</h1>
         <p>
           Tell us what kind of support is needed and where care is needed. PRN
-          Staffers Alabama partners with SARCOA and serves Barbour, Coffee,
-          Covington, Dale, Geneva, Henry, and Houston counties.
+          Staffers Florida serves seniors, veterans, adult children, and family
+          caregivers across Florida communities.
         </p>
       </section>
 

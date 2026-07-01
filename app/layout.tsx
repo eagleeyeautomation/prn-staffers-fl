@@ -8,34 +8,33 @@ const canonicalSiteUrl = getSiteUrl();
 export const metadata: Metadata = {
   metadataBase: new URL(`${canonicalSiteUrl}/`),
   title: {
-    default: "PRN Staffers Alabama | Home Care Across Alabama",
-    template: "%s | PRN Staffers Alabama"
+    default: "PRN Staffers Florida | Home Care Across Florida",
+    template: "%s | PRN Staffers Florida"
   },
   alternates: {
     canonical: `${canonicalSiteUrl}/`
   },
   description:
-    "PRN Staffers Alabama partners with SARCOA to provide trusted non-medical home care in Barbour, Coffee, Covington, Dale, Geneva, Henry, and Houston counties in Alabama.",
+    "PRN Staffers Florida provides trusted non-medical home care, personal care, companion care, respite care, and family support across Florida.",
   keywords: [
-    "home care Alabama",
-    "home care southeast Alabama",
-    "home care Dothan AL",
-    "SARCOA home care",
-    "Houston County AL home care",
-    "Coffee County AL home care",
-    "senior care Alabama",
-    "non-medical home care Alabama",
-    "respite care Alabama"
+    "home care Florida",
+    "Florida home care",
+    "personal care Florida",
+    "companion care Florida",
+    "respite care Florida",
+    "senior care Florida",
+    "non-medical home care Florida",
+    "veterans home care Florida"
   ],
   openGraph: {
-    title: "PRN Staffers Alabama",
+    title: "PRN Staffers Florida",
     description:
-      "Care You Can Trust. Non-medical home care for seniors, veterans, and families in southeast Alabama through a SARCOA partnership.",
+      "Care You Can Trust. Non-medical home care for seniors, veterans, and families across Florida.",
     url: `${canonicalSiteUrl}/`,
-    siteName: "PRN Staffers Alabama",
+    siteName: "PRN Staffers Florida",
     images: [
       {
-        url: "/images/prn/alabama-caregiver-hero.png",
+        url: "/images/prn/florida-caregiver-hero.png",
         width: 1200,
         height: 800,
         alt: "Compassionate home care support"
@@ -46,11 +45,11 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "PRN Staffers Alabama",
+    title: "PRN Staffers Florida",
     description:
-      "Trusted non-medical home care in Barbour, Coffee, Covington, Dale, Geneva, Henry, and Houston counties.",
+      "Trusted non-medical home care, personal care, companion care, respite care, and family support across Florida.",
     images: [
-      "/images/prn/alabama-caregiver-hero.png"
+      "/images/prn/florida-caregiver-hero.png"
     ]
   }
 };
@@ -58,20 +57,19 @@ export const metadata: Metadata = {
 const localBusinessSchema = {
   "@context": "https://schema.org",
   "@type": "HomeHealthCareService",
-  name: "PRN Staffers Alabama",
+  name: "PRN Staffers Florida",
   url: canonicalSiteUrl,
   slogan: "Care You Can Trust",
   areaServed: [
-    "Barbour County AL",
-    "Coffee County AL",
-    "Covington County AL",
-    "Dale County AL",
-    "Geneva County AL",
-    "Henry County AL",
-    "Houston County AL"
+    "Florida",
+    "North Florida",
+    "Central Florida",
+    "South Florida",
+    "Florida Gulf Coast",
+    "Atlantic Coast communities"
   ],
   description:
-    "Non-medical home care provider partnering with SARCOA to serve seniors, veterans, and families in southeast Alabama.",
+    "Non-medical home care provider serving seniors, veterans, and families across Florida.",
   serviceType: [
     "Personal care",
     "Companionship",
@@ -104,7 +102,7 @@ export default function RootLayout({
         <Script
           src="https://widgets.leadconnectorhq.com/loader.js"
           data-resources-url="https://widgets.leadconnectorhq.com/chat-widget/loader.js"
-          data-widget-id="6a452da652b633f8610a7e14"
+          data-widget-id="6a4542d78acf50dff38c7f13"
           data-source="WEB_USER"
           strategy="afterInteractive"
         />

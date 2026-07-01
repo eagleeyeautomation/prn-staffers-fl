@@ -4,7 +4,7 @@ import { SiteFooter, SiteHeader } from "../site-content";
 export const metadata: Metadata = {
   title: "Privacy",
   description:
-    "Privacy information for PRN Staffers Alabama website visitors, care inquiries, and caregiver applicants."
+    "Privacy information for PRN Staffers Florida website visitors, care inquiries, and caregiver applicants."
 };
 
 export default function PrivacyPage() {
@@ -15,7 +15,7 @@ export default function PrivacyPage() {
         <p className="eyebrow">Privacy</p>
         <h1>Your family’s information should be treated with respect.</h1>
         <p>
-          PRN Staffers Alabama uses submitted information to respond to care
+          PRN Staffers Florida uses submitted information to respond to care
           inquiries, caregiver applications, and service questions.
         </p>
       </section>
