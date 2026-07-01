@@ -1,4 +1,4 @@
-const productionSiteUrl = "https://prnstaffersal.com";
+const productionSiteUrl = "https://prnstaffersfl.com";
 const developmentSiteUrl = "http://localhost:3000";
 
 function normalizeSiteUrl(url: string) {

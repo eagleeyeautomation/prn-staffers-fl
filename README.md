@@ -31,14 +31,14 @@ This app is ready for Vercel or any Node host that supports Next.js.
 Set these environment variables in the deployment target:
 
 ```bash
-NEXT_PUBLIC_SITE_URL=https://prnstaffersal.com
-NEXT_PUBLIC_CONTACT_EMAIL=care@prnstaffersal.com
+NEXT_PUBLIC_SITE_URL=https://prnstaffersfl.com
+NEXT_PUBLIC_CONTACT_EMAIL=care@prnstaffersfl.com
 NEXT_PUBLIC_CONTACT_PHONE=
 NEXT_PUBLIC_CONSULTATION_URL=
 NEXT_PUBLIC_CAREERS_URL=
 ```
 
-Production URL generation always resolves to `https://prnstaffersal.com`.
+Production URL generation always resolves to `https://prnstaffersfl.com`.
 Local development falls back to `http://localhost:3000` only when running the
 development server.
 
@@ -56,10 +56,10 @@ The site is intentionally focused on non-medical home care and does not claim sk
 
 ## Production Domain
 
-Primary domain: `https://prnstaffersal.com`
+Primary domain: `https://prnstaffersfl.com`
 
 The `www` host should redirect permanently to the apex domain:
 
 ```text
-https://www.prnstaffersal.com/* -> https://prnstaffersal.com/*
+https://www.prnstaffersfl.com/* -> https://prnstaffersfl.com/*
 ```
