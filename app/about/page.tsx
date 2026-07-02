@@ -1,10 +1,9 @@
 import type { Metadata } from "next";
-import { ArrowRight, Check } from "lucide-react";
+import { Check } from "lucide-react";
 import {
   SiteFooter,
   SiteHeader,
   brandImages,
-  getInquiryDetails,
   reasons,
   tagline
 } from "../site-content";
@@ -16,8 +15,6 @@ export const metadata: Metadata = {
 };
 
 export default function AboutPage() {
-  const { consultationHref } = getInquiryDetails();
-
   return (
     <main>
       <SiteHeader />
@@ -54,10 +51,6 @@ export default function AboutPage() {
               </li>
             ))}
           </ul>
-          <a className="button primary" href={consultationHref}>
-            Request a Free Consultation
-            <ArrowRight size={18} aria-hidden="true" />
-          </a>
         </div>
       </section>
 

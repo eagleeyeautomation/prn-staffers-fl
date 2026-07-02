@@ -16,16 +16,15 @@ export default function TermsPage() {
         <h1>Website information for families and caregivers.</h1>
         <p>
           This website provides general information about non-medical home care
-          services and caregiver opportunities with PRN Staffers Alabama.
+          services and company information for PRN Staffers Alabama.
         </p>
       </section>
       <section className="section">
         <div className="section-heading">
-          <h2>Care and employment details</h2>
+          <h2>Care and company details</h2>
           <p>
             Specific care services, schedules, caregiver roles, and terms are
-            confirmed through direct communication and written agreements where
-            applicable.
+            confirmed through written agreements where applicable.
           </p>
         </div>
       </section>

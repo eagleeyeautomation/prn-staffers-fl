@@ -1,9 +1,8 @@
 import type { Metadata } from "next";
-import { ArrowRight, Check, ShieldCheck } from "lucide-react";
+import { Check, ShieldCheck } from "lucide-react";
 import {
   SiteFooter,
   SiteHeader,
-  getInquiryDetails,
   services
 } from "../site-content";
 
@@ -14,8 +13,6 @@ export const metadata: Metadata = {
 };
 
 export default function VeteransPage() {
-  const { consultationHref } = getInquiryDetails();
-
   return (
     <main>
       <SiteHeader />
@@ -38,10 +35,6 @@ export default function VeteransPage() {
             coordinating non-medical support, or creating a plan that helps a
             loved one remain comfortable at home.
           </p>
-          <a className="button primary" href={consultationHref}>
-            Request Veterans Support
-            <ArrowRight size={18} aria-hidden="true" />
-          </a>
         </div>
         <ShieldCheck size={96} aria-hidden="true" />
       </section>
@@ -79,9 +72,6 @@ export default function VeteransPage() {
             ))}
           </ul>
         </div>
-        <a className="button primary" href={consultationHref}>
-          Request a Free Consultation
-        </a>
       </section>
       <SiteFooter />
     </main>

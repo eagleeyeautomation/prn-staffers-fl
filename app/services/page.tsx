@@ -1,10 +1,9 @@
 import type { Metadata } from "next";
-import { ArrowRight, Check } from "lucide-react";
+import { Check } from "lucide-react";
 import {
   SiteFooter,
   SiteHeader,
   brandImages,
-  getInquiryDetails,
   services
 } from "../site-content";
 
@@ -15,8 +14,6 @@ export const metadata: Metadata = {
 };
 
 export default function ServicesPage() {
-  const { consultationHref } = getInquiryDetails();
-
   return (
     <main>
       <SiteHeader />
@@ -63,10 +60,6 @@ export default function ServicesPage() {
               </li>
             ))}
           </ul>
-          <a className="button primary" href={consultationHref}>
-            Request Care
-            <ArrowRight size={18} aria-hidden="true" />
-          </a>
         </div>
         <div className="image-panel">
           <img src={brandImages.personalCare} alt="Caregiver helping with meal preparation at home" />

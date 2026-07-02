@@ -6,7 +6,6 @@ import {
   Clock3,
   HeartHandshake,
   MapPin,
-  Phone,
   Pill,
   ShieldCheck,
   Sparkles,
@@ -152,7 +151,7 @@ export const testimonials = [
   },
   {
     quote:
-      "We needed help for my father at home, and the team made the process feel clear and compassionate from the first call.",
+      "We needed help for my father at home, and the team made the process feel clear and compassionate from the beginning.",
     name: "Adult child in Coffee County"
   },
   {
@@ -213,27 +212,6 @@ export const socialLinks = [
   { label: "TikTok", href: "https://www.tiktok.com" }
 ];
 
-export function getInquiryDetails() {
-  const phone = process.env.NEXT_PUBLIC_PHONE ?? "(205) 555-0198";
-  const email = process.env.NEXT_PUBLIC_EMAIL ?? "care@prnstaffersal.com";
-  const consultationUrl = process.env.NEXT_PUBLIC_CONSULTATION_URL;
-  const careersUrl = process.env.NEXT_PUBLIC_CAREERS_URL;
-
-  return {
-    careersHref:
-      careersUrl && careersUrl.length > 0
-        ? careersUrl
-        : `mailto:${email}?subject=Caregiver%20Application`,
-    consultationHref:
-      consultationUrl && consultationUrl.length > 0
-        ? consultationUrl
-        : `mailto:${email}?subject=Free%20Home%20Care%20Consultation`,
-    email,
-    phone,
-    phoneHref: `tel:${phone.replace(/\D/g, "")}`
-  };
-}
-
 export function LogoMark() {
   return (
     <span className="brand-logo" aria-hidden="true">
@@ -243,8 +221,6 @@ export function LogoMark() {
 }
 
 export function SiteHeader() {
-  const { consultationHref, phoneHref } = getInquiryDetails();
-
   return (
     <header className="site-header" aria-label="Primary navigation">
       <a className="brand" href="/" aria-label="PRN Staffers Alabama home">
@@ -258,14 +234,7 @@ export function SiteHeader() {
             </a>
           ))}
         </div>
-        <a className="nav-cta" href={consultationHref}>
-          Request Care Today
-        </a>
       </nav>
-      <a className="mobile-call" href={phoneHref}>
-        <Phone size={18} aria-hidden="true" />
-        Call Now
-      </a>
     </header>
   );
 }

@@ -1,10 +1,8 @@
 import type { Metadata } from "next";
-import { ArrowRight } from "lucide-react";
 import {
   SiteFooter,
   SiteHeader,
-  faqs,
-  getInquiryDetails
+  faqs
 } from "../site-content";
 
 export const metadata: Metadata = {
@@ -14,8 +12,6 @@ export const metadata: Metadata = {
 };
 
 export default function FAQPage() {
-  const { consultationHref } = getInquiryDetails();
-
   return (
     <main>
       <SiteHeader />
@@ -39,16 +35,6 @@ export default function FAQPage() {
         </div>
       </section>
 
-      <section className="final-cta">
-        <div>
-          <p className="eyebrow">Still have questions?</p>
-          <h2>We can help you think through the next step.</h2>
-        </div>
-        <a className="button primary" href={consultationHref}>
-          Request a Free Consultation
-          <ArrowRight size={18} aria-hidden="true" />
-        </a>
-      </section>
       <SiteFooter />
     </main>
   );

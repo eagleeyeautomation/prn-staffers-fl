@@ -1,11 +1,10 @@
 import type { Metadata } from "next";
-import { ArrowRight, Check } from "lucide-react";
+import { Check } from "lucide-react";
 import {
   SiteFooter,
   SiteHeader,
   brandImages,
-  careerRoles,
-  getInquiryDetails
+  careerRoles
 } from "../site-content";
 
 export const metadata: Metadata = {
@@ -15,8 +14,6 @@ export const metadata: Metadata = {
 };
 
 export default function CareersPage() {
-  const { careersHref } = getInquiryDetails();
-
   return (
     <main>
       <SiteHeader />
@@ -45,10 +42,6 @@ export default function CareersPage() {
               </li>
             ))}
           </ul>
-          <a className="button primary" href={careersHref}>
-            Apply as a Caregiver
-            <ArrowRight size={18} aria-hidden="true" />
-          </a>
         </div>
         <div className="image-panel">
           <img

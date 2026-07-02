@@ -1,11 +1,10 @@
-import { ArrowRight, Check, HeartHandshake, MapPin, Phone } from "lucide-react";
+import { Check, HeartHandshake, MapPin } from "lucide-react";
 import {
   SiteFooter,
   SiteHeader,
   brandImages,
   careSteps,
   faqs,
-  getInquiryDetails,
   reasons,
   serviceAreas,
   services,
@@ -15,9 +14,6 @@ import {
 } from "./site-content";
 
 export default function HomePage() {
-  const { careersHref, consultationHref, phone, phoneHref } =
-    getInquiryDetails();
-
   return (
     <main>
       <SiteHeader />
@@ -35,19 +31,6 @@ export default function HomePage() {
             families across Alabama.
           </p>
           <p className="location-line">{serviceArea}</p>
-          <div className="hero-actions">
-            <a className="button primary" href={consultationHref}>
-              Request Care Today
-              <ArrowRight size={18} aria-hidden="true" />
-            </a>
-            <a className="button secondary" href={phoneHref}>
-              Call PRN Staffers Alabama
-            </a>
-          </div>
-          <a className="phone-link" href={phoneHref}>
-            <Phone size={18} aria-hidden="true" />
-            {phone}
-          </a>
         </div>
       </section>
 
@@ -118,7 +101,7 @@ export default function HomePage() {
       <section className="section process-section">
         <div className="section-heading">
           <p className="eyebrow">How care begins</p>
-          <h2>A simple, respectful path from first call to care at home.</h2>
+          <h2>A simple, respectful path from planning to care at home.</h2>
         </div>
         <div className="card-grid three-grid">
           {careSteps.map((step, index) => (
@@ -140,10 +123,6 @@ export default function HomePage() {
             explore non-medical home care options, available resources, and the
             practical help needed to remain safe and comfortable at home.
           </p>
-          <a className="button primary" href="/veterans">
-            Veterans Support
-            <ArrowRight size={18} aria-hidden="true" />
-          </a>
         </div>
         <HeartHandshake size={92} aria-hidden="true" />
       </section>
@@ -176,10 +155,6 @@ export default function HomePage() {
             PRN Staffers Alabama would love to hear from you.
           </p>
         </div>
-        <a className="button secondary dark" href={careersHref}>
-          Apply as a Caregiver
-          <ArrowRight size={18} aria-hidden="true" />
-        </a>
       </section>
 
       <section className="section service-area-section">
@@ -225,21 +200,6 @@ export default function HomePage() {
             </details>
           ))}
         </div>
-      </section>
-
-      <section className="final-cta">
-        <div>
-          <p className="eyebrow">Free consultation</p>
-          <h2>Let Our Family Help Care for Yours</h2>
-          <p>
-            Start with a compassionate conversation about your loved one’s care
-            needs in Barbour, Coffee, Covington, Dale, Geneva, Henry, or Houston County.
-          </p>
-        </div>
-        <a className="button primary" href={consultationHref}>
-          Request a Free Consultation
-          <ArrowRight size={18} aria-hidden="true" />
-        </a>
       </section>
 
       <SiteFooter />

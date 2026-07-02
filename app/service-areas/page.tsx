@@ -1,10 +1,9 @@
 import type { Metadata } from "next";
-import { ArrowRight, MapPin } from "lucide-react";
+import { MapPin } from "lucide-react";
 import {
   SiteFooter,
   SiteHeader,
   brandImages,
-  getInquiryDetails,
   serviceAreas
 } from "../site-content";
 
@@ -15,8 +14,6 @@ export const metadata: Metadata = {
 };
 
 export default function ServiceAreasPage() {
-  const { consultationHref } = getInquiryDetails();
-
   return (
     <main>
       <SiteHeader />
@@ -51,20 +48,6 @@ export default function ServiceAreasPage() {
         </div>
       </section>
 
-      <section className="final-cta">
-        <div>
-          <p className="eyebrow">Need care nearby?</p>
-          <h2>Ask us about support in your community.</h2>
-          <p>
-            If you do not see your exact city listed, reach out. The care team
-            can help confirm availability and next steps.
-          </p>
-        </div>
-        <a className="button primary" href={consultationHref}>
-          Request Care
-          <ArrowRight size={18} aria-hidden="true" />
-        </a>
-      </section>
       <SiteFooter />
     </main>
   );
