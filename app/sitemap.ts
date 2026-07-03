@@ -11,6 +11,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { path: "/careers", priority: 0.85 },
     { path: "/veterans", priority: 0.85 },
     { path: "/service-areas", priority: 0.85 },
+    { path: "/contact", priority: 0.85 },
     { path: "/faq", priority: 0.7 },
     { path: "/privacy", priority: 0.3 },
     { path: "/terms", priority: 0.3 }

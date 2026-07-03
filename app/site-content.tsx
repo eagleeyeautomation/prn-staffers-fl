@@ -16,6 +16,7 @@ import {
 
 export const siteName = "PRN Staffers Alabama";
 export const tagline = "Care You Can Trust";
+export const contactEmail = "care@prnstaffersal.com";
 export const serviceArea =
   "Partnering with SARCOA to serve Barbour, Coffee, Covington, Dale, Geneva, Henry, and Houston counties in Alabama.";
 
@@ -35,7 +36,8 @@ export const navLinks = [
   { label: "Services", href: "/services" },
   { label: "Veterans", href: "/veterans" },
   { label: "Careers", href: "/careers" },
-  { label: "FAQ", href: "/faq" }
+  { label: "FAQ", href: "/faq" },
+  { label: "Contact", href: "/contact" }
 ];
 
 export const trustItems = [
@@ -263,6 +265,7 @@ export function SiteFooter() {
           <a href="/about">About</a>
           <a href="/careers">Careers</a>
           <a href="/faq">FAQ</a>
+          <a href="/contact">Contact</a>
         </div>
         <div>
           <h3>Follow</h3>

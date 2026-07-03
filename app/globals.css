@@ -1,3 +1,5 @@
+@import "tailwindcss";
+
 :root {
   --navy: #003b73;
   --sky: #5bc0eb;
