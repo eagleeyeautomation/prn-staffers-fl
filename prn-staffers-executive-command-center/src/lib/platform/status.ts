@@ -18,7 +18,7 @@ export async function getPlatformStatus() {
 
   return {
     platformHealth: "Healthy",
-    version: "Sprint 4",
+    version: "Sprint 8",
     buildStatus: "Passing",
     mockDataStatus: "Active",
     goHighLevel,

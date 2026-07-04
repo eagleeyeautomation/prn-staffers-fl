@@ -141,11 +141,12 @@ function GoHighLevelConnectionCard({ status }: { status: GoHighLevelStatus }) {
       <div className="mt-5 grid gap-3 md:grid-cols-2 xl:grid-cols-5">
         <ConnectionMetric label="Contacts / Leads" value={String(status.newLeads)} />
         <ConnectionMetric label="Opportunities" value={String(status.opportunities)} />
+        <ConnectionMetric label="Pipelines" value={String(status.pipelines)} />
         <ConnectionMetric label="Pipeline Value" value={`$${status.pipelineValue.toLocaleString()}`} />
         <ConnectionMetric label="Appointments" value={String(status.appointments)} />
-        <ConnectionMetric label="Open Tasks" value={String(status.openTasks)} />
       </div>
       <div className="mt-5 grid gap-3 md:grid-cols-2 xl:grid-cols-5">
+        <ConnectionMetric label="Open Tasks" value={String(status.openTasks)} />
         <ConnectionMetric label="AI Calls" value={String(status.aiCalls)} />
         <ConnectionMetric label="Missed Calls" value={String(status.missedCalls)} />
         <ConnectionMetric label="Assessments" value={String(status.assessments)} />

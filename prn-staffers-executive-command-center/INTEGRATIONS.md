@@ -66,6 +66,13 @@ Sprint 4 live-capable scope:
 - Dashboard and Platform Status data refresh every 5 minutes.
 - The Platform Status page shows the current GoHighLevel connection status and the live/fallback metrics available to the dashboard.
 
+Sprint 8 live connection scope:
+
+- GoHighLevel remains the only live-connected provider.
+- Live reads cover contacts/leads, opportunities, pipelines, calendars/appointments, conversations, and tasks.
+- Platform Status shows GoHighLevel pipeline count alongside contacts, opportunities, appointments, conversations, tasks, and fallback status.
+- Missing credentials or API failures keep the dashboard in mock fallback mode with safe error logging.
+
 ## WellSky
 
 Priority: High

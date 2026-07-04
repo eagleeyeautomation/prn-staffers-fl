@@ -113,6 +113,7 @@ export type GoHighLevelDashboardMetrics = {
   activeConversations: number;
   openTasks: number;
   calendars: number;
+  pipelines: number;
 };
 
 export type GoHighLevelAdapter = {

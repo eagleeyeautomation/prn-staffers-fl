@@ -87,12 +87,14 @@ export class GoHighLevelIntegration {
         activeConversations: 0,
         openTasks: 0,
         calendars: 0,
+        pipelines: 0,
       };
     }
 
-    const [contacts, opportunities, appointments, conversations, tasks, aiCalls] = await Promise.all([
+    const [contacts, opportunities, pipelines, appointments, conversations, tasks, aiCalls] = await Promise.all([
       this.contacts.listContacts(),
       this.opportunities.listOpportunities(),
+      this.pipelines.listPipelines(),
       this.calendars.listCalendarEvents(),
       this.conversations.listConversations(),
       this.tasks.listTasks(),
@@ -118,6 +120,7 @@ export class GoHighLevelIntegration {
       activeConversations,
       openTasks,
       calendars: new Set(appointments.map((appointment) => appointment.calendarId).filter(Boolean)).size,
+      pipelines: pipelines.length,
     };
   }
 }
