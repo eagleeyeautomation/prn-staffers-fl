@@ -63,15 +63,15 @@ export const mockKpis: Kpi[] = [
   },
   {
     label: "AI Calls Today",
-    value: "612",
-    change: "+24%",
-    comparison: "119 more than yesterday",
-    weeklyTrend: "+18% weekly",
+    value: "184",
+    change: "+16%",
+    comparison: "25 more than yesterday",
+    weeklyTrend: "+14% weekly",
     detail: "Voice AI handled",
     icon: Phone,
     status: "strong",
     direction: "up",
-    sparkline: [412, 436, 489, 501, 557, 593, 612],
+    sparkline: [126, 139, 144, 151, 168, 176, 184],
   },
   {
     label: "AI Chats Today",
@@ -138,22 +138,22 @@ export const mockKpis: Kpi[] = [
 export const mockStateSummaries: StateSummary[] = [
   {
     state: "Delaware",
-    health: "Healthy",
+    health: "Needs Attention",
     metrics: [
       { label: "Active Clients", value: "174" },
       { label: "Leads", value: "9" },
       { label: "AI Calls", value: "113" },
-      { label: "Assessments", value: "6" },
+      { label: "Assessments Waiting", value: "2" },
     ],
   },
   {
     state: "South Carolina",
-    health: "Critical",
+    health: "Healthy",
     metrics: [
       { label: "Active Clients", value: "329" },
       { label: "Leads", value: "13" },
       { label: "AI Calls", value: "181" },
-      { label: "Caregivers", value: "241" },
+      { label: "Fastest Response", value: "2m 11s" },
     ],
   },
   {
@@ -161,7 +161,7 @@ export const mockStateSummaries: StateSummary[] = [
     health: "Needs Attention",
     metrics: [
       { label: "Active Clients", value: "203" },
-      { label: "SARCOA Referrals", value: "4" },
+      { label: "SARCOA Referrals", value: "6" },
       { label: "Veterans", value: "38" },
       { label: "Assessments", value: "8" },
       { label: "Caregiver Availability", value: "78%" },
@@ -181,6 +181,7 @@ export const mockStateSummaries: StateSummary[] = [
 ];
 
 export const mockActivities: ActivityItem[] = [
+  { time: "10:18 AM", title: "Caregiver call-out logged", location: "South Carolina", tone: "Caregivers" },
   { time: "10:02 AM", title: "SARCOA Referral", location: "Alabama", tone: "Referral" },
   { time: "9:41 AM", title: "Google Review received", location: "Florida", tone: "Marketing" },
   { time: "9:22 AM", title: "AI transferred caller", location: "South Carolina", tone: "AI Center" },
@@ -191,32 +192,32 @@ export const mockActivities: ActivityItem[] = [
 ];
 
 export const mockAlerts: ExecutiveAlert[] = [
-  { title: "Missed Call", body: "7 missed calls need same-day follow-up.", priority: "Critical", color: "red" },
-  { title: "Caregiver No Show", body: "South Carolina has one uncovered afternoon shift.", priority: "Critical", color: "orange" },
-  { title: "Assessment Waiting", body: "4 assessment-ready leads are waiting on scheduler confirmation.", priority: "Warning", color: "yellow" },
+  { title: "Caregiver Call-Out", body: "One caregiver called out this morning. Coverage is being monitored.", priority: "Warning", color: "orange" },
+  { title: "Assessment Waiting", body: "Delaware has two assessments waiting to be scheduled.", priority: "Warning", color: "yellow" },
+  { title: "No Critical Alerts", body: "No critical operational alerts are active right now.", priority: "Informational", color: "green" },
   { title: "15 Google Reviews this week", body: "Reputation velocity is ahead of weekly target.", priority: "Informational", color: "green" },
 ];
 
 export const mockBusinessHealth: BusinessHealthScore = {
-  score: 94,
+  score: 96,
   status: "Healthy",
   explanation:
-    "Weighted from Operations, AI, Staffing, Marketing, and Customer Care. Critical alerts subtract from the final score.",
+    "Weighted from AI Performance, Client Satisfaction, Staffing Coverage, Lead Flow, Response Time, and Open Critical Alerts.",
   factors: [
-    { label: "Operations", value: "92%", detail: "Tasks, intake flow, and assessment pace", status: "strong" },
-    { label: "AI", value: "96%", detail: "Containment, transfers, and booked appointments", status: "strong" },
-    { label: "Staffing", value: "88%", detail: "Coverage is strong with one market to watch", status: "watch" },
-    { label: "Marketing", value: "95%", detail: "Lead flow and reputation are ahead of target", status: "strong" },
-    { label: "Customer Care", value: "97%", detail: "Response time and reviews remain healthy", status: "strong" },
+    { label: "Operations", value: "96%", detail: "No critical alerts and steady assessment pace", status: "strong" },
+    { label: "AI", value: "96%", detail: "184 calls answered with strong transfer success", status: "strong" },
+    { label: "Staffing", value: "91%", detail: "One caregiver call-out is being monitored", status: "watch" },
+    { label: "Marketing", value: "97%", detail: "Florida leads and review velocity are ahead of plan", status: "strong" },
+    { label: "Customer Care", value: "98%", detail: "South Carolina had the fastest response time", status: "strong" },
   ],
 };
 
 export const mockExecutiveSnapshot: ExecutiveSnapshotMetric[] = [
-  { label: "New Leads Today", value: "47", detail: "21 from Florida, 12 from Alabama", status: "strong" },
+  { label: "New Leads Today", value: "47", detail: "Florida generated the most new leads", status: "strong" },
   { label: "Assessments Today", value: "36", detail: "14 scheduled in Florida", status: "strong" },
-  { label: "Missed Calls", value: "7", detail: "Same-day recovery queue", status: "watch" },
-  { label: "Caregiver Coverage", value: "89%", detail: "South Carolina needs attention", status: "watch" },
-  { label: "AI Containment", value: "92%", detail: "Incoming conversations handled by AI", status: "strong" },
+  { label: "Delaware Queue", value: "2", detail: "Assessments waiting to be scheduled", status: "watch" },
+  { label: "Caregiver Coverage", value: "91%", detail: "One call-out logged this morning", status: "watch" },
+  { label: "AI Success Rate", value: "96%", detail: "184 calls answered by AI", status: "strong" },
   { label: "Reviews This Week", value: "15", detail: "4.8 average Google rating", status: "strong" },
 ];
 
@@ -268,14 +269,14 @@ export const mockCharts: DashboardChart[] = [
 ];
 
 export const mockStatePerformance: StatePerformance[] = [
-  { state: "Delaware", leads: 9, clients: 174, aiCalls: 113, assessments: 6, health: "Healthy", rank: "standard" },
-  { state: "South Carolina", leads: 13, clients: 329, aiCalls: 181, assessments: 9, health: "Critical", rank: "weakest" },
+  { state: "Delaware", leads: 9, clients: 174, aiCalls: 113, assessments: 2, health: "Needs Attention", rank: "weakest" },
+  { state: "South Carolina", leads: 13, clients: 329, aiCalls: 181, assessments: 9, health: "Healthy", rank: "standard" },
   { state: "Alabama", leads: 12, clients: 203, aiCalls: 74, assessments: 8, health: "Needs Attention", rank: "standard" },
   { state: "Florida", leads: 21, clients: 342, aiCalls: 244, assessments: 14, health: "Healthy", rank: "strongest" },
 ];
 
 export const mockAiPerformance: PerformanceMetric[] = [
-  { label: "Voice AI Calls", value: "612", detail: "92% contained" },
+  { label: "Voice AI Calls", value: "184", detail: "96% success rate" },
   { label: "Website Chats", value: "284", detail: "31 booked consults" },
   { label: "Transfer Success %", value: "96%", detail: "Warm handoff rate" },
   { label: "Appointments Booked", value: "39", detail: "AI assisted" },
@@ -301,17 +302,23 @@ export const mockUpcomingCalendar: CalendarItem[] = [
 ];
 
 export const mockExecutiveSummary = [
-  "Florida generated the highest number of leads yesterday.",
-  "Alabama received 4 SARCOA referrals.",
-  "Overall AI handled 92% of incoming conversations without human intervention.",
-  "No critical operational issues detected.",
+  "Business Health is 96%.",
+  "Florida generated the most new leads yesterday.",
+  "Alabama received 6 SARCOA referrals.",
+  "South Carolina had the fastest response time.",
+  "Delaware has two assessments waiting to be scheduled.",
+  "AI answered 184 calls with a 96% success rate.",
+  "One caregiver called out this morning.",
+  "No critical alerts detected.",
 ];
 
 export const mockAiInsights = [
-  "Florida generated 14 new leads yesterday, 32% more than its weekly average.",
-  "Alabama received 5 SARCOA referrals this week.",
-  "Delaware had no missed calls in the last 24 hours.",
-  "South Carolina has 3 assessments awaiting scheduling.",
+  "Florida generated the strongest lead volume yesterday and remains the top-performing market.",
+  "Alabama received 6 SARCOA referrals, keeping the referral pipeline ahead of pace.",
+  "South Carolina had the fastest response time across all four states.",
+  "Delaware has two assessments waiting to be scheduled and should be watched today.",
+  "AI answered 184 calls with a 96% success rate, reducing manual intake pressure.",
+  "One caregiver call-out is active, but no critical alerts are currently open.",
 ];
 
 export const pageSummaries: Record<string, PageSummary> = {

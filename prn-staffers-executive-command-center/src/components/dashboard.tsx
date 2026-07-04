@@ -525,7 +525,7 @@ export function ExecutiveSummary({ summary }: { summary: string[] }) {
       <div className="flex flex-col gap-4 lg:flex-row lg:items-start lg:justify-between">
         <div>
           <p className="text-xs font-semibold uppercase tracking-[0.18em] text-sky-700">AI Executive Summary</p>
-          <h2 className="mt-2 text-2xl font-semibold text-slate-950 dark:text-white">Today&apos;s CEO Brief</h2>
+          <h2 className="mt-2 text-2xl font-semibold text-slate-950 dark:text-white">Executive Brief - Saturday, July 4</h2>
         </div>
         <div className="grid h-11 w-11 place-items-center rounded-lg bg-[#071a33] text-[#f6c85f]">
           <Zap className="h-5 w-5" aria-hidden="true" />
