@@ -3,16 +3,22 @@ import { integrationDefinitions } from "@/lib/integrations/integration-definitio
 import type { IntegrationDefinition, IntegrationId } from "@/lib/types";
 
 class GoHighLevelConnector extends IntegrationConnector {}
-class GoogleBusinessProfileConnector extends IntegrationConnector {}
+class GoogleConnector extends IntegrationConnector {}
 class FacebookConnector extends IntegrationConnector {}
+class InstagramConnector extends IntegrationConnector {}
+class QuickBooksConnector extends IntegrationConnector {}
+class TwilioConnector extends IntegrationConnector {}
 class Microsoft365Connector extends IntegrationConnector {}
 class WellSkyConnector extends IntegrationConnector {}
 class HhaExchangeConnector extends IntegrationConnector {}
 
 const connectorClasses = {
   gohighlevel: GoHighLevelConnector,
-  google_business_profile: GoogleBusinessProfileConnector,
+  google: GoogleConnector,
   facebook: FacebookConnector,
+  instagram: InstagramConnector,
+  quickbooks: QuickBooksConnector,
+  twilio: TwilioConnector,
   microsoft_365: Microsoft365Connector,
   wellsky: WellSkyConnector,
   hhaexchange: HhaExchangeConnector,
@@ -27,4 +33,3 @@ export function createConnector(definition: IntegrationDefinition) {
 export function createAllConnectors() {
   return integrationDefinitions.map(createConnector);
 }
-

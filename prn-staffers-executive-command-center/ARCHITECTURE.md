@@ -140,6 +140,42 @@ Rules:
 - Keep mock fallback behavior available.
 - Add loading, error, and connection status states before enabling live data.
 
+## Core Platform Architecture
+
+Sprint 3 introduces the internal platform layer that future integrations will use.
+
+Core files:
+
+- `src/lib/platform/integration-manager.ts`
+- `src/lib/platform/service-registry.ts`
+- `src/lib/platform/models.ts`
+- `src/lib/platform/events.ts`
+- `src/lib/platform/feature-flags.ts`
+- `src/lib/platform/environment.ts`
+- `src/lib/platform/status.ts`
+
+The intended data flow is:
+
+```text
+Dashboard module -> Service Registry -> Provider Adapter -> Normalized Model
+```
+
+Dashboard modules should not call vendor connectors directly. They should request data from the Service Registry so providers can be swapped from mock to live without changing UI components.
+
+Supported provider foundations:
+
+- GoHighLevel
+- WellSky
+- HHAeXchange
+- Microsoft 365
+- Google
+- Facebook
+- Instagram
+- QuickBooks
+- Twilio
+
+The platform also includes an internal event bus for future notifications such as client creation, assessment scheduling, caregiver assignment, AI call completion, lead conversion, and marketing campaign starts.
+
 ## Environment Variables
 
 Integration credentials should be stored in environment variables only.

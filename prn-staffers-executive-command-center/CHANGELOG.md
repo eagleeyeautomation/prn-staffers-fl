@@ -8,6 +8,13 @@ This project follows a practical product changelog format. Each entry should des
 
 ### Added
 
+- Core Platform Architecture for future integrations.
+- Central Integration Manager with provider connection, authentication, health check, last sync, data provider, and service registry metadata.
+- Service Registry for dashboard-to-provider routing.
+- Reusable platform models for clients, caregivers, leads, assessments, opportunities, AI calls, appointments, revenue, marketing, referrals, and notifications.
+- Internal event bus foundation for future notifications.
+- Feature flags and secure environment configuration mapping.
+- Platform status page at `/platform-status`.
 - GoHighLevel integration foundation.
 - TypeScript models for contacts, opportunities, calendars, conversations, tasks, AI calls, and pipelines.
 - Mock GoHighLevel adapters and service classes for each planned service area.

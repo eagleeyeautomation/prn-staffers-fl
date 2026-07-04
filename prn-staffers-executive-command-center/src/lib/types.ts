@@ -6,8 +6,11 @@ export type IntegrationStatus = "disabled" | "missing_credentials" | "ready" | "
 
 export type IntegrationId =
   | "gohighlevel"
-  | "google_business_profile"
+  | "google"
   | "facebook"
+  | "instagram"
+  | "quickbooks"
+  | "twilio"
   | "microsoft_365"
   | "wellsky"
   | "hhaexchange";

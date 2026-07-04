@@ -10,12 +10,12 @@ export const integrationDefinitions: IntegrationDefinition[] = [
     optionalEnvVars: ["GHL_BASE_URL"],
   },
   {
-    id: "google_business_profile",
-    name: "Google Business Profile",
-    description: "Local profile visibility, reviews, calls, website actions, and market search signals.",
-    enabledEnvVar: "GBP_ENABLED",
-    requiredEnvVars: ["GBP_CLIENT_ID", "GBP_CLIENT_SECRET", "GBP_REFRESH_TOKEN", "GBP_ACCOUNT_ID"],
-    optionalEnvVars: ["GBP_LOCATION_GROUP_ID"],
+    id: "google",
+    name: "Google",
+    description: "Google Calendar, Business Profile, reviews, local visibility, and search signals.",
+    enabledEnvVar: "GOOGLE_ENABLED",
+    requiredEnvVars: ["GOOGLE_CLIENT_ID", "GOOGLE_CLIENT_SECRET", "GOOGLE_REFRESH_TOKEN"],
+    optionalEnvVars: ["GOOGLE_ACCOUNT_ID", "GOOGLE_LOCATION_GROUP_ID"],
   },
   {
     id: "facebook",
@@ -24,6 +24,30 @@ export const integrationDefinitions: IntegrationDefinition[] = [
     enabledEnvVar: "FACEBOOK_ENABLED",
     requiredEnvVars: ["FACEBOOK_APP_ID", "FACEBOOK_APP_SECRET", "FACEBOOK_ACCESS_TOKEN", "FACEBOOK_AD_ACCOUNT_ID"],
     optionalEnvVars: ["FACEBOOK_PAGE_ID"],
+  },
+  {
+    id: "instagram",
+    name: "Instagram",
+    description: "Social engagement, campaign attribution, content activity, and future lead influence signals.",
+    enabledEnvVar: "INSTAGRAM_ENABLED",
+    requiredEnvVars: ["INSTAGRAM_APP_ID", "INSTAGRAM_APP_SECRET", "INSTAGRAM_ACCESS_TOKEN"],
+    optionalEnvVars: ["INSTAGRAM_BUSINESS_ACCOUNT_ID"],
+  },
+  {
+    id: "quickbooks",
+    name: "QuickBooks",
+    description: "Revenue, invoices, collections, payment activity, and finance reporting.",
+    enabledEnvVar: "QUICKBOOKS_ENABLED",
+    requiredEnvVars: ["QUICKBOOKS_CLIENT_ID", "QUICKBOOKS_CLIENT_SECRET", "QUICKBOOKS_REFRESH_TOKEN"],
+    optionalEnvVars: ["QUICKBOOKS_REALM_ID"],
+  },
+  {
+    id: "twilio",
+    name: "Twilio",
+    description: "Voice, SMS, missed calls, call outcomes, and communication event streams.",
+    enabledEnvVar: "TWILIO_ENABLED",
+    requiredEnvVars: ["TWILIO_ACCOUNT_SID", "TWILIO_AUTH_TOKEN"],
+    optionalEnvVars: ["TWILIO_PHONE_NUMBER"],
   },
   {
     id: "microsoft_365",
@@ -50,4 +74,3 @@ export const integrationDefinitions: IntegrationDefinition[] = [
     optionalEnvVars: ["HHAEXCHANGE_PROVIDER_ID"],
   },
 ];
-
