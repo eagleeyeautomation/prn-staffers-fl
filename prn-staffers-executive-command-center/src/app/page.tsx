@@ -5,6 +5,7 @@ import {
   ChartGallery,
   CommandCenterGrid,
   ExecutiveHeader,
+  ExecutiveIntelligenceLayer,
   ExecutiveKpiRow,
   ExecutiveSnapshot,
   ExecutiveSummary,
@@ -37,6 +38,14 @@ export default async function ExecutiveDashboard() {
       <div className="space-y-8">
         <ExecutiveHeader currentDate={currentDate} currentTime={currentTime} />
         <BusinessHealthOverview health={dashboardData.businessHealth} />
+        <ExecutiveIntelligenceLayer
+          brief={dashboardData.executiveBrief}
+          alerts={dashboardData.alerts}
+          recommendations={dashboardData.recommendations}
+          trendingKpis={dashboardData.trendingKpis}
+          stateRankings={dashboardData.stateRankings}
+          timeline={dashboardData.executiveTimeline}
+        />
         <ExecutiveSnapshot metrics={dashboardData.executiveSnapshot} />
         <ExecutiveKpiRow kpis={dashboardData.kpis} />
         <ChartGallery charts={dashboardData.charts} />

@@ -5,8 +5,10 @@ import {
   ArrowUp,
   Bell,
   Bot,
+  Brain,
   CalendarDays,
   CheckCircle2,
+  ClipboardList,
   ExternalLink,
   FileBarChart,
   Info,
@@ -14,6 +16,7 @@ import {
   Settings,
   Sparkles,
   Stethoscope,
+  Trophy,
   TriangleAlert,
   UserRound,
   Zap,
@@ -26,12 +29,16 @@ import type {
   CalendarItem,
   DashboardChart,
   ExecutiveAlert,
+  ExecutiveRecommendation,
   ExecutiveSnapshotMetric,
+  ExecutiveTimelineItem,
   Kpi,
   MonthlyGoal,
   PerformanceMetric,
+  StateRanking,
   StatePerformance,
   StateSummary,
+  TrendingKpi,
 } from "@/lib/types";
 
 export function ExecutiveHeader({
@@ -179,6 +186,211 @@ export function BusinessHealthOverview({ health }: { health: BusinessHealthScore
         </div>
       </div>
     </section>
+  );
+}
+
+export function ExecutiveIntelligenceLayer({
+  brief,
+  alerts,
+  recommendations,
+  trendingKpis,
+  stateRankings,
+  timeline,
+}: {
+  brief: string;
+  alerts: ExecutiveAlert[];
+  recommendations: ExecutiveRecommendation[];
+  trendingKpis: TrendingKpi[];
+  stateRankings: StateRanking[];
+  timeline: ExecutiveTimelineItem[];
+}) {
+  return (
+    <section className="space-y-4">
+      <div className="flex flex-col gap-3 lg:flex-row lg:items-end lg:justify-between">
+        <SectionHeading eyebrow="Executive Intelligence" title="AI-Guided Operating Layer" />
+        <p className="max-w-2xl text-sm leading-6 text-slate-500 dark:text-slate-400">
+          Mock-data intelligence designed to become live once approved integrations are connected.
+        </p>
+      </div>
+      <div className="grid gap-4 2xl:grid-cols-[1.15fr_0.85fr]">
+        <ExecutiveBriefWidget brief={brief} />
+        <CriticalAlertsWidget alerts={alerts} />
+      </div>
+      <div className="grid gap-4 xl:grid-cols-[0.9fr_1.1fr]">
+        <AiRecommendationsWidget recommendations={recommendations} />
+        <TrendingKpisWidget trends={trendingKpis} />
+      </div>
+      <div className="grid gap-4 xl:grid-cols-[0.85fr_1.15fr]">
+        <StateRankingsWidget rankings={stateRankings} />
+        <ExecutiveTimelineWidget timeline={timeline} />
+      </div>
+    </section>
+  );
+}
+
+function ExecutiveBriefWidget({ brief }: { brief: string }) {
+  return (
+    <article className="rounded-2xl border border-sky-200 bg-white p-6 shadow-sm dark:border-slate-800 dark:bg-slate-950">
+      <div className="flex items-start justify-between gap-4">
+        <div>
+          <p className="text-xs font-semibold uppercase tracking-[0.18em] text-sky-700">Executive Brief</p>
+          <h2 className="mt-2 text-2xl font-semibold text-slate-950 dark:text-white">Natural-Language Operating Summary</h2>
+        </div>
+        <div className="grid h-12 w-12 shrink-0 place-items-center rounded-2xl bg-[#071a33] text-[#f6c85f]">
+          <Brain className="h-5 w-5" aria-hidden="true" />
+        </div>
+      </div>
+      <p className="mt-5 rounded-2xl bg-sky-50 p-5 text-base leading-8 text-slate-700 dark:bg-slate-900 dark:text-slate-200">
+        {brief}
+      </p>
+    </article>
+  );
+}
+
+function CriticalAlertsWidget({ alerts }: { alerts: ExecutiveAlert[] }) {
+  const groups: ExecutiveAlert["priority"][] = ["Critical", "Warning", "Informational"];
+
+  return (
+    <article className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm dark:border-slate-800 dark:bg-slate-950">
+      <SectionHeading eyebrow="Critical Alerts" title="Color-Coded Severity" compact />
+      <div className="mt-5 grid gap-3">
+        {groups.map((group) => {
+          const groupedAlerts = alerts.filter((alert) => alert.priority === group);
+          const Icon = getAlertIcon(group);
+
+          return (
+            <div key={group} className="rounded-2xl border border-slate-200 bg-slate-50 p-4 dark:border-slate-800 dark:bg-slate-900">
+              <div className="flex items-center justify-between gap-3">
+                <div className="flex items-center gap-2">
+                  <Icon className={`h-4 w-4 ${getSeverityIconClass(group)}`} aria-hidden="true" />
+                  <h3 className="text-sm font-semibold text-slate-950 dark:text-white">{group}</h3>
+                </div>
+                <span className={`rounded-full px-2.5 py-1 text-xs font-semibold ${getSeverityBadgeClass(group)}`}>
+                  {groupedAlerts.length}
+                </span>
+              </div>
+              <div className="mt-3 space-y-2">
+                {groupedAlerts.length > 0 ? (
+                  groupedAlerts.map((alert) => (
+                    <p key={alert.title} className={`rounded-xl border px-3 py-2 text-sm leading-5 text-slate-700 dark:text-slate-200 ${getAlertClass(alert.color)}`}>
+                      <span className="font-semibold">{alert.title}:</span> {alert.body}
+                    </p>
+                  ))
+                ) : (
+                  <p className="text-sm text-slate-500 dark:text-slate-400">No {group.toLowerCase()} alerts.</p>
+                )}
+              </div>
+            </div>
+          );
+        })}
+      </div>
+    </article>
+  );
+}
+
+function AiRecommendationsWidget({ recommendations }: { recommendations: ExecutiveRecommendation[] }) {
+  return (
+    <article className="rounded-2xl border border-[#f6c85f]/50 bg-white p-6 shadow-sm dark:border-[#f6c85f]/30 dark:bg-slate-950">
+      <SectionHeading eyebrow="AI Recommendations" title="Suggested Executive Actions" compact />
+      <div className="mt-5 space-y-3">
+        {recommendations.map((recommendation, index) => (
+          <div key={recommendation.title} className="flex gap-3 rounded-2xl bg-slate-50 p-4 dark:bg-slate-900">
+            <div className="grid h-9 w-9 shrink-0 place-items-center rounded-xl bg-[#fff4d6] text-sm font-semibold text-[#8a5a00]">
+              {index + 1}
+            </div>
+            <div>
+              <div className="flex flex-wrap items-center gap-2">
+                <h3 className="font-semibold text-slate-950 dark:text-white">{recommendation.title}</h3>
+                <span className={`rounded-full px-2 py-0.5 text-xs font-semibold ${getRecommendationClass(recommendation.priority)}`}>
+                  {recommendation.priority}
+                </span>
+              </div>
+              <p className="mt-1 text-sm leading-6 text-slate-600 dark:text-slate-300">{recommendation.rationale}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </article>
+  );
+}
+
+function TrendingKpisWidget({ trends }: { trends: TrendingKpi[] }) {
+  return (
+    <article className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm dark:border-slate-800 dark:bg-slate-950">
+      <SectionHeading eyebrow="Trending KPIs" title="7-Day Executive Trends" compact />
+      <div className="mt-5 grid gap-3 md:grid-cols-2 2xl:grid-cols-3">
+        {trends.map((trend) => (
+          <div key={trend.label} className="rounded-2xl border border-slate-200 bg-slate-50 p-4 dark:border-slate-800 dark:bg-slate-900">
+            <div className="flex items-start justify-between gap-3">
+              <div>
+                <p className="text-sm font-semibold text-slate-600 dark:text-slate-300">{trend.label}</p>
+                <p className="mt-2 text-2xl font-semibold text-slate-950 dark:text-white">{trend.value}</p>
+              </div>
+              <span className={`h-2.5 w-2.5 rounded-full ${getHealthDotClass(trend.status)}`} />
+            </div>
+            <div className="mt-3 h-12">
+              <LineChart values={trend.values} />
+            </div>
+            <p className="mt-2 text-xs font-semibold uppercase tracking-[0.12em] text-sky-700 dark:text-sky-300">{trend.change}</p>
+          </div>
+        ))}
+      </div>
+    </article>
+  );
+}
+
+function StateRankingsWidget({ rankings }: { rankings: StateRanking[] }) {
+  return (
+    <article className="rounded-2xl border border-slate-200 bg-[#071a33] p-6 text-white shadow-sm dark:border-slate-800">
+      <SectionHeading eyebrow="State Rankings" title="Strongest to Weakest" compact inverse />
+      <div className="mt-5 space-y-3">
+        {rankings.map((ranking) => (
+          <div key={ranking.state} className="rounded-2xl bg-white/10 p-4">
+            <div className="flex items-center justify-between gap-4">
+              <div className="flex items-center gap-3">
+                <div className="grid h-9 w-9 place-items-center rounded-xl bg-[#f6c85f] font-semibold text-[#071a33]">
+                  {ranking.rank}
+                </div>
+                <div>
+                  <h3 className="font-semibold text-white">{ranking.state}</h3>
+                  <p className="mt-1 text-sm leading-5 text-slate-300">{ranking.summary}</p>
+                </div>
+              </div>
+              <span className={`rounded-full px-3 py-1 text-sm font-semibold ${getRankingClass(ranking.status)}`}>
+                {ranking.score}
+              </span>
+            </div>
+          </div>
+        ))}
+      </div>
+    </article>
+  );
+}
+
+function ExecutiveTimelineWidget({ timeline }: { timeline: ExecutiveTimelineItem[] }) {
+  return (
+    <article className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm dark:border-slate-800 dark:bg-slate-950">
+      <SectionHeading eyebrow="Executive Timeline" title="Chronological Activity Feed" compact />
+      <div className="mt-5 max-h-[520px] space-y-1 overflow-y-auto pr-2">
+        {timeline.map((item, index) => (
+          <div key={`${item.time}-${item.title}`} className="grid grid-cols-[76px_1fr] gap-4 py-3 sm:grid-cols-[92px_1fr]">
+            <div className="text-sm font-semibold text-slate-500 dark:text-slate-400">{item.time}</div>
+            <div className="relative border-l border-slate-200 pl-5 dark:border-slate-800">
+              <span className={`absolute -left-4 top-0 grid h-8 w-8 place-items-center rounded-full border border-white shadow-sm dark:border-slate-950 ${index === timeline.length - 1 ? "bg-[#f6c85f] text-[#071a33]" : "bg-sky-100 text-sky-700 dark:bg-sky-400/15 dark:text-sky-200"}`}>
+                <TimelineIcon category={item.category} />
+              </span>
+              <div className="flex flex-wrap items-center gap-2">
+                <p className="font-semibold text-slate-950 dark:text-white">{item.title}</p>
+                <span className="rounded-full bg-sky-50 px-2 py-0.5 text-xs font-semibold text-sky-700 dark:bg-sky-400/10 dark:text-sky-200">
+                  {item.category}
+                </span>
+              </div>
+              <p className="mt-1 text-sm leading-6 text-slate-500 dark:text-slate-400">{item.detail}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </article>
   );
 }
 
@@ -683,6 +895,26 @@ function ActivityIcon({ tone }: { tone: string }) {
   return <Info className="h-4 w-4" aria-hidden="true" />;
 }
 
+function TimelineIcon({ category }: { category: ExecutiveTimelineItem["category"] }) {
+  switch (category) {
+    case "AI":
+      return <Bot className="h-4 w-4" aria-hidden="true" />;
+    case "Assessment":
+      return <ClipboardList className="h-4 w-4" aria-hidden="true" />;
+    case "Referral":
+      return <UserRound className="h-4 w-4" aria-hidden="true" />;
+    case "Staffing":
+      return <Stethoscope className="h-4 w-4" aria-hidden="true" />;
+    case "Marketing":
+      return <Sparkles className="h-4 w-4" aria-hidden="true" />;
+    case "Operations":
+      return <Settings className="h-4 w-4" aria-hidden="true" />;
+    case "Lead":
+    default:
+      return <Trophy className="h-4 w-4" aria-hidden="true" />;
+  }
+}
+
 function getAlertIcon(priority: ExecutiveAlert["priority"]) {
   if (priority === "Critical") {
     return AlertCircle;
@@ -693,6 +925,53 @@ function getAlertIcon(priority: ExecutiveAlert["priority"]) {
   }
 
   return CheckCircle2;
+}
+
+function getSeverityIconClass(priority: ExecutiveAlert["priority"]) {
+  switch (priority) {
+    case "Critical":
+      return "text-red-600";
+    case "Warning":
+      return "text-[#8a5a00]";
+    case "Informational":
+      return "text-emerald-600";
+  }
+}
+
+function getSeverityBadgeClass(priority: ExecutiveAlert["priority"]) {
+  switch (priority) {
+    case "Critical":
+      return "bg-red-100 text-red-700";
+    case "Warning":
+      return "bg-[#fff4d6] text-[#8a5a00]";
+    case "Informational":
+      return "bg-emerald-100 text-emerald-700";
+  }
+}
+
+function getRecommendationClass(priority: ExecutiveRecommendation["priority"]) {
+  switch (priority) {
+    case "High":
+      return "bg-red-50 text-red-700";
+    case "Medium":
+      return "bg-[#fff4d6] text-[#8a5a00]";
+    case "Low":
+      return "bg-emerald-50 text-emerald-700";
+  }
+}
+
+function getRankingClass(status: StateRanking["status"]) {
+  switch (status) {
+    case "strong":
+      return "bg-emerald-400/15 text-emerald-200";
+    case "watch":
+      return "bg-[#f6c85f]/20 text-[#f6c85f]";
+    case "critical":
+      return "bg-red-400/15 text-red-200";
+    case "neutral":
+    default:
+      return "bg-white/10 text-slate-200";
+  }
 }
 
 function getTrendIcon(direction: Kpi["direction"]) {

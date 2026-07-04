@@ -15,13 +15,17 @@ import type {
   CalendarItem,
   DashboardChart,
   ExecutiveAlert,
+  ExecutiveRecommendation,
+  ExecutiveTimelineItem,
   ExecutiveSnapshotMetric,
   Kpi,
   MonthlyGoal,
   PageSummary,
   PerformanceMetric,
+  StateRanking,
   StatePerformance,
   StateSummary,
+  TrendingKpi,
 } from "@/lib/types";
 
 export const mockKpis: Kpi[] = [
@@ -196,6 +200,63 @@ export const mockAlerts: ExecutiveAlert[] = [
   { title: "Assessment Waiting", body: "Delaware has two assessments waiting to be scheduled.", priority: "Warning", color: "yellow" },
   { title: "No Critical Alerts", body: "No critical operational alerts are active right now.", priority: "Informational", color: "green" },
   { title: "15 Google Reviews this week", body: "Reputation velocity is ahead of weekly target.", priority: "Informational", color: "green" },
+];
+
+export const mockExecutiveBrief =
+  "Good Morning George. Yesterday PRN Staffers received 23 new leads. Florida generated the highest number of inquiries. Alabama received six SARCOA referrals. South Carolina completed four assessments. Delaware has two assessments waiting to be scheduled. AI answered 186 calls with a 96% transfer success rate. Overall Business Health is Excellent.";
+
+export const mockExecutiveRecommendations: ExecutiveRecommendation[] = [
+  {
+    title: "Schedule Delaware assessments",
+    rationale: "Two assessment-ready leads are waiting for scheduler confirmation.",
+    priority: "High",
+  },
+  {
+    title: "Follow up on Florida leads",
+    rationale: "Florida produced the strongest inquiry volume and should receive same-day follow-up.",
+    priority: "High",
+  },
+  {
+    title: "Review caregiver staffing",
+    rationale: "One caregiver call-out is active and coverage should be confirmed before afternoon visits.",
+    priority: "Medium",
+  },
+  {
+    title: "Contact missed callers",
+    rationale: "The recovery queue is small enough for leadership to clear today.",
+    priority: "Medium",
+  },
+  {
+    title: "Launch marketing campaign",
+    rationale: "Lead flow and review velocity are strong, making this a good window to increase demand.",
+    priority: "Low",
+  },
+];
+
+export const mockTrendingKpis: TrendingKpi[] = [
+  { label: "Leads", value: "23", change: "+18% vs prior day", status: "strong", values: [16, 18, 17, 20, 19, 21, 23] },
+  { label: "AI Calls", value: "186", change: "+14% 7-day trend", status: "strong", values: [142, 151, 156, 162, 171, 178, 186] },
+  { label: "Assessments", value: "14", change: "+4 completed this week", status: "strong", values: [8, 9, 10, 9, 11, 12, 14] },
+  { label: "Caregiver Coverage", value: "91%", change: "1 call-out today", status: "watch", values: [94, 93, 92, 92, 91, 93, 91] },
+  { label: "Response Time", value: "2m 11s", change: "Fastest in South Carolina", status: "strong", values: [4.8, 4.2, 3.7, 3.1, 2.9, 2.4, 2.1] },
+  { label: "Critical Alerts", value: "0", change: "No critical issues", status: "strong", values: [2, 1, 1, 0, 1, 0, 0] },
+];
+
+export const mockStateRankings: StateRanking[] = [
+  { rank: 1, state: "Florida", score: 98, summary: "Highest lead volume and strongest assessment pace.", status: "strong" },
+  { rank: 2, state: "South Carolina", score: 96, summary: "Fastest response time with steady client activity.", status: "strong" },
+  { rank: 3, state: "Alabama", score: 91, summary: "Six SARCOA referrals and a veterans pipeline to monitor.", status: "watch" },
+  { rank: 4, state: "Delaware", score: 87, summary: "Two assessments waiting to be scheduled.", status: "watch" },
+];
+
+export const mockExecutiveTimeline: ExecutiveTimelineItem[] = [
+  { time: "8:12 AM", title: "Operations check completed", detail: "No critical service delivery alerts detected.", category: "Operations" },
+  { time: "8:44 AM", title: "Florida lead surge identified", detail: "Florida became the top inquiry market for yesterday.", category: "Lead" },
+  { time: "9:11 AM", title: "Delaware assessment queue updated", detail: "Two assessments remain ready for scheduling.", category: "Assessment" },
+  { time: "9:28 AM", title: "AI call performance posted", detail: "Voice AI answered 186 calls with 96% transfer success.", category: "AI" },
+  { time: "10:02 AM", title: "SARCOA referral volume confirmed", detail: "Alabama received six SARCOA referrals.", category: "Referral" },
+  { time: "10:18 AM", title: "Caregiver call-out logged", detail: "Staffing coverage is being monitored for afternoon visits.", category: "Staffing" },
+  { time: "10:42 AM", title: "Review momentum noted", detail: "Google review velocity remains ahead of weekly target.", category: "Marketing" },
 ];
 
 export const mockBusinessHealth: BusinessHealthScore = {

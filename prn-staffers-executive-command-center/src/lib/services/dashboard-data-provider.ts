@@ -4,14 +4,19 @@ import {
   mockAlerts,
   mockBusinessHealth,
   mockCharts,
+  mockExecutiveBrief,
+  mockExecutiveRecommendations,
   mockExecutiveSummary,
   mockAiInsights,
   mockExecutiveSnapshot,
+  mockExecutiveTimeline,
   mockKpis,
   mockMarketingSnapshot,
   mockMonthlyGoals,
+  mockStateRankings,
   mockStateSummaries,
   mockStatePerformance,
+  mockTrendingKpis,
   mockUpcomingCalendar,
 } from "@/lib/mock-dashboard-data";
 import type { DashboardData, DashboardDataProvider, DataProviderMode } from "@/lib/types";
@@ -35,6 +40,11 @@ class MockDashboardDataProvider implements DashboardDataProvider {
       upcomingCalendar: mockUpcomingCalendar,
       executiveSummary: mockExecutiveSummary,
       aiInsights: mockAiInsights,
+      executiveBrief: mockExecutiveBrief,
+      recommendations: mockExecutiveRecommendations,
+      trendingKpis: mockTrendingKpis,
+      stateRankings: mockStateRankings,
+      executiveTimeline: mockExecutiveTimeline,
     };
   }
 }

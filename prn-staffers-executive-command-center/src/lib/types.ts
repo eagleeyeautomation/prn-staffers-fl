@@ -54,6 +54,35 @@ export type ExecutiveAlert = {
   color: "red" | "orange" | "yellow" | "green";
 };
 
+export type ExecutiveRecommendation = {
+  title: string;
+  rationale: string;
+  priority: "High" | "Medium" | "Low";
+};
+
+export type TrendingKpi = {
+  label: string;
+  value: string;
+  change: string;
+  status: "strong" | "watch" | "critical" | "neutral";
+  values: number[];
+};
+
+export type StateRanking = {
+  rank: number;
+  state: string;
+  score: number;
+  summary: string;
+  status: "strong" | "watch" | "critical" | "neutral";
+};
+
+export type ExecutiveTimelineItem = {
+  time: string;
+  title: string;
+  detail: string;
+  category: "Lead" | "AI" | "Assessment" | "Referral" | "Staffing" | "Marketing" | "Operations";
+};
+
 export type PerformanceMetric = {
   label: string;
   value: string;
@@ -136,6 +165,11 @@ export type DashboardData = {
   upcomingCalendar: CalendarItem[];
   executiveSummary: string[];
   aiInsights: string[];
+  executiveBrief: string;
+  recommendations: ExecutiveRecommendation[];
+  trendingKpis: TrendingKpi[];
+  stateRankings: StateRanking[];
+  executiveTimeline: ExecutiveTimelineItem[];
 };
 
 export type IntegrationDefinition = {
