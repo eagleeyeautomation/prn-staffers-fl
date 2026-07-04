@@ -13,8 +13,10 @@ import {
   ExecutiveSummary,
   MonthlyGoalsProgress,
   QuickActionsPanel,
+  StateScorecards,
   StateOperationsGrid,
   StatePerformanceTable,
+  TodaysPriorities,
 } from "@/components/dashboard";
 import { getDashboardDataProvider } from "@/lib/services/dashboard-data-provider";
 
@@ -41,7 +43,7 @@ export default async function ExecutiveDashboard() {
   return (
     <AppShell>
       <AutoRefresh intervalMs={300000} />
-      <div className="space-y-8">
+      <div className="space-y-6">
         <ExecutiveHeader currentDate={currentDate} currentTime={currentTime} />
         <DashboardConnectionStatus status={dashboardData.integrationStatus} />
         <BusinessHealthOverview health={dashboardData.businessHealth} />
@@ -54,6 +56,8 @@ export default async function ExecutiveDashboard() {
           stateRankings={dashboardData.stateRankings}
           timeline={dashboardData.executiveTimeline}
         />
+        <StateScorecards scorecards={dashboardData.stateScorecards} />
+        <TodaysPriorities priorities={dashboardData.priorities} />
         <ExecutiveSnapshot metrics={dashboardData.executiveSnapshot} />
         <ExecutiveKpiRow kpis={dashboardData.kpis} />
         <ChartGallery charts={dashboardData.charts} />

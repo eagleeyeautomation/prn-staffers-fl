@@ -12,13 +12,13 @@ import {
   ExternalLink,
   FileBarChart,
   Info,
-  Plus,
   Settings,
   Sparkles,
   Stethoscope,
   Trophy,
   TriangleAlert,
   UserRound,
+  UserPlus,
   Zap,
 } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
@@ -31,6 +31,7 @@ import type {
   DashboardChart,
   DashboardData,
   ExecutiveAlert,
+  ExecutivePriority,
   ExecutiveRecommendation,
   ExecutiveSnapshotMetric,
   ExecutiveTimelineItem,
@@ -39,6 +40,7 @@ import type {
   PerformanceMetric,
   StateRanking,
   StatePerformance,
+  StateScorecard,
   StateSummary,
   TrendingKpi,
 } from "@/lib/types";
@@ -494,6 +496,64 @@ export function ExecutiveSnapshot({ metrics }: { metrics: ExecutiveSnapshotMetri
   );
 }
 
+export function StateScorecards({ scorecards }: { scorecards: StateScorecard[] }) {
+  return (
+    <section>
+      <div className="flex flex-col gap-3 lg:flex-row lg:items-end lg:justify-between">
+        <SectionHeading eyebrow="State Scorecards" title="CEO View by Office" />
+        <p className="max-w-xl text-sm leading-6 text-slate-500 dark:text-slate-400">
+          Mock-data operating scorecards for leads, clients, caregivers, revenue, assessments, AI activity, missed calls, referral sources, and growth.
+        </p>
+      </div>
+      <div className="grid gap-4 lg:grid-cols-2 2xl:grid-cols-4">
+        {scorecards.map((scorecard) => (
+          <article
+            key={scorecard.office}
+            className="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm transition duration-300 hover:-translate-y-1 hover:shadow-xl dark:border-slate-800 dark:bg-slate-950"
+          >
+            <div className="flex items-start justify-between gap-3">
+              <div>
+                <p className="text-xs font-semibold uppercase tracking-[0.16em] text-sky-700 dark:text-sky-300">{scorecard.state}</p>
+                <h3 className="mt-1 text-xl font-semibold text-slate-950 dark:text-white">{scorecard.office}</h3>
+              </div>
+              <div className="text-right">
+                <span className={`inline-flex items-center gap-2 rounded-full px-3 py-1 text-xs font-semibold ${getHealthClass(scorecard.health)}`}>
+                  <span className="h-2 w-2 rounded-full bg-current" />
+                  {scorecard.health}
+                </span>
+                <p className="mt-2 text-sm font-semibold text-slate-500 dark:text-slate-400">Score {scorecard.score}</p>
+              </div>
+            </div>
+            <div className="mt-5 grid grid-cols-2 gap-3">
+              <ScorecardMetric label="Leads" value={String(scorecard.leads)} />
+              <ScorecardMetric label="Clients" value={String(scorecard.activeClients)} />
+              <ScorecardMetric label="Caregivers" value={String(scorecard.caregivers)} />
+              <ScorecardMetric label="Revenue" value={scorecard.revenue} />
+              <ScorecardMetric label="Assessments" value={String(scorecard.assessments)} />
+              <ScorecardMetric label="AI Calls" value={String(scorecard.aiCalls)} />
+              <ScorecardMetric label="Missed Calls" value={String(scorecard.missedCalls)} />
+              <ScorecardMetric label="Growth" value={scorecard.growth} />
+            </div>
+            <div className="mt-4 rounded-2xl bg-slate-50 p-4 dark:bg-slate-900">
+              <p className="text-xs font-semibold uppercase tracking-[0.14em] text-slate-500 dark:text-slate-400">Referral Sources</p>
+              <p className="mt-2 text-sm leading-6 text-slate-700 dark:text-slate-200">{scorecard.referralSources}</p>
+            </div>
+          </article>
+        ))}
+      </div>
+    </section>
+  );
+}
+
+function ScorecardMetric({ label, value }: { label: string; value: string }) {
+  return (
+    <div className="rounded-2xl bg-slate-50 p-3 dark:bg-slate-900">
+      <p className="text-[0.68rem] font-semibold uppercase tracking-[0.12em] text-slate-500 dark:text-slate-400">{label}</p>
+      <p className="mt-1 text-lg font-semibold text-slate-950 dark:text-white">{value}</p>
+    </div>
+  );
+}
+
 export function MonthlyGoalsProgress({ goals }: { goals: MonthlyGoal[] }) {
   return (
     <section className="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm dark:border-slate-800 dark:bg-slate-950">
@@ -519,6 +579,36 @@ export function MonthlyGoalsProgress({ goals }: { goals: MonthlyGoal[] }) {
             </article>
           );
         })}
+      </div>
+    </section>
+  );
+}
+
+export function TodaysPriorities({ priorities }: { priorities: ExecutivePriority[] }) {
+  return (
+    <section className="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm dark:border-slate-800 dark:bg-slate-950">
+      <div className="flex flex-col gap-3 lg:flex-row lg:items-end lg:justify-between">
+        <SectionHeading eyebrow="Today's Priorities" title="Executive Team Actions" compact />
+        <span className="w-fit rounded-full bg-[#fff4d6] px-3 py-1 text-xs font-semibold uppercase tracking-[0.14em] text-[#8a5a00]">
+          Top 5
+        </span>
+      </div>
+      <div className="mt-5 grid gap-3 lg:grid-cols-5">
+        {priorities.map((priority, index) => (
+          <article key={priority.title} className="rounded-2xl border border-slate-200 bg-slate-50 p-4 dark:border-slate-800 dark:bg-slate-900">
+            <div className="flex items-start justify-between gap-3">
+              <div className="grid h-9 w-9 place-items-center rounded-xl bg-[#071a33] text-sm font-semibold text-[#f6c85f]">
+                {index + 1}
+              </div>
+              <span className={`rounded-full px-2.5 py-1 text-xs font-semibold ${getPriorityClass(priority.status)}`}>
+                {priority.status}
+              </span>
+            </div>
+            <h3 className="mt-4 text-base font-semibold leading-6 text-slate-950 dark:text-white">{priority.title}</h3>
+            <p className="mt-3 text-xs font-semibold uppercase tracking-[0.13em] text-sky-700 dark:text-sky-300">{priority.owner}</p>
+            <p className="mt-2 text-sm leading-6 text-slate-600 dark:text-slate-300">{priority.impact}</p>
+          </article>
+        ))}
       </div>
     </section>
   );
@@ -770,12 +860,12 @@ function UpcomingSchedule({ items }: { items: CalendarItem[] }) {
 
 export function QuickActionsPanel() {
   const actions = [
-    { label: "New Client", icon: Plus, detail: "Create intake record" },
-    { label: "Add Caregiver", icon: Stethoscope, detail: "Start onboarding" },
-    { label: "Schedule Assessment", icon: CalendarDays, detail: "Book next slot" },
-    { label: "Launch AI", icon: Bot, detail: "Open AI center" },
-    { label: "Reports", icon: FileBarChart, detail: "Executive reporting" },
     { label: "Open GoHighLevel", icon: ExternalLink, detail: "CRM workspace" },
+    { label: "Schedule Assessment", icon: CalendarDays, detail: "Book next slot" },
+    { label: "View Reports", icon: FileBarChart, detail: "Executive reporting" },
+    { label: "Launch AI", icon: Bot, detail: "Open AI center" },
+    { label: "Add Client", icon: UserPlus, detail: "Create intake record" },
+    { label: "Add Caregiver", icon: Stethoscope, detail: "Start onboarding" },
   ];
 
   return (
@@ -1032,6 +1122,17 @@ function getRecommendationClass(priority: ExecutiveRecommendation["priority"]) {
       return "bg-[#fff4d6] text-[#8a5a00]";
     case "Low":
       return "bg-emerald-50 text-emerald-700";
+  }
+}
+
+function getPriorityClass(status: ExecutivePriority["status"]) {
+  switch (status) {
+    case "Critical":
+      return "bg-red-50 text-red-700";
+    case "Today":
+      return "bg-[#fff4d6] text-[#8a5a00]";
+    case "Watch":
+      return "bg-sky-50 text-sky-700 dark:bg-sky-400/10 dark:text-sky-200";
   }
 }
 

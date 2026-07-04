@@ -43,6 +43,22 @@ export type StateSummary = {
   }[];
 };
 
+export type StateScorecard = {
+  state: "Delaware" | "South Carolina" | "Alabama" | "Florida";
+  office: string;
+  health: "Healthy" | "Needs Attention" | "Critical";
+  score: number;
+  leads: number;
+  activeClients: number;
+  caregivers: number;
+  revenue: string;
+  assessments: number;
+  aiCalls: number;
+  missedCalls: number;
+  referralSources: string;
+  growth: string;
+};
+
 export type ActivityItem = {
   time: string;
   title: string;
@@ -61,6 +77,13 @@ export type ExecutiveRecommendation = {
   title: string;
   rationale: string;
   priority: "High" | "Medium" | "Low";
+};
+
+export type ExecutivePriority = {
+  title: string;
+  owner: string;
+  impact: string;
+  status: "Critical" | "Today" | "Watch";
 };
 
 export type TrendingKpi = {
@@ -176,6 +199,7 @@ export type DashboardData = {
   };
   kpis: Kpi[];
   stateSummaries: StateSummary[];
+  stateScorecards: StateScorecard[];
   activities: ActivityItem[];
   alerts: ExecutiveAlert[];
   businessHealth: BusinessHealthScore;
@@ -190,6 +214,7 @@ export type DashboardData = {
   aiInsights: string[];
   executiveBrief: string;
   recommendations: ExecutiveRecommendation[];
+  priorities: ExecutivePriority[];
   trendingKpis: TrendingKpi[];
   stateRankings: StateRanking[];
   ceoSnapshot: CeoSnapshotMetric[];

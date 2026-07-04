@@ -16,6 +16,7 @@ import type {
   CeoSnapshotMetric,
   DashboardChart,
   ExecutiveAlert,
+  ExecutivePriority,
   ExecutiveRecommendation,
   ExecutiveTimelineItem,
   ExecutiveSnapshotMetric,
@@ -25,6 +26,7 @@ import type {
   PerformanceMetric,
   StateRanking,
   StatePerformance,
+  StateScorecard,
   StateSummary,
   TrendingKpi,
 } from "@/lib/types";
@@ -326,6 +328,22 @@ export const mockStateSummaries: StateSummary[] = businessUnits.map((unit) => ({
   ],
 }));
 
+export const mockStateScorecards: StateScorecard[] = businessUnits.map((unit) => ({
+  state: unit.state,
+  office: unit.office,
+  health: unit.health,
+  score: unit.score,
+  leads: unit.leads,
+  activeClients: unit.activeClients,
+  caregivers: unit.activeCaregivers,
+  revenue: formatCurrency(unit.revenue),
+  assessments: unit.assessments,
+  aiCalls: unit.aiCalls,
+  missedCalls: unit.missedCalls,
+  referralSources: referralSummary(unit),
+  growth: unit.state === "Florida" ? "+16%" : unit.state === "Alabama" ? "+11%" : unit.state === "South Carolina" ? "+9%" : "+6%",
+}));
+
 export const mockActivities: ActivityItem[] = [
   { time: "10:18 AM", title: "Clinical alert escalated for review", location: "PRN Staffers Alabama", tone: "Clinical" },
   { time: "10:02 AM", title: "SARCOA referral received", location: "PRN Staffers Alabama", tone: "Referral" },
@@ -345,33 +363,66 @@ export const mockAlerts: ExecutiveAlert[] = [
 ];
 
 export const mockExecutiveBrief =
-  `Good Morning George. Today PRN Staffers is operating across four business units with ${totals.leads} new leads, ${totals.assessments} assessments scheduled, ${totals.activeClients} active clients, and ${totals.activeCaregivers} active caregivers. ${topOffice.office} is the top performing office with ${topOffice.leads} leads and ${formatCurrency(topOffice.revenue)} in projected revenue. ${attentionOffice.office} needs attention because its business health score is ${attentionOffice.score}% and it has ${attentionOffice.openTasks} open tasks. Alabama received 6 SARCOA referrals, South Carolina has the fastest response time at 2m 11s, and AI handled ${totals.aiCalls} calls. There are ${totals.clinicalAlerts} clinical alerts across the company, with Alabama requiring same-day review.`;
+  `Good morning George. Florida generated the most new leads yesterday with ${topOffice.leads} new inquiries. Alabama received 6 SARCOA referrals and 4 veterans referrals. South Carolina has the fastest response time at 2m 11s and zero missed calls. Delaware staffing coverage is at 97% with 86 active caregivers. No critical compliance issues are open, but Alabama has 3 clinical alerts requiring same-day review. Overall Business Health is 93%.`;
 
 export const mockExecutiveRecommendations: ExecutiveRecommendation[] = [
   {
+    title: "Hire 3 caregivers in Florida",
+    rationale: "Florida has the strongest lead and assessment demand, so caregiver hiring should stay ahead of client starts.",
+    priority: "High",
+  },
+  {
+    title: "Increase Facebook ads in Alabama",
+    rationale: "Alabama referral flow is strong, and paid social can support caregiver recruiting and family inquiries.",
+    priority: "High",
+  },
+  {
+    title: "Contact inactive referrals",
+    rationale: "Older referral records should be reactivated before the week closes.",
+    priority: "Medium",
+  },
+  {
+    title: "Schedule caregiver training in South Carolina",
+    rationale: "South Carolina is operationally strong and should use the window to reinforce caregiver quality.",
+    priority: "Medium",
+  },
+  {
     title: "Review Alabama clinical alerts",
     rationale: "Alabama has 3 clinical alerts and the lowest caregiver capacity in the four-office view.",
-    priority: "High",
-  },
-  {
-    title: "Protect Florida lead momentum",
-    rationale: "Florida generated 24 leads and should receive same-day follow-up on all high-intent inquiries.",
-    priority: "High",
-  },
-  {
-    title: "Reduce Delaware open tasks",
-    rationale: "Delaware is the office needing attention with 14 open tasks and 2 clinical follow-ups.",
-    priority: "Medium",
-  },
-  {
-    title: "Clear missed-call recovery queue",
-    rationale: "There are 6 missed calls across the company, with Florida and Alabama carrying most of the queue.",
-    priority: "Medium",
-  },
-  {
-    title: "Double down on referral sources",
-    rationale: "SARCOA, veterans, website, Google, and physician referrals are producing measurable office-level demand.",
     priority: "Low",
+  },
+];
+
+export const mockExecutivePriorities: ExecutivePriority[] = [
+  {
+    title: "Resolve Alabama clinical alerts",
+    owner: "Clinical leadership",
+    impact: "Protects compliance, care quality, and referral confidence.",
+    status: "Critical",
+  },
+  {
+    title: "Follow up with all Florida high-intent leads",
+    owner: "Florida intake",
+    impact: "Converts the strongest lead day into assessments and client starts.",
+    status: "Today",
+  },
+  {
+    title: "Clear Delaware open task backlog",
+    owner: "Delaware operations",
+    impact: "Improves response time and prevents assessment delays.",
+    status: "Today",
+  },
+  {
+    title: "Confirm Alabama caregiver capacity for new referrals",
+    owner: "Recruiting",
+    impact: "Keeps SARCOA and veterans referral growth from outpacing staffing.",
+    status: "Watch",
+  },
+  {
+    title: "Prepare South Carolina caregiver training block",
+    owner: "Care team",
+    impact: "Uses a strong operations day to improve quality and retention.",
+    status: "Watch",
   },
 ];
 
@@ -445,13 +496,14 @@ export const mockBusinessHealth: BusinessHealthScore = {
   score: 93,
   status: "Healthy",
   explanation:
-    "Weighted from four-state operations, AI performance, staffing coverage, referral strength, response time, revenue, open tasks, and clinical alerts.",
+    "Weighted from Lead Flow, Client Satisfaction, Staffing Coverage, AI Response Rate, Assessment Completion, and Referral Growth.",
   factors: [
-    { label: "Operations", value: "92%", detail: "27 assessments and 63 open tasks across four offices", status: "strong" },
-    { label: "AI", value: "96%", detail: `${totals.aiCalls} AI calls with strong containment`, status: "strong" },
-    { label: "Staffing", value: "87%", detail: "Alabama caregiver capacity is the primary staffing watchpoint", status: "watch" },
-    { label: "Marketing", value: "95%", detail: "Florida, SARCOA, Google, and website sources are pacing ahead", status: "strong" },
-    { label: "Customer Care", value: "94%", detail: "South Carolina has zero missed calls and fastest response", status: "strong" },
+    { label: "Lead Flow", value: "95%", detail: "56 leads with Florida leading demand", status: "strong" },
+    { label: "Client Satisfaction", value: "94%", detail: "No critical compliance issues open", status: "strong" },
+    { label: "Staffing Coverage", value: "87%", detail: "Alabama caregiver capacity is the primary watchpoint", status: "watch" },
+    { label: "AI Response Rate", value: "96%", detail: `${totals.aiCalls} AI calls with strong containment`, status: "strong" },
+    { label: "Assessment Completion", value: "92%", detail: "27 assessments scheduled across four offices", status: "strong" },
+    { label: "Referral Growth", value: "93%", detail: "SARCOA, veterans, website, and Google sources are pacing ahead", status: "strong" },
   ],
 };
 
@@ -465,11 +517,12 @@ export const mockExecutiveSnapshot: ExecutiveSnapshotMetric[] = [
 ];
 
 export const mockMonthlyGoals: MonthlyGoal[] = [
-  { label: "Four-State Leads", current: 812, target: 940, unit: "leads", detail: "Florida and Alabama are pacing ahead", status: "strong" },
-  { label: "Assessments Scheduled", current: 286, target: 340, unit: "assessments", detail: "54 remaining this month", status: "strong" },
-  { label: "Revenue Run Rate", current: 357, target: 420, unit: "K", detail: "Florida is the largest contributor", status: "strong" },
-  { label: "Caregiver Capacity", current: 505, target: 575, unit: "caregivers", detail: "Alabama needs recruiting focus", status: "watch" },
-  { label: "Clinical Alert Closure", current: 43, target: 52, unit: "closed", detail: "7 open alerts remain today", status: "watch" },
+  { label: "Revenue", current: 357, target: 420, unit: "K", detail: "Florida is the largest contributor", status: "strong" },
+  { label: "New Clients", current: 74, target: 92, unit: "clients", detail: "Client starts are pacing above baseline", status: "strong" },
+  { label: "Assessments", current: 286, target: 340, unit: "assessments", detail: "54 remaining this month", status: "strong" },
+  { label: "Caregiver Hiring", current: 42, target: 58, unit: "hires", detail: "Alabama and Florida need recruiting focus", status: "watch" },
+  { label: "Google Reviews", current: 47, target: 60, unit: "reviews", detail: "Review velocity is healthy", status: "strong" },
+  { label: "AI Call Answer Rate", current: 96, target: 98, unit: "%", detail: "AI response rate remains strong", status: "strong" },
 ];
 
 export const mockCharts: DashboardChart[] = [
