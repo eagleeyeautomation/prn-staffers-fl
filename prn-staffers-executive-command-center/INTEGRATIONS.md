@@ -2,7 +2,7 @@
 
 ## Integration Strategy
 
-Eagle Eye Command Center is designed to become a multi-system executive command center. Version 1.0 should not connect live APIs. All integrations listed here are planned future work and should remain behind mock data until approved.
+Eagle Eye Command Center is designed to become a multi-system executive command center. Sprint 4 enables GoHighLevel as the first live-capable provider. All other integrations remain planned future work and should stay behind mock data until approved.
 
 Every integration should follow these rules:
 
@@ -63,7 +63,8 @@ Sprint 4 live-capable scope:
 - GoHighLevel is the only provider connected through the live-capable adapter.
 - Dashboard values can be sourced from GoHighLevel for new leads, opportunities, pipeline value, AI calls, missed calls, appointments, assessments, active conversations, open tasks, and calendars.
 - If credentials are unavailable or requests fail, the dashboard falls back to mock data and logs the connection error.
-- Dashboard data refreshes every 5 minutes.
+- Dashboard and Platform Status data refresh every 5 minutes.
+- The Platform Status page shows the current GoHighLevel connection status and the live/fallback metrics available to the dashboard.
 
 ## WellSky
 

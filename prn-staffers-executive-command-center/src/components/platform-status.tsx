@@ -2,6 +2,7 @@ import { Activity, CheckCircle2, CircleOff, Flag, Network, ServerCog } from "luc
 import type { getPlatformStatus } from "@/lib/platform/status";
 
 type PlatformStatusData = Awaited<ReturnType<typeof getPlatformStatus>>;
+type GoHighLevelStatus = PlatformStatusData["goHighLevel"];
 
 export function PlatformStatus({ status }: { status: PlatformStatusData }) {
   return (
@@ -30,6 +31,8 @@ export function PlatformStatus({ status }: { status: PlatformStatusData }) {
         <SummaryCard label="Build Status" value={status.buildStatus} detail="Verified through local build checks" />
         <SummaryCard label="Service Registry" value={String(status.services.length)} detail="Dashboard to registry to provider" />
       </section>
+
+      <GoHighLevelConnectionCard status={status.goHighLevel} />
 
       <section className="grid gap-4 xl:grid-cols-[1.1fr_0.9fr]">
         <article className="rounded-lg border border-slate-200 bg-white p-5 shadow-sm dark:border-slate-800 dark:bg-slate-950">
@@ -111,6 +114,63 @@ export function PlatformStatus({ status }: { status: PlatformStatusData }) {
           </div>
         </article>
       </section>
+    </div>
+  );
+}
+
+function GoHighLevelConnectionCard({ status }: { status: GoHighLevelStatus }) {
+  const connection = status.connection;
+  const connected = connection.status === "connected";
+  const error = connection.status === "error";
+  const badgeClass = connected
+    ? "bg-emerald-50 text-emerald-700"
+    : error
+      ? "bg-red-50 text-red-700"
+      : "bg-slate-100 text-slate-600";
+  const Icon = connected ? CheckCircle2 : error ? Activity : CircleOff;
+
+  return (
+    <article className="rounded-lg border border-slate-200 bg-white p-5 shadow-sm dark:border-slate-800 dark:bg-slate-950">
+      <div className="flex flex-col gap-4 lg:flex-row lg:items-start lg:justify-between">
+        <SectionTitle icon={Network} eyebrow="Live Provider" title="GoHighLevel Connection" />
+        <span className={`inline-flex w-fit items-center gap-1.5 rounded-full px-3 py-1 text-xs font-semibold ${badgeClass}`}>
+          <Icon className="h-3.5 w-3.5" aria-hidden="true" />
+          {connection.statusLabel}
+        </span>
+      </div>
+      <div className="mt-5 grid gap-3 md:grid-cols-2 xl:grid-cols-5">
+        <ConnectionMetric label="Contacts / Leads" value={String(status.newLeads)} />
+        <ConnectionMetric label="Opportunities" value={String(status.opportunities)} />
+        <ConnectionMetric label="Pipeline Value" value={`$${status.pipelineValue.toLocaleString()}`} />
+        <ConnectionMetric label="Appointments" value={String(status.appointments)} />
+        <ConnectionMetric label="Open Tasks" value={String(status.openTasks)} />
+      </div>
+      <div className="mt-5 grid gap-3 md:grid-cols-2 xl:grid-cols-5">
+        <ConnectionMetric label="AI Calls" value={String(status.aiCalls)} />
+        <ConnectionMetric label="Missed Calls" value={String(status.missedCalls)} />
+        <ConnectionMetric label="Assessments" value={String(status.assessments)} />
+        <ConnectionMetric label="Conversations" value={String(status.activeConversations)} />
+        <ConnectionMetric label="Calendars" value={String(status.calendars)} />
+      </div>
+      <p className="mt-4 text-sm leading-6 text-slate-500 dark:text-slate-400">
+        Source: {connection.source === "live" ? "Live GoHighLevel data" : "Mock fallback data"}.
+        {" "}Last checked: {new Date(connection.lastChecked).toLocaleString("en-US", { timeZone: "America/New_York" })}.
+        {" "}Refreshes every 5 minutes.
+      </p>
+      {connection.errorMessage ? (
+        <p className="mt-3 rounded-lg bg-red-50 px-4 py-3 text-sm font-medium text-red-700 dark:bg-red-950/30 dark:text-red-200">
+          {connection.errorMessage}
+        </p>
+      ) : null}
+    </article>
+  );
+}
+
+function ConnectionMetric({ label, value }: { label: string; value: string }) {
+  return (
+    <div className="rounded-lg bg-slate-50 p-4 dark:bg-slate-900">
+      <p className="text-xs font-semibold uppercase tracking-[0.14em] text-slate-500 dark:text-slate-400">{label}</p>
+      <p className="mt-2 text-2xl font-semibold text-slate-950 dark:text-white">{value}</p>
     </div>
   );
 }

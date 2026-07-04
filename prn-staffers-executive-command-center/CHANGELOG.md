@@ -12,6 +12,7 @@ This project follows a practical product changelog format. Each entry should des
 - Live dashboard mapping for New Leads, Opportunities, Pipeline Values, AI Calls, Missed Calls, Appointments, Assessments, Active Conversations, Open Tasks, and Calendars.
 - Graceful mock fallback when GoHighLevel credentials are unavailable or live requests fail.
 - Dashboard connection status display and five-minute auto refresh.
+- Platform Status GoHighLevel connection card with live/fallback metrics and five-minute auto refresh.
 - Core Platform Architecture for future integrations.
 - Central Integration Manager with provider connection, authentication, health check, last sync, data provider, and service registry metadata.
 - Service Registry for dashboard-to-provider routing.
@@ -27,7 +28,7 @@ This project follows a practical product changelog format. Each entry should des
 
 ### Notes
 
-- No live GoHighLevel API requests are made.
+- GoHighLevel live requests are only made when `GHL_ENABLED=true` or `PRN_DATA_PROVIDER=live`; otherwise mock data remains active.
 - Dashboard components remain provider-driven and unchanged for future live data switching.
 
 ## 0.5.0 - 2026-07-04

@@ -7,7 +7,17 @@ export const integrationDefinitions: IntegrationDefinition[] = [
     description: "Leads, calls, chats, pipeline stages, campaigns, and tasks.",
     enabledEnvVar: "GHL_ENABLED",
     requiredEnvVars: ["GHL_API_KEY", "GHL_LOCATION_ID"],
-    optionalEnvVars: ["GHL_BASE_URL"],
+    optionalEnvVars: [
+      "GHL_BASE_URL",
+      "GHL_API_VERSION",
+      "GHL_CONTACTS_PATH",
+      "GHL_OPPORTUNITIES_PATH",
+      "GHL_APPOINTMENTS_PATH",
+      "GHL_CONVERSATIONS_PATH",
+      "GHL_TASKS_PATH",
+      "GHL_AI_CALLS_PATH",
+      "GHL_PIPELINES_PATH",
+    ],
   },
   {
     id: "google",

@@ -3,9 +3,13 @@ import { getFeatureFlags } from "@/lib/platform/feature-flags";
 import { mockPlatformEvents } from "@/lib/platform/events";
 import { getServiceRegistry } from "@/lib/platform/service-registry";
 import { getEnvironmentConfigurationStatus } from "@/lib/platform/environment";
+import { getGoHighLevelIntegration } from "@/lib/integrations/gohighlevel";
 
 export async function getPlatformStatus() {
-  const providers = await getIntegrationManager().getProviders();
+  const [providers, goHighLevel] = await Promise.all([
+    getIntegrationManager().getProviders(),
+    getGoHighLevelIntegration().getDashboardMetrics(),
+  ]);
   const connectedServices = providers.filter((provider) => provider.connectionStatus === "ready");
   const pendingIntegrations = providers.filter((provider) => provider.connectionStatus !== "ready");
   const services = getServiceRegistry().listServices();
@@ -14,9 +18,10 @@ export async function getPlatformStatus() {
 
   return {
     platformHealth: "Healthy",
-    version: "Sprint 3",
+    version: "Sprint 4",
     buildStatus: "Passing",
     mockDataStatus: "Active",
+    goHighLevel,
     connectedServices,
     pendingIntegrations,
     providers,
