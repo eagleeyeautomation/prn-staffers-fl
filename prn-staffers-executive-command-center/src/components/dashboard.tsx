@@ -27,6 +27,7 @@ import type {
   BusinessHealthScore,
   BusinessHealthMetric,
   CalendarItem,
+  CeoSnapshotMetric,
   DashboardChart,
   ExecutiveAlert,
   ExecutiveRecommendation,
@@ -192,6 +193,7 @@ export function BusinessHealthOverview({ health }: { health: BusinessHealthScore
 export function ExecutiveIntelligenceLayer({
   brief,
   alerts,
+  ceoSnapshot,
   recommendations,
   trendingKpis,
   stateRankings,
@@ -199,6 +201,7 @@ export function ExecutiveIntelligenceLayer({
 }: {
   brief: string;
   alerts: ExecutiveAlert[];
+  ceoSnapshot: CeoSnapshotMetric[];
   recommendations: ExecutiveRecommendation[];
   trendingKpis: TrendingKpi[];
   stateRankings: StateRanking[];
@@ -216,6 +219,7 @@ export function ExecutiveIntelligenceLayer({
         <ExecutiveBriefWidget brief={brief} />
         <CriticalAlertsWidget alerts={alerts} />
       </div>
+      <CeoSnapshotWidget metrics={ceoSnapshot} />
       <div className="grid gap-4 xl:grid-cols-[0.9fr_1.1fr]">
         <AiRecommendationsWidget recommendations={recommendations} />
         <TrendingKpisWidget trends={trendingKpis} />
@@ -233,8 +237,8 @@ function ExecutiveBriefWidget({ brief }: { brief: string }) {
     <article className="rounded-2xl border border-sky-200 bg-white p-6 shadow-sm dark:border-slate-800 dark:bg-slate-950">
       <div className="flex items-start justify-between gap-4">
         <div>
-          <p className="text-xs font-semibold uppercase tracking-[0.18em] text-sky-700">Executive Brief</p>
-          <h2 className="mt-2 text-2xl font-semibold text-slate-950 dark:text-white">Natural-Language Operating Summary</h2>
+          <p className="text-xs font-semibold uppercase tracking-[0.18em] text-sky-700">Executive Morning Brief</p>
+          <h2 className="mt-2 text-2xl font-semibold text-slate-950 dark:text-white">Yesterday&apos;s Business Activity</h2>
         </div>
         <div className="grid h-12 w-12 shrink-0 place-items-center rounded-2xl bg-[#071a33] text-[#f6c85f]">
           <Brain className="h-5 w-5" aria-hidden="true" />
@@ -243,6 +247,31 @@ function ExecutiveBriefWidget({ brief }: { brief: string }) {
       <p className="mt-5 rounded-2xl bg-sky-50 p-5 text-base leading-8 text-slate-700 dark:bg-slate-900 dark:text-slate-200">
         {brief}
       </p>
+    </article>
+  );
+}
+
+function CeoSnapshotWidget({ metrics }: { metrics: CeoSnapshotMetric[] }) {
+  return (
+    <article className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm dark:border-slate-800 dark:bg-slate-950">
+      <div className="flex flex-col gap-3 lg:flex-row lg:items-end lg:justify-between">
+        <SectionHeading eyebrow="CEO Snapshot" title="Decision Priorities" compact />
+        <p className="max-w-xl text-sm leading-6 text-slate-500 dark:text-slate-400">
+          A concise leadership readout built from Business Health, state performance, operational focus, and weekly growth signals.
+        </p>
+      </div>
+      <div className="mt-5 grid gap-3 md:grid-cols-2 xl:grid-cols-5">
+        {metrics.map((metric) => (
+          <div key={metric.label} className="rounded-2xl border border-slate-200 bg-slate-50 p-4 dark:border-slate-800 dark:bg-slate-900">
+            <div className="flex items-start justify-between gap-3">
+              <p className="text-xs font-semibold uppercase tracking-[0.14em] text-slate-500 dark:text-slate-400">{metric.label}</p>
+              <span className={`h-2.5 w-2.5 rounded-full ${getHealthDotClass(metric.status)}`} />
+            </div>
+            <p className="mt-3 text-2xl font-semibold text-slate-950 dark:text-white">{metric.value}</p>
+            <p className="mt-2 text-sm leading-5 text-slate-600 dark:text-slate-300">{metric.detail}</p>
+          </div>
+        ))}
+      </div>
     </article>
   );
 }
@@ -342,11 +371,11 @@ function TrendingKpisWidget({ trends }: { trends: TrendingKpi[] }) {
 function StateRankingsWidget({ rankings }: { rankings: StateRanking[] }) {
   return (
     <article className="rounded-2xl border border-slate-200 bg-[#071a33] p-6 text-white shadow-sm dark:border-slate-800">
-      <SectionHeading eyebrow="State Rankings" title="Strongest to Weakest" compact inverse />
+      <SectionHeading eyebrow="State Performance" title="Ranked by Business Health, Leads, AI, and Capacity" compact inverse />
       <div className="mt-5 space-y-3">
         {rankings.map((ranking) => (
           <div key={ranking.state} className="rounded-2xl bg-white/10 p-4">
-            <div className="flex items-center justify-between gap-4">
+            <div className="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
               <div className="flex items-center gap-3">
                 <div className="grid h-9 w-9 place-items-center rounded-xl bg-[#f6c85f] font-semibold text-[#071a33]">
                   {ranking.rank}
@@ -356,14 +385,29 @@ function StateRankingsWidget({ rankings }: { rankings: StateRanking[] }) {
                   <p className="mt-1 text-sm leading-5 text-slate-300">{ranking.summary}</p>
                 </div>
               </div>
-              <span className={`rounded-full px-3 py-1 text-sm font-semibold ${getRankingClass(ranking.status)}`}>
-                {ranking.score}
+              <div className="grid gap-2 sm:grid-cols-4 lg:min-w-[460px]">
+                <RankingMetric label="Health" value={ranking.businessHealth} />
+                <RankingMetric label="Leads" value={String(ranking.leads)} />
+                <RankingMetric label="AI" value={ranking.aiPerformance} />
+                <RankingMetric label="Capacity" value={ranking.caregiverCapacity} />
+              </div>
+              <span className={`w-fit rounded-full px-3 py-1 text-sm font-semibold ${getRankingClass(ranking.status)}`}>
+                Score {ranking.score}
               </span>
             </div>
           </div>
         ))}
       </div>
     </article>
+  );
+}
+
+function RankingMetric({ label, value }: { label: string; value: string }) {
+  return (
+    <div className="rounded-xl bg-white/10 px-3 py-2">
+      <p className="text-[0.68rem] font-semibold uppercase tracking-[0.12em] text-sky-200">{label}</p>
+      <p className="mt-1 text-sm font-semibold text-white">{value}</p>
+    </div>
   );
 }
 

@@ -41,6 +41,7 @@ export default async function ExecutiveDashboard() {
         <ExecutiveIntelligenceLayer
           brief={dashboardData.executiveBrief}
           alerts={dashboardData.alerts}
+          ceoSnapshot={dashboardData.ceoSnapshot}
           recommendations={dashboardData.recommendations}
           trendingKpis={dashboardData.trendingKpis}
           stateRankings={dashboardData.stateRankings}

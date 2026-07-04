@@ -3,6 +3,7 @@ import {
   mockAiPerformance,
   mockAlerts,
   mockBusinessHealth,
+  mockCeoSnapshot,
   mockCharts,
   mockExecutiveBrief,
   mockExecutiveRecommendations,
@@ -44,6 +45,7 @@ class MockDashboardDataProvider implements DashboardDataProvider {
       recommendations: mockExecutiveRecommendations,
       trendingKpis: mockTrendingKpis,
       stateRankings: mockStateRankings,
+      ceoSnapshot: mockCeoSnapshot,
       executiveTimeline: mockExecutiveTimeline,
     };
   }

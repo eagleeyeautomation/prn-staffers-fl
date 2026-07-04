@@ -72,7 +72,18 @@ export type StateRanking = {
   rank: number;
   state: string;
   score: number;
+  businessHealth: string;
+  leads: number;
+  aiPerformance: string;
+  caregiverCapacity: string;
   summary: string;
+  status: "strong" | "watch" | "critical" | "neutral";
+};
+
+export type CeoSnapshotMetric = {
+  label: "Business Health" | "Top Performing State" | "Lowest Performing State" | "Today's Focus" | "Weekly Growth Projection";
+  value: string;
+  detail: string;
   status: "strong" | "watch" | "critical" | "neutral";
 };
 
@@ -169,6 +180,7 @@ export type DashboardData = {
   recommendations: ExecutiveRecommendation[];
   trendingKpis: TrendingKpi[];
   stateRankings: StateRanking[];
+  ceoSnapshot: CeoSnapshotMetric[];
   executiveTimeline: ExecutiveTimelineItem[];
 };
 

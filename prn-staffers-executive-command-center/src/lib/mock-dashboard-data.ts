@@ -13,6 +13,7 @@ import type {
   ActivityItem,
   BusinessHealthScore,
   CalendarItem,
+  CeoSnapshotMetric,
   DashboardChart,
   ExecutiveAlert,
   ExecutiveRecommendation,
@@ -243,10 +244,83 @@ export const mockTrendingKpis: TrendingKpi[] = [
 ];
 
 export const mockStateRankings: StateRanking[] = [
-  { rank: 1, state: "Florida", score: 98, summary: "Highest lead volume and strongest assessment pace.", status: "strong" },
-  { rank: 2, state: "South Carolina", score: 96, summary: "Fastest response time with steady client activity.", status: "strong" },
-  { rank: 3, state: "Alabama", score: 91, summary: "Six SARCOA referrals and a veterans pipeline to monitor.", status: "watch" },
-  { rank: 4, state: "Delaware", score: 87, summary: "Two assessments waiting to be scheduled.", status: "watch" },
+  {
+    rank: 1,
+    state: "Florida",
+    score: 98,
+    businessHealth: "98%",
+    leads: 21,
+    aiPerformance: "97%",
+    caregiverCapacity: "91%",
+    summary: "Highest lead volume and strongest assessment pace.",
+    status: "strong",
+  },
+  {
+    rank: 2,
+    state: "South Carolina",
+    score: 96,
+    businessHealth: "96%",
+    leads: 13,
+    aiPerformance: "95%",
+    caregiverCapacity: "88%",
+    summary: "Fastest response time with steady client activity.",
+    status: "strong",
+  },
+  {
+    rank: 3,
+    state: "Alabama",
+    score: 91,
+    businessHealth: "91%",
+    leads: 12,
+    aiPerformance: "90%",
+    caregiverCapacity: "78%",
+    summary: "Six SARCOA referrals and a veterans pipeline to monitor.",
+    status: "watch",
+  },
+  {
+    rank: 4,
+    state: "Delaware",
+    score: 87,
+    businessHealth: "87%",
+    leads: 9,
+    aiPerformance: "89%",
+    caregiverCapacity: "82%",
+    summary: "Two assessments waiting to be scheduled.",
+    status: "watch",
+  },
+];
+
+export const mockCeoSnapshot: CeoSnapshotMetric[] = [
+  {
+    label: "Business Health",
+    value: "96%",
+    detail: "Excellent overall operating condition with no critical alerts.",
+    status: "strong",
+  },
+  {
+    label: "Top Performing State",
+    value: "Florida",
+    detail: "Highest leads, strongest assessment pace, and healthy caregiver capacity.",
+    status: "strong",
+  },
+  {
+    label: "Lowest Performing State",
+    value: "Delaware",
+    detail: "Two assessments remain unscheduled and need leadership attention.",
+    status: "watch",
+  },
+  {
+    label: "Today's Focus",
+    value: "Schedule Delaware",
+    detail: "Clear the assessment queue while Florida lead volume is still fresh.",
+    status: "watch",
+  },
+  {
+    label: "Weekly Growth Projection",
+    value: "+14%",
+    detail: "Lead flow and AI-handled calls are pacing above the weekly baseline.",
+    status: "strong",
+  },
 ];
 
 export const mockExecutiveTimeline: ExecutiveTimelineItem[] = [
