@@ -269,7 +269,7 @@ function ExecutiveBriefWidget({ brief }: { brief: string }) {
       <div className="flex items-start justify-between gap-4">
         <div>
           <p className="text-xs font-semibold uppercase tracking-[0.18em] text-sky-700">Executive Morning Brief</p>
-          <h2 className="mt-2 text-2xl font-semibold text-slate-950 dark:text-white">Yesterday&apos;s Business Activity</h2>
+          <h2 className="mt-2 text-2xl font-semibold text-slate-950 dark:text-white">Today&apos;s CEO Brief</h2>
         </div>
         <div className="grid h-12 w-12 shrink-0 place-items-center rounded-2xl bg-[#071a33] text-[#f6c85f]">
           <Brain className="h-5 w-5" aria-hidden="true" />
