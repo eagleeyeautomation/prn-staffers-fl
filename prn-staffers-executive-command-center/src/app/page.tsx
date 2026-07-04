@@ -1,4 +1,5 @@
 import { AppShell } from "@/components/app-shell";
+import { AskEagleAssistant } from "@/components/ask-eagle-assistant";
 import { AutoRefresh } from "@/components/auto-refresh";
 import {
   AiInsightsPanel,
@@ -18,6 +19,7 @@ import {
   StatePerformanceTable,
   TodaysPriorities,
 } from "@/components/dashboard";
+import { createAskEagleContext } from "@/lib/ask-eagle";
 import { getDashboardDataProvider } from "@/lib/services/dashboard-data-provider";
 
 export const dynamic = "force-dynamic";
@@ -25,6 +27,7 @@ export const revalidate = 300;
 
 export default async function ExecutiveDashboard() {
   const dashboardData = await getDashboardDataProvider().getDashboardData();
+  const askEagleContext = createAskEagleContext(dashboardData);
   const now = new Date();
   const currentDate = new Intl.DateTimeFormat("en-US", {
     weekday: "long",
@@ -56,6 +59,7 @@ export default async function ExecutiveDashboard() {
           stateRankings={dashboardData.stateRankings}
           timeline={dashboardData.executiveTimeline}
         />
+        <AskEagleAssistant context={askEagleContext} />
         <StateScorecards scorecards={dashboardData.stateScorecards} />
         <TodaysPriorities priorities={dashboardData.priorities} />
         <ExecutiveSnapshot metrics={dashboardData.executiveSnapshot} />

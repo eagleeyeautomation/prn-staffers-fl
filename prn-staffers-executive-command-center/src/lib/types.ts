@@ -86,6 +86,32 @@ export type ExecutivePriority = {
   status: "Critical" | "Today" | "Watch";
 };
 
+export type AskEagleResponseCard = {
+  title: "Business Summary" | "State Comparison" | "Alerts" | "Recommended Actions";
+  body: string;
+  items: string[];
+  status: "strong" | "watch" | "critical" | "neutral";
+};
+
+export type AskEagleResponse = {
+  summary: string;
+  cards: AskEagleResponseCard[];
+};
+
+export type AskEagleContext = {
+  businessHealth: {
+    score: number;
+    status: string;
+    explanation: string;
+  };
+  states: StateScorecard[];
+  alerts: ExecutiveAlert[];
+  recommendations: ExecutiveRecommendation[];
+  priorities: ExecutivePriority[];
+  executiveBrief: string;
+  activity: ActivityItem[];
+};
+
 export type TrendingKpi = {
   label: string;
   value: string;
