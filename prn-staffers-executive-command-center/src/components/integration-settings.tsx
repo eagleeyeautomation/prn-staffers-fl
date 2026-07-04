@@ -1,12 +1,15 @@
-import { CheckCircle2, CircleOff, KeyRound, Loader2, TriangleAlert } from "lucide-react";
+import { CheckCircle2, CircleOff, KeyRound, Loader2, ServerCog, ShieldCheck, TriangleAlert } from "lucide-react";
+import type { GoHighLevelServiceStatus } from "@/lib/integrations/gohighlevel";
 import type { IntegrationConnection } from "@/lib/types";
 
 export function IntegrationSettings({
   connections,
   dataProviderMode,
+  goHighLevelServiceStatuses,
 }: {
   connections: IntegrationConnection[];
   dataProviderMode: string;
+  goHighLevelServiceStatuses: GoHighLevelServiceStatus[];
 }) {
   return (
     <div className="space-y-6">
@@ -70,10 +73,100 @@ export function IntegrationSettings({
                   );
                 })}
               </div>
+              {connection.optionalEnvVars && connection.optionalEnvVars.length > 0 ? (
+                <div className="mt-3 flex flex-wrap gap-2">
+                  {connection.optionalEnvVars.map((key) => (
+                    <span key={key} className="rounded-full border border-slate-200 bg-white px-2.5 py-1 text-xs font-medium text-slate-600">
+                      {key} optional
+                    </span>
+                  ))}
+                </div>
+              ) : null}
             </div>
+
+            {connection.id === "gohighlevel" ? (
+              <GoHighLevelConfiguration connection={connection} serviceStatuses={goHighLevelServiceStatuses} />
+            ) : null}
           </article>
         ))}
       </section>
+    </div>
+  );
+}
+
+function GoHighLevelConfiguration({
+  connection,
+  serviceStatuses,
+}: {
+  connection: IntegrationConnection;
+  serviceStatuses: GoHighLevelServiceStatus[];
+}) {
+  return (
+    <div className="mt-5 space-y-4 rounded-lg border border-sky-100 bg-sky-50 p-4">
+      <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
+        <div>
+          <div className="flex items-center gap-2 text-sm font-semibold text-slate-950">
+            <ShieldCheck className="h-4 w-4 text-sky-700" aria-hidden="true" />
+            Secure GoHighLevel configuration
+          </div>
+          <p className="mt-2 text-sm leading-6 text-slate-600">
+            Credentials are read from server-side environment variables. This foundation uses mock adapters only and does not
+            make live GoHighLevel API requests.
+          </p>
+        </div>
+        <span className={`w-fit rounded-full px-3 py-1 text-xs font-semibold ${getConnectionLabelClass(connection.status)}`}>
+          {connection.statusLabel}
+        </span>
+      </div>
+
+      <div className="grid gap-3 md:grid-cols-3">
+        <CredentialField label="Enable connector" envKey={connection.enabledEnvVar} configured={connection.enabled} />
+        <CredentialField label="API key" envKey="GHL_API_KEY" configured={!connection.missingEnvVars.includes("GHL_API_KEY")} secret />
+        <CredentialField label="Location ID" envKey="GHL_LOCATION_ID" configured={!connection.missingEnvVars.includes("GHL_LOCATION_ID")} />
+      </div>
+
+      <div className="rounded-lg bg-white p-4">
+        <div className="flex items-center gap-2 text-sm font-semibold text-slate-950">
+          <ServerCog className="h-4 w-4 text-sky-700" aria-hidden="true" />
+          Service foundation
+        </div>
+        <div className="mt-3 grid gap-3 md:grid-cols-2 xl:grid-cols-3">
+          {serviceStatuses.map((service) => (
+            <div key={service.name} className="rounded-lg border border-slate-200 p-3">
+              <div className="flex items-center justify-between gap-3">
+                <p className="text-sm font-semibold text-slate-950">{service.name}</p>
+                <span className={`rounded-full px-2 py-0.5 text-xs font-semibold ${getGoHighLevelServiceBadgeClass(service.status)}`}>
+                  {formatServiceStatus(service.status)}
+                </span>
+              </div>
+              <p className="mt-2 text-xs text-slate-500">{service.recordsAvailable} mock records available</p>
+              <p className="mt-1 text-xs font-semibold uppercase tracking-[0.12em] text-sky-700">{service.source} adapter</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function CredentialField({
+  label,
+  envKey,
+  configured,
+  secret = false,
+}: {
+  label: string;
+  envKey: string;
+  configured: boolean;
+  secret?: boolean;
+}) {
+  return (
+    <div className="rounded-lg bg-white p-3">
+      <p className="text-xs font-semibold uppercase tracking-[0.14em] text-slate-500">{label}</p>
+      <p className="mt-2 text-sm font-semibold text-slate-950">{envKey}</p>
+      <p className={`mt-1 text-xs font-semibold ${configured ? "text-emerald-700" : "text-amber-700"}`}>
+        {configured ? (secret ? "Configured securely" : "Configured") : "Not configured"}
+      </p>
     </div>
   );
 }
@@ -114,5 +207,42 @@ function getBadgeClass(status: IntegrationConnection["status"]) {
     case "disabled":
     default:
       return "bg-slate-100 text-slate-600";
+  }
+}
+
+function getConnectionLabelClass(status: IntegrationConnection["status"]) {
+  switch (status) {
+    case "ready":
+      return "bg-emerald-100 text-emerald-700";
+    case "error":
+      return "bg-red-100 text-red-700";
+    case "missing_credentials":
+    case "disabled":
+    default:
+      return "bg-slate-200 text-slate-700";
+  }
+}
+
+function getGoHighLevelServiceBadgeClass(status: GoHighLevelServiceStatus["status"]) {
+  switch (status) {
+    case "connected":
+      return "bg-emerald-50 text-emerald-700";
+    case "error":
+      return "bg-red-50 text-red-700";
+    case "disconnected":
+    default:
+      return "bg-slate-100 text-slate-600";
+  }
+}
+
+function formatServiceStatus(status: GoHighLevelServiceStatus["status"]) {
+  switch (status) {
+    case "connected":
+      return "Connected";
+    case "error":
+      return "Error";
+    case "disconnected":
+    default:
+      return "Disconnected";
   }
 }

@@ -36,13 +36,13 @@ function readBooleanEnv(key: string) {
 function getStatusLabel(status: IntegrationConnection["status"]) {
   switch (status) {
     case "ready":
-      return "Ready";
+      return "Connected";
     case "missing_credentials":
-      return "Missing credentials";
+      return "Disconnected";
     case "error":
-      return "Connection error";
+      return "Error";
     case "disabled":
     default:
-      return "Disabled";
+      return "Disconnected";
   }
 }

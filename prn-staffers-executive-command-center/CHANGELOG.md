@@ -6,11 +6,18 @@ This project follows a practical product changelog format. Each entry should des
 
 ## Unreleased
 
-### Planned
+### Added
 
-- Complete documentation foundation for product roadmap, architecture, integrations, and backlog.
-- Continue building Version 1.0 with mock data only.
-- Preserve Eagle Eye Command Center branding and current dashboard direction.
+- GoHighLevel integration foundation.
+- TypeScript models for contacts, opportunities, calendars, conversations, tasks, AI calls, and pipelines.
+- Mock GoHighLevel adapters and service classes for each planned service area.
+- Settings-page GoHighLevel configuration panel using secure environment-variable guidance.
+- Connection status indicators for Disconnected, Connected, and Error states.
+
+### Notes
+
+- No live GoHighLevel API requests are made.
+- Dashboard components remain provider-driven and unchanged for future live data switching.
 
 ## 0.5.0 - 2026-07-04
 

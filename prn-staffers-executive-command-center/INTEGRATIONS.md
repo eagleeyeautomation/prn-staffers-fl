@@ -43,7 +43,20 @@ Future capabilities:
 - Surface tasks and overdue follow-ups.
 - Attribute campaigns to revenue and client starts.
 
-Version 1.0 status: Mock data only.
+Sprint 3 foundation:
+
+- Contacts service.
+- Opportunities service.
+- Calendars service.
+- Conversations service.
+- Tasks service.
+- AI Calls service.
+- Pipelines service.
+- TypeScript models for all GoHighLevel service domains.
+- Mock adapter that simulates GoHighLevel responses.
+- Settings-page status indicators for Disconnected, Connected, and Error states.
+
+Version 1.0 status: Mock data only. No live API requests are made.
 
 ## WellSky
 
