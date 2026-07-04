@@ -1,0 +1,30 @@
+import { IntegrationConnector } from "@/lib/integrations/base-connector";
+import { integrationDefinitions } from "@/lib/integrations/integration-definitions";
+import type { IntegrationDefinition, IntegrationId } from "@/lib/types";
+
+class GoHighLevelConnector extends IntegrationConnector {}
+class GoogleBusinessProfileConnector extends IntegrationConnector {}
+class FacebookConnector extends IntegrationConnector {}
+class Microsoft365Connector extends IntegrationConnector {}
+class WellSkyConnector extends IntegrationConnector {}
+class HhaExchangeConnector extends IntegrationConnector {}
+
+const connectorClasses = {
+  gohighlevel: GoHighLevelConnector,
+  google_business_profile: GoogleBusinessProfileConnector,
+  facebook: FacebookConnector,
+  microsoft_365: Microsoft365Connector,
+  wellsky: WellSkyConnector,
+  hhaexchange: HhaExchangeConnector,
+} satisfies Record<IntegrationId, new (definition: IntegrationDefinition) => IntegrationConnector>;
+
+export function createConnector(definition: IntegrationDefinition) {
+  const Connector = connectorClasses[definition.id];
+
+  return new Connector(definition);
+}
+
+export function createAllConnectors() {
+  return integrationDefinitions.map(createConnector);
+}
+
