@@ -8,6 +8,10 @@ This project follows a practical product changelog format. Each entry should des
 
 ### Added
 
+- Sprint 4 GoHighLevel live-capable provider using the Integration Hub.
+- Live dashboard mapping for New Leads, Opportunities, Pipeline Values, AI Calls, Missed Calls, Appointments, Assessments, Active Conversations, Open Tasks, and Calendars.
+- Graceful mock fallback when GoHighLevel credentials are unavailable or live requests fail.
+- Dashboard connection status display and five-minute auto refresh.
 - Core Platform Architecture for future integrations.
 - Central Integration Manager with provider connection, authentication, health check, last sync, data provider, and service registry metadata.
 - Service Registry for dashboard-to-provider routing.

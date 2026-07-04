@@ -1,9 +1,11 @@
 import { AppShell } from "@/components/app-shell";
+import { AutoRefresh } from "@/components/auto-refresh";
 import {
   AiInsightsPanel,
   BusinessHealthOverview,
   ChartGallery,
   CommandCenterGrid,
+  DashboardConnectionStatus,
   ExecutiveHeader,
   ExecutiveIntelligenceLayer,
   ExecutiveKpiRow,
@@ -15,6 +17,9 @@ import {
   StatePerformanceTable,
 } from "@/components/dashboard";
 import { getDashboardDataProvider } from "@/lib/services/dashboard-data-provider";
+
+export const dynamic = "force-dynamic";
+export const revalidate = 300;
 
 export default async function ExecutiveDashboard() {
   const dashboardData = await getDashboardDataProvider().getDashboardData();
@@ -35,8 +40,10 @@ export default async function ExecutiveDashboard() {
 
   return (
     <AppShell>
+      <AutoRefresh intervalMs={300000} />
       <div className="space-y-8">
         <ExecutiveHeader currentDate={currentDate} currentTime={currentTime} />
+        <DashboardConnectionStatus status={dashboardData.integrationStatus} />
         <BusinessHealthOverview health={dashboardData.businessHealth} />
         <ExecutiveIntelligenceLayer
           brief={dashboardData.executiveBrief}

@@ -1,5 +1,13 @@
 export type GoHighLevelConnectionStatus = "disconnected" | "connected" | "error";
 
+export type GoHighLevelConnectionResult = {
+  status: GoHighLevelConnectionStatus;
+  statusLabel: "Disconnected" | "Connected" | "Error";
+  source: "mock" | "live" | "fallback";
+  lastChecked: string;
+  errorMessage?: string;
+};
+
 export type GoHighLevelServiceName =
   | "Contacts"
   | "Opportunities"
@@ -93,7 +101,22 @@ export type GoHighLevelPipeline = {
   }[];
 };
 
+export type GoHighLevelDashboardMetrics = {
+  connection: GoHighLevelConnectionResult;
+  newLeads: number;
+  opportunities: number;
+  pipelineValue: number;
+  aiCalls: number;
+  missedCalls: number;
+  appointments: number;
+  assessments: number;
+  activeConversations: number;
+  openTasks: number;
+  calendars: number;
+};
+
 export type GoHighLevelAdapter = {
+  getConnectionStatus(): Promise<GoHighLevelConnectionResult>;
   getServiceStatuses(): Promise<GoHighLevelServiceStatus[]>;
   getContacts(): Promise<GoHighLevelContact[]>;
   getOpportunities(): Promise<GoHighLevelOpportunity[]>;

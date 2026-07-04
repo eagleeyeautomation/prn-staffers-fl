@@ -29,6 +29,7 @@ import type {
   CalendarItem,
   CeoSnapshotMetric,
   DashboardChart,
+  DashboardData,
   ExecutiveAlert,
   ExecutiveRecommendation,
   ExecutiveSnapshotMetric,
@@ -79,6 +80,36 @@ export function ExecutiveHeader({
           <HeaderAction label="Notifications" value="4" icon={Bell} />
           <HeaderAction label="User Profile" value="George" icon={UserRound} />
           <HeaderAction label="Settings" value="Ready" icon={Settings} />
+        </div>
+      </div>
+    </section>
+  );
+}
+
+export function DashboardConnectionStatus({ status }: { status: DashboardData["integrationStatus"] }) {
+  if (!status) {
+    return null;
+  }
+
+  return (
+    <section className="rounded-2xl border border-slate-200 bg-white p-4 shadow-sm dark:border-slate-800 dark:bg-slate-950">
+      <div className="flex flex-col gap-3 lg:flex-row lg:items-center lg:justify-between">
+        <div>
+          <p className="text-xs font-semibold uppercase tracking-[0.16em] text-sky-700 dark:text-sky-300">
+            {status.provider} Connection
+          </p>
+          <p className="mt-1 text-sm leading-6 text-slate-600 dark:text-slate-300">{status.message}</p>
+        </div>
+        <div className="flex flex-wrap items-center gap-2">
+          <span className={`rounded-full px-3 py-1 text-xs font-semibold ${getConnectionStatusClass(status.status)}`}>
+            {status.label}
+          </span>
+          <span className="rounded-full bg-slate-100 px-3 py-1 text-xs font-semibold text-slate-600 dark:bg-slate-900 dark:text-slate-300">
+            {status.source}
+          </span>
+          <span className="rounded-full bg-[#fff4d6] px-3 py-1 text-xs font-semibold text-[#8a5a00]">
+            Refreshes every {Math.round(status.refreshIntervalSeconds / 60)} min
+          </span>
         </div>
       </div>
     </section>
@@ -1015,6 +1046,18 @@ function getRankingClass(status: StateRanking["status"]) {
     case "neutral":
     default:
       return "bg-white/10 text-slate-200";
+  }
+}
+
+function getConnectionStatusClass(status: NonNullable<DashboardData["integrationStatus"]>["status"]) {
+  switch (status) {
+    case "connected":
+      return "bg-emerald-50 text-emerald-700";
+    case "error":
+      return "bg-red-50 text-red-700";
+    case "disconnected":
+    default:
+      return "bg-slate-100 text-slate-600";
   }
 }
 

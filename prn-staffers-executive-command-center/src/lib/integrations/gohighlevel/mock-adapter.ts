@@ -2,6 +2,7 @@ import type {
   GoHighLevelAdapter,
   GoHighLevelAiCall,
   GoHighLevelCalendarEvent,
+  GoHighLevelConnectionResult,
   GoHighLevelContact,
   GoHighLevelConversation,
   GoHighLevelOpportunity,
@@ -13,6 +14,15 @@ import type {
 const mockTimestamp = "2026-07-04T10:30:00-04:00";
 
 export class MockGoHighLevelAdapter implements GoHighLevelAdapter {
+  async getConnectionStatus(): Promise<GoHighLevelConnectionResult> {
+    return {
+      status: "disconnected",
+      statusLabel: "Disconnected",
+      source: "mock",
+      lastChecked: mockTimestamp,
+    };
+  }
+
   async getServiceStatuses(): Promise<GoHighLevelServiceStatus[]> {
     return [
       { name: "Contacts", status: "disconnected", recordsAvailable: mockContacts.length, lastSynced: mockTimestamp, source: "mock" },

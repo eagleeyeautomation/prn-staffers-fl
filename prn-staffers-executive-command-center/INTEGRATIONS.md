@@ -58,6 +58,13 @@ Sprint 3 foundation:
 
 Version 1.0 status: Mock data only. No live API requests are made.
 
+Sprint 4 live-capable scope:
+
+- GoHighLevel is the only provider connected through the live-capable adapter.
+- Dashboard values can be sourced from GoHighLevel for new leads, opportunities, pipeline value, AI calls, missed calls, appointments, assessments, active conversations, open tasks, and calendars.
+- If credentials are unavailable or requests fail, the dashboard falls back to mock data and logs the connection error.
+- Dashboard data refreshes every 5 minutes.
+
 ## WellSky
 
 Priority: High

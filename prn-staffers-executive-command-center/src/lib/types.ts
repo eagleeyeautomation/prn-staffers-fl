@@ -165,6 +165,15 @@ export type PageSummary = {
 export type DashboardData = {
   mode: DataProviderMode;
   sourceLabel: string;
+  integrationStatus?: {
+    provider: string;
+    status: "disconnected" | "connected" | "error";
+    label: string;
+    source: "mock" | "live" | "fallback";
+    lastChecked: string;
+    refreshIntervalSeconds: number;
+    message: string;
+  };
   kpis: Kpi[];
   stateSummaries: StateSummary[];
   activities: ActivityItem[];

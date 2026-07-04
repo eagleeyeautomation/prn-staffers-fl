@@ -20,6 +20,8 @@ import {
   mockTrendingKpis,
   mockUpcomingCalendar,
 } from "@/lib/mock-dashboard-data";
+import { applyGoHighLevelDashboardMetrics } from "@/lib/integrations/gohighlevel/dashboard-mapper";
+import { getGoHighLevelIntegration, logGoHighLevelError } from "@/lib/integrations/gohighlevel";
 import type { DashboardData, DashboardDataProvider, DataProviderMode } from "@/lib/types";
 
 class MockDashboardDataProvider implements DashboardDataProvider {
@@ -27,6 +29,15 @@ class MockDashboardDataProvider implements DashboardDataProvider {
     return {
       mode: "mock",
       sourceLabel: "Mock data",
+      integrationStatus: {
+        provider: "GoHighLevel",
+        status: "disconnected",
+        label: "Disconnected",
+        source: "mock",
+        lastChecked: new Date().toISOString(),
+        refreshIntervalSeconds: 300,
+        message: "GoHighLevel is not connected. Mock dashboard data is active.",
+      },
       kpis: mockKpis,
       stateSummaries: mockStateSummaries,
       activities: mockActivities,
@@ -57,16 +68,35 @@ class LiveDashboardDataProvider implements DashboardDataProvider {
   async getDashboardData(): Promise<DashboardData> {
     const fallbackData = await this.fallbackProvider.getDashboardData();
 
-    return {
-      ...fallbackData,
-      mode: "live",
-      sourceLabel: "Live-ready mock fallback",
-    };
+    try {
+      const metrics = await getGoHighLevelIntegration().getDashboardMetrics();
+
+      return applyGoHighLevelDashboardMetrics(fallbackData, metrics);
+    } catch (error) {
+      logGoHighLevelError("dashboard provider", error);
+
+      return {
+        ...fallbackData,
+        mode: "mock",
+        sourceLabel: "Mock fallback - GoHighLevel error",
+        integrationStatus: {
+          provider: "GoHighLevel",
+          status: "error",
+          label: "Error",
+          source: "fallback",
+          lastChecked: new Date().toISOString(),
+          refreshIntervalSeconds: 300,
+          message: "GoHighLevel could not be reached. Mock dashboard data is active.",
+        },
+      };
+    }
   }
 }
 
 export function getDashboardDataProvider(): DashboardDataProvider {
-  return getDataProviderMode() === "live" ? new LiveDashboardDataProvider() : new MockDashboardDataProvider();
+  return getDataProviderMode() === "live" || process.env.GHL_ENABLED === "true"
+    ? new LiveDashboardDataProvider()
+    : new MockDashboardDataProvider();
 }
 
 export function getDataProviderMode(): DataProviderMode {
